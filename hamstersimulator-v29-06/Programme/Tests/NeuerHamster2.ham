@@ -1,7 +1,0 @@
-/*imperative program*/void main() {
-	char a = 'a';
-	while(true){
-		a++;
-		schreib(Character.toString(a));
-	}
-}
