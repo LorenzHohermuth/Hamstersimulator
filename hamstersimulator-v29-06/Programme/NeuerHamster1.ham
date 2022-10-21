@@ -1,0 +1,9 @@
+/*imperative program*/boolean var1 = true;
+void main() {
+    test();
+}
+void test(){
+	boolean var2 = false;
+	
+	boolean var1 = false;
+}

@@ -1,0 +1,85 @@
+/*imperative program*/boolean loop = true;
+
+void main() {
+	inEcke();
+	while(loop){
+		reihe();
+	}
+}
+
+void rechtsUm(){
+	linksUm();
+    linksUm();
+    linksUm();
+}
+
+void sort(){
+	boolean gerade = true;
+	if(!maulLeer()){
+		gerade = false;
+	}
+	while (kornDa()){
+		nimm();
+		gerade = !gerade;
+	}
+	while (!maulLeer()){
+		gib();
+	}
+	if (!gerade){
+		nimm();
+	}
+} 
+
+void inEcke(){
+	vorBisWandKorn();
+	rechtsUm();
+	vorBisWandKorn();
+	linksUm();
+	linksUm();
+}
+
+void vorBisWandKorn(){
+	while(vornFrei() && kornDa()){
+		vor();
+	}
+	if (!kornDa() && vornFrei()){
+		linksUm();
+		linksUm();
+		if(vornFrei()){
+			vor();
+		}
+		linksUm();
+		linksUm();
+	}
+}
+
+void vorSort(){
+	while(vornFrei() && kornDa()){
+		sort();
+		vor();
+	}
+	if (!kornDa()){
+		linksUm();
+		linksUm();
+		vor();
+		linksUm();
+		linksUm();
+	}
+	else{
+		sort();
+	}
+}
+
+void reihe(){
+	vorSort();
+	linksUm();
+	linksUm();
+	vorBisWandKorn();
+	rechtsUm();
+	if(vornFrei()){
+		vor();
+	}else{
+		loop = false;
+	}
+	rechtsUm();
+}

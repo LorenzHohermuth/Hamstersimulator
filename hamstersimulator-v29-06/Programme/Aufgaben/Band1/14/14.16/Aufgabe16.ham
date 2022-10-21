@@ -1,0 +1,25 @@
+/*imperative program*/String word = "";
+void main() {
+	while(vornFrei()){
+		word = word + Character.toString(buchstaben());
+	}
+	schreib(word);
+}
+
+int check(){
+	int i = 0;
+	while(kornDa()){
+		nimm();
+		i++;
+	}
+	return i;
+}
+
+char buchstaben(){
+	while(!kornDa() && vornFrei()){
+		vor();
+	}
+	int x = check();
+	char character = (char)x;
+	return character;
+}

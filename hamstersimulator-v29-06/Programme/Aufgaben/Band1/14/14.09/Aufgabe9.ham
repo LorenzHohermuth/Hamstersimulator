@@ -1,0 +1,72 @@
+/*imperative program*/int körner  = 0;
+boolean loop = true;
+void main() {
+    inEcke();
+    while(loop){
+    	reihe();
+    	nächste();
+    }
+}
+
+void rechtsUm(){
+	linksUm();
+	linksUm();
+	linksUm();
+}
+
+void kehr(){
+	linksUm();
+	linksUm();
+}
+
+
+void inEcke(){
+	vorBisWand();
+	rechtsUm();
+	vorBisWand();
+	linksUm();
+	linksUm();
+}
+
+void vorBisWand(){
+	while(vornFrei()){
+		vor();
+	}
+}
+void sort(){
+	while(kornDa()){
+		nimm();
+		körner++;
+	}
+	int n = körner / 3;
+	n *= 3;
+	körner -= n;
+	gaz(n);
+}
+
+void gaz(int n){
+	int i=0;
+	while(i < n){
+	gib();
+	i++;
+	}
+}
+
+void reihe(){
+	while(vornFrei()){
+		sort();
+		vor();
+	}
+	sort();
+	kehr();
+	vorBisWand();
+	kehr();
+}
+
+void nächste(){
+	linksUm();
+	if(vornFrei()){
+		vor();
+		rechtsUm();
+	}else loop = false;
+}

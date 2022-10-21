@@ -1,0 +1,83 @@
+/*imperative program*/void main(){
+	int anzahl = sammel();
+	while(vornFrei()){
+		while(!rechtsFrei()) {
+			vor();
+		}
+		 int x = zähl();
+		 if(x == anzahl) {
+		 	rechtsUm();
+		 	vor();
+		 	linksUm();
+		 	gib();
+		 	while(vornFrei()) {
+		 		vor();
+		 		gib();
+		 	}
+		 	linksUm();
+		 	vor();
+		 	rechtsUm();
+		 	vor();
+		 }else {
+		 	vaz(x);
+		 }
+    }
+}
+
+void rechtsUm(){
+	linksUm();
+    linksUm();
+    linksUm();
+}
+
+void kehr() {
+	linksUm();
+	linksUm();
+}
+
+void vorBisWand() {
+	while(vornFrei()) {
+		vor();
+	}
+}
+
+int zähl(){
+	int i = 1;
+	rechtsUm();
+	vor();
+	linksUm();
+	while(vornFrei()) {
+		vor();
+		i++;
+	}
+	kehr();
+	vorBisWand();
+	rechtsUm();
+	vor();
+	rechtsUm();
+	return i;
+}
+
+boolean rechtsFrei() {
+	rechtsUm();
+	boolean x = vornFrei();
+	linksUm();
+	return x;
+}
+
+int sammel(){
+	int i = 0;
+	while(kornDa()){
+		nimm();
+		i++;
+	}
+	return i;
+}
+
+void vaz(int n){
+	int i=0;
+	while(i < n){
+	vor();
+	i++;
+	}
+}

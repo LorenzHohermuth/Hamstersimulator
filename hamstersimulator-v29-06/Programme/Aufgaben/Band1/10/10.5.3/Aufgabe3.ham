@@ -1,0 +1,22 @@
+/*imperative program*/void main() {
+	lbw();
+    while(!vornFrei()){
+    	linksUm();
+    	vor();
+    	rechtsUm();
+    	vor();
+    }
+}
+
+void rechtsUm(){
+	linksUm();
+    linksUm();
+    linksUm();
+}
+
+void lbw(){
+	//Lauf Bis Wand
+	while(vornFrei()){
+		vor();
+	}
+}

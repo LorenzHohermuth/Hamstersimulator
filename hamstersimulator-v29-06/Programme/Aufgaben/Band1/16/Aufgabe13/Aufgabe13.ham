@@ -1,0 +1,87 @@
+/*imperative program*/void main() {
+    vor();
+    while(vornFrei()) {
+        int num = collectCount();
+        toPos(num);
+        vor();
+    }
+    int num = collectCount();
+    toPos(num);
+}
+
+void rechtsUm() {
+    linksUm();
+    linksUm();
+    linksUm();
+}
+
+void kehr() {
+     linksUm();
+     linksUm();
+}
+
+void vaz(int n){
+    for(int i = 0; i < n; i++){
+        vor();
+    }
+}
+
+void vorBisWand() {
+    while(vornFrei()) {
+        vor();
+    }
+}
+
+int collectCount() {
+    int x = 0;
+    while(kornDa()) {
+        nimm();
+        x++;
+    }
+    return x;
+}
+
+int countFloor(){
+	int x = 0;
+	while(kornDa()) {
+		nimm();
+		x++;
+	}
+	for(int i = 0; i < x; i++) {
+		gib();
+	}
+	return x;
+	
+}
+
+void toPos(int n) {
+    while(isSmaller(n)) {
+        swap();
+        kehr();
+        vor();
+        kehr();
+    }
+    while(!maulLeer()) {
+        gib();
+    }
+}
+
+boolean isSmaller(int num) {
+    kehr();
+    vor();
+    kehr();
+    int num2 = countFloor();
+    vor();
+    return num < num2;
+}
+
+void swap() {
+    kehr();
+    vor();
+    kehr();
+    int x = collectCount();
+    vor();
+    for(int i = 0; i < x; i++) {
+        gib();
+    }
+}

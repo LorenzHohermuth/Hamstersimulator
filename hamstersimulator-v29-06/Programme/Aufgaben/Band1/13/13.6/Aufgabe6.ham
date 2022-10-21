@@ -1,0 +1,29 @@
+/*imperative program*/void main() {
+    if(dreiK())schreib("Yaaaaaaaaaaaaaaaaaaaa");
+}
+
+void rechtsUm(){
+	linksUm();
+    linksUm();
+    linksUm();
+}
+
+boolean dreiK(){
+	int k = 0;
+	int i = 0;
+	while(i < 4){
+		vor();
+		if(kornDa())k++;
+		kehr();
+		vor();
+		linksUm();
+		i++;
+	}
+	if(k == 3)return true;
+	else return false;
+}
+
+void kehr(){
+	linksUm();
+	linksUm();
+}

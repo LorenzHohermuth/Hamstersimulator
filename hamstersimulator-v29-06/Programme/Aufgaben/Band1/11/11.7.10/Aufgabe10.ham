@@ -1,0 +1,26 @@
+/*imperative program*/void main() {
+    while(!vornFrei()){
+    	linksUm();
+    	vor();
+    	rechtsUm();
+    	vor();
+    }
+    vor();
+    rechtsUm();
+    while(vornFrei()){
+    	vor();
+    	gib();
+    	linksUm();
+    	linksUm();
+    	vor();
+    	rechtsUm();
+    	vor();
+    	rechtsUm();
+    }
+}
+
+void rechtsUm(){
+	linksUm();
+    linksUm();
+    linksUm();
+}

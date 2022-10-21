@@ -1,0 +1,14 @@
+/*imperative program*/void main() {
+int i = 0;
+	while(i < 3 ){
+   		if(kornDa()) {
+    		nimm();
+    		i++;
+    	}
+    	else{
+    		vor();
+    		vor();
+    		linksUm();
+    	}
+    }
+}

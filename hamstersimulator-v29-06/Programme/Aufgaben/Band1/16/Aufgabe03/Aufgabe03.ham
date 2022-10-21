@@ -1,0 +1,99 @@
+/*imperative program*/void main() {
+	inEckeKorn();
+	int x = messe();
+	linksUm();
+	int y = messe();
+	rechtsUm();
+	kreisFeld(x, y);
+}
+
+void kehr() {
+	linksUm();
+	linksUm();
+}
+
+void rechtsUm() {
+	kehr();
+	linksUm();
+}
+
+void kreisFeld(int x, int y) {
+	int groesse = 0;
+	int x2 = 0;
+	int y2 = 0;
+	if(x >= y) groesse = x;
+	else groesse = y;
+	for(int i = 0; i < groesse; i++) {
+		if(y2 < y) {
+			y2++;
+		}
+		if(x2 < x) {
+			x2++;
+		}
+		radius(x2, y2);
+	}
+}
+
+void radius(int x, int y) {
+	vaz(x);
+	linksUm();
+	vaz(y);
+	linksUm();
+	vaz(x);
+	linksUm();
+	vaz(y);
+	linksUm();
+}
+
+void vaz(int n){
+	for(int i = 0; i < n; i++){
+		if(vornFrei()){
+			if(kornDa()) {
+				sammel();
+			}
+			vor();
+		}
+	}
+}
+
+void inEckeKorn() {
+	vorBisNoKorn();
+	rechtsUm();
+	vorBisNoKorn();
+	rechtsUm();
+}
+
+void vorBisNoKorn() {
+	while (vornFrei() && kornDa()) {
+		vor();
+	} 
+	if (!kornDa()) {
+		kehr();
+		vor();
+	}else {
+		kehr();
+	}
+}
+
+int messe() {
+	int x = 0;
+	while (vornFrei() && kornDa()) {
+		vor();
+		x++;
+	} 
+	if (!kornDa()) {
+		kehr();
+		vor();
+		x--;
+	}else {
+		kehr();
+	}
+	vorBisNoKorn();
+	return x;
+}
+
+void sammel() {
+	while(kornDa()) {
+		nimm();
+	}
+}

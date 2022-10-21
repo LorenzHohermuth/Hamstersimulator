@@ -1,0 +1,67 @@
+/*imperative program*/int anzahlK = 1;
+void main() {
+	inEcke();
+	spirale();
+}
+
+void rechtsUm(){
+	linksUm();
+    linksUm();
+    linksUm();
+}
+
+void kehr() {
+	linksUm();
+	linksUm();
+}
+void giz(int n){
+	int i=0;
+	while(i < n){
+		gib();
+		i++;
+	}
+}
+ 
+int zähl(){
+	int x = 0;
+	int i = 0;
+	while(kornDa()){
+		nimm();
+		x++;
+	}
+	while(i < x){
+		gib();
+		i++;
+	}
+	return x;
+}
+
+void inEcke(){
+	vorBisWand();
+	linksUm();
+	vorBisWand();
+	kehr();
+}
+
+void vorBisWand(){
+	while(vornFrei()){
+		vor();
+	}
+}
+void spirale() {
+	while(!kornDa()) {
+		while(vornFrei() && !kornDa()) {
+			giz(anzahlK);
+			vor();
+		}
+		if(kornDa()) {
+			anzahlK = zähl() + 1;
+			kehr();
+			vor();
+			linksUm();
+			vor();
+		}else if(!vornFrei()) {
+			rechtsUm();
+		}
+	}
+}

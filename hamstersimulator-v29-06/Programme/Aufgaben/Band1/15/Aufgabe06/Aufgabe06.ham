@@ -1,0 +1,111 @@
+/*imperative program*/void main() {
+	inEcke();
+	int y = messe();
+	linksUm();
+	linksUm();
+	while(!istBoxDa(y)) {
+		linksUm();
+		vor();
+		rechtsUm();
+	}
+	searchCorn();
+	leeren();
+}
+
+void rechtsUm(){
+	linksUm();
+    linksUm();
+    linksUm();
+}
+
+void inEcke(){
+	vorBisWand();
+	linksUm();
+	vorBisWand();
+	linksUm();
+	vorBisWand();
+	linksUm();
+	linksUm();
+}
+
+void vorBisWand(){
+	while(vornFrei()){
+		vor();
+	}
+}
+
+int messe() {
+	int x = 1;
+	while(vornFrei()) {
+		vor();
+		x++;
+	}
+	return x;
+}
+
+boolean istBoxDa(int y) {
+	int x = 1;
+	while(vornFrei()) {
+		vor();
+		x++;
+	}
+	if(x != y) {
+		return true;
+	}else {
+		linksUm();
+		linksUm();
+		vorBisWand();
+		linksUm();
+		linksUm();
+		return false;
+	}
+}
+
+boolean linksFrei() {
+	linksUm();
+	boolean x = vornFrei();
+	rechtsUm();
+	return x;
+}
+
+void searchCorn() {
+	rechtsUm();
+	while(!kornDa()) {
+		if(linksFrei()) {
+			linksUm();
+			vor();
+		}else {
+			vor();
+		}
+	}
+}
+
+void nimmAlle() {
+	while(kornDa()) {
+		nimm();
+	}
+}
+
+void leeren() {
+	kehr();
+	vor();
+	kehr();
+	while(vornFrei()){
+		vor();
+		rechtsUm();
+		nimmAlle();
+		while(vornFrei()) {
+			vor();
+			nimmAlle();
+		}
+		linksUm();
+		linksUm();
+		vorBisWand();
+		rechtsUm();
+	}
+}
+
+void kehr() {
+	linksUm();
+	linksUm();
+}

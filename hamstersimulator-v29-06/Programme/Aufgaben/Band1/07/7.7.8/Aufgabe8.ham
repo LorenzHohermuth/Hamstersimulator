@@ -1,0 +1,54 @@
+/*imperative program*/void main() {
+    vaz(8);
+    rechtsUm();
+    vaz(4);
+    linksUm();
+    vaz(3);
+    linksUm();
+    vor();
+    nimm();
+    linksUm();
+    linksUm();
+    vaz(2);
+    rechtsUm();
+    vaz(6);
+    rechtsUm();
+    vaz(2);
+    nimm();
+    linksUm();
+    linksUm();
+    vor();
+    rechtsUm();
+    vaz(3);
+    rechtsUm();
+    vor();
+    nimm();
+    linksUm();
+    linksUm();
+    vaz(2);
+    linksUm();
+    vaz(6);
+    linksUm();
+    vaz(5);
+    linksUm();
+    vaz(7);
+    gib();
+    gib();
+    gib();
+    vor();
+}
+
+void rechtsUm(){
+	linksUm();
+    linksUm();
+    linksUm();
+}
+
+
+void vaz(int n){
+	int i=0;
+	while(i < n){
+	vor();
+	i++;
+	}
+}

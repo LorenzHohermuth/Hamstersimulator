@@ -1,0 +1,34 @@
+/*imperative program*/void main() {
+    algo();
+}
+
+void cvaz(int n){
+	int i=0;
+	while(i < n){
+	vor();
+	i++;
+	}
+}
+
+void right(){
+	linksUm();
+    linksUm();
+    linksUm();
+}
+
+void left(){
+	linksUm();
+}
+
+void algo(){
+int körner = 0;
+	while(körner < 3){
+		if(kornDa()){
+			nimm();
+			körner++;
+		}
+		else{
+			vor();
+		}
+	}
+}

@@ -1,0 +1,90 @@
+/*imperative program*/
+
+//	y
+//	^
+//	|
+//	|
+//	|
+//	|
+//	+----------> x
+
+void main() {
+	char richtung = 'o';
+	int x = 0;
+	int y = 0;
+	rechtsWand(richtung, x, y);
+}
+
+char nrechtsUm(char richtung){
+	richtung = nlinksUm(richtung);
+	richtung = nlinksUm(richtung);
+	richtung = nlinksUm(richtung);
+	return richtung;
+}
+
+char nkehr(char richtung){
+	richtung = nlinksUm(richtung);
+	richtung = nlinksUm(richtung);
+	return richtung;
+}
+char nlinksUm(char richtung){
+	linksUm();
+	if(richtung == 'o'){
+		richtung = 'n'; 
+	}else if(richtung == 'n'){
+		richtung = 'w'; 
+	}else if(richtung == 'w'){
+		richtung = 's';
+	}else if(richtung == 's'){
+		richtung = 'o';
+	}
+	return richtung;
+}
+
+int[] nvor(char richtung, int x, int y){
+	vor();
+	if(richtung == 'o'){
+		x++; 
+	}else if(richtung == 'n'){
+		y++; 
+	}else if(richtung == 'w'){
+		x--;
+	}else if(richtung == 's'){
+		y--;
+	}
+	int[] list = new int[2];
+	list[0] = x;
+	list[1] = y;
+	return list;
+}
+
+void rechtsWand(char richtung, int x, int y){
+	int[] list = nvor(richtung, x, y);
+	x = list[0];
+	y = list[1];
+	while(x != 0 || y != 0){
+		if(rechtsFrei()){
+			richtung = nrechtsUm(richtung);
+			list = nvor(richtung, x, y);
+			x = list[0];
+			y = list[1];
+		}else if(vornFrei()){
+			list = nvor(richtung, x, y);
+			x = list[0];
+			y = list[1];
+		}else {
+			richtung = nlinksUm(richtung);
+		}
+	}
+}
+
+
+
+boolean rechtsFrei(){
+	linksUm();
+	linksUm();
+	linksUm();
+	boolean x = vornFrei();
+	linksUm();
+	return x;
+}

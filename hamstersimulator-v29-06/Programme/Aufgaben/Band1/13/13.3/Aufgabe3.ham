@@ -1,0 +1,19 @@
+/*imperative program*/void main() {
+    if(zweiMauern()){
+    	schreib("Yaaaaaaaaaaaaaaaaaaaaaaaaaa");
+    }
+}
+
+boolean zweiMauern(){
+	int i = 0;
+	if(vornFrei())i++;
+	linksUm();
+	if(vornFrei())i++;
+	linksUm();
+	if(vornFrei())i++;
+	linksUm();
+	if(vornFrei())i++;
+	linksUm();
+	if(i == 2)return true;
+	else return false;
+}

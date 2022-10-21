@@ -1,0 +1,90 @@
+/*imperative program*/boolean loop = true;
+void main() {
+	while(loop){
+		suchAst();
+	}
+	nimm();
+}
+
+//-----------------------------------------------------------
+void rechtsUm(){
+	linksUm();
+    linksUm();
+    linksUm();
+}
+//KornFunktionen---------------------------------------------
+boolean linksKorn(){
+	linksUm();
+	if(vornFrei()){
+		vor();
+		boolean x = kornDa();
+		linksUm();
+		linksUm();
+		vor();
+		linksUm();
+		return x;
+	}else{
+		rechtsUm();
+		return false;
+	}
+}
+
+boolean rechtsKorn(){
+	rechtsUm();
+	if(vornFrei()){
+		vor();
+		boolean x = kornDa();
+		linksUm();
+		linksUm();
+		vor();
+		rechtsUm();
+		return x;
+	}else{
+		linksUm();
+		return false;
+	}
+}
+
+boolean vornKorn(){
+	if(vornFrei()){
+		vor();
+		boolean x = kornDa();
+		linksUm();
+		linksUm();
+		vor();
+		linksUm();
+		linksUm();
+		return x;
+	}else{
+		return false;
+	}
+}
+void suche(boolean nimm){
+	//Suche
+		if(rechtsKorn()){
+			rechtsUm();
+			if(nimm)nimm();
+			vor();
+		}else
+		if(linksKorn()){
+			linksUm();
+			if(nimm)nimm();
+			vor();
+		}else
+		if(vornKorn()){
+			if(nimm)nimm();
+			vor();
+		}else loop = false;	
+}
+
+//FolgeDerSpur----------------------------------------------
+void suchAst(){
+	while(linksKorn() || rechtsKorn() || vornKorn()){
+		suche(false);
+	}
+	linksUm();
+	linksUm();
+	while(!(linksKorn() && rechtsKorn() || linksKorn() && vornKorn() || rechtsKorn() && vornKorn()) && loop){
+		suche(true);
+	}
+}

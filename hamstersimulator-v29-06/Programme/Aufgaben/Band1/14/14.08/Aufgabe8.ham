@@ -1,0 +1,30 @@
+/*imperative program*/void main() {
+    umaz(dekodier());
+}
+
+
+int dekodier(){
+	int bitwert = 1;
+	int wert = 0;
+	while(vornFrei()){
+		if(kornDa()){
+			nimm();
+			wert += bitwert;
+		}
+		vor();
+		bitwert *= 2;
+	}
+	if(kornDa()){
+		nimm();
+		wert += bitwert;
+	}
+	return wert;
+}
+
+void umaz(int n){
+	int i=0;
+	while(i < n){
+	linksUm();
+	i++;
+	}
+}

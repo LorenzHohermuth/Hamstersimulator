@@ -1,0 +1,69 @@
+/*imperative program*/void main() {
+	vorBisWand();
+	linksUm();
+	while(vornFrei()) {
+		rechnen();
+	}
+}
+
+int zähl() {
+	int x = 0;
+	while(vornFrei()) {
+		vor();
+		while(kornDa()) {
+			nimm();
+			x++;
+		}
+	}
+	kehr();
+	vorBisWand();
+	kehr();
+	return x;
+}
+
+void rechnen() {
+	int x = zähl();
+	int i = 0;
+	while(x >= 10) {
+		vor();
+		linksUm();
+		vor();
+		gib();
+		linksUm();
+		vor();
+		linksUm();
+		vor();
+		linksUm();
+		x -= 10;
+	}
+	while(i < x) {
+		gib();
+		i++;
+	}
+	reihenWechsel();
+}
+
+void reihenWechsel() {
+	linksUm();
+	if(vornFrei()){
+		vor();
+		rechtsUm();
+	}
+}
+
+void vorBisWand() {
+	while(vornFrei()) {
+		vor();
+	}
+}
+
+void rechtsUm(){
+	linksUm();
+    linksUm();
+    linksUm();
+}
+
+void kehr() {
+	linksUm();
+	linksUm();
+}

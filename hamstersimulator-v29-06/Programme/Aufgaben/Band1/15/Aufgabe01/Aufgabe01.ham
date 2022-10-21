@@ -1,0 +1,108 @@
+/*imperative program*/void main() {
+	nimmAz(messe());
+	treppen();
+}
+
+void rechtsUm() {
+	linksUm();
+    linksUm();
+    linksUm();
+}
+
+void kehr() {
+	linksUm();
+	linksUm();
+}
+
+void vorBisWand(){
+	while(vornFrei()) {
+		vor();
+	}
+}
+
+void vorBisKorn(){
+	while(!kornDa() && vornFrei()) {
+		vor();
+	}
+}
+
+void nimmAz(int x) {
+	int i = 0;
+	while(i < x) {
+		if(kornDa())nimm();
+		i++;
+	}
+}
+
+void treppen() {
+	vorBisWand();
+	while(!rechtsFrei()) {
+		if(vornFrei()) {
+			vor();
+		}else {
+			linksUm();
+			if(!maulLeer())gib();
+			while(!rechtsFrei()){
+				vor();
+			}
+			rechtsUm();
+			vor();
+		}
+	}
+}
+
+int nachOben() {
+	int x = 0;
+	while(!rechtsFrei()) {
+		if(vornFrei()) {
+			vor();
+		}else {
+			linksUm();
+			while(!rechtsFrei()){
+				vor();
+				x++;
+			}
+			rechtsUm();
+			vor();
+		}
+	}
+	kehr();
+	vor();
+	return x;
+}
+
+int messe() {
+	vorBisWand();
+	int x = nachOben();
+	int i = x;
+	while(i > 0) {
+		if(!linksFrei()) {
+			vor();
+		}else {
+			linksUm();
+			while(vornFrei()) {
+				vor();
+				i--;
+			}
+			rechtsUm();
+		}
+	}
+	vorBisKorn();
+	kehr();
+	return x;
+}
+
+boolean rechtsFrei() {
+	rechtsUm();
+	boolean x = vornFrei();
+	linksUm();
+	return x;
+}
+
+boolean linksFrei() {
+	linksUm();
+	boolean x = vornFrei();
+	rechtsUm();
+	return x;
+}
+

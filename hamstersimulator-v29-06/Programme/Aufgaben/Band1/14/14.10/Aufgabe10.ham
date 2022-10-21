@@ -1,0 +1,168 @@
+/*imperative program*/void main() {
+	vorBisWand();
+	linksUm();
+	while(true){
+		char wo = frei();
+		if (wo == 'r'){
+			rechtsUm();
+		}else if (wo == 'v'){
+			if(!kornDa())gib();
+			vor();
+		}else if (wo == 'l'){
+			linksUm();
+		}else{
+			if(!kornDa())gib();
+			raus();
+		}
+	}
+}
+
+//Grundfunktionen
+//------------------------------------------------------------
+void rechtsUm(){
+	linksUm();
+	linksUm();
+	linksUm();
+}
+
+void kehr(){
+	linksUm();
+	linksUm();
+}
+
+void vorBisWand(){
+	while(vornFrei()){
+		vor();
+	}
+}
+//------------------------------------------------------------
+
+//Wo frei?
+//------------------------------------------------------------
+boolean linksFrei(){
+	linksUm();
+	boolean x = vornFrei();
+	rechtsUm();
+	return x;
+}
+
+boolean rechtsFrei(){
+	rechtsUm();
+	boolean x = vornFrei();
+	linksUm();
+	return x;
+}
+//------------------------------------------------------------
+
+//wo korn?
+//------------------------------------------------------------
+boolean rechtsKorn(){
+	rechtsUm();
+	vor();
+	boolean x = kornDa();
+	kehr();
+	vor();
+	rechtsUm();
+	return x;
+}
+
+boolean linksKorn(){
+	linksUm();
+	vor();
+	boolean x = kornDa();
+	kehr();
+	vor();
+	linksUm();
+	return x;
+}
+
+boolean vornKorn(){
+	if(vornFrei()){
+		vor();
+		boolean x = kornDa();
+		kehr();
+		vor();
+		kehr();
+		return x;
+	}else return false;
+}
+
+boolean hintenKorn(){
+	kehr();
+	if(vornFrei()){
+		vor();
+		boolean x = kornDa();
+		kehr();
+		vor();
+		return x;
+	}else return true;
+}
+//------------------------------------------------------------
+
+//rechts Korn oder wand
+//------------------------------------------------------------
+boolean rechtsWK(){
+	if(!rechtsFrei()){
+		return true;
+	}else if(rechtsKorn()){
+		return true;
+	}else{
+		return false;
+	}
+}
+
+boolean vornWK(){
+	if(!vornFrei()){
+		return true;
+	}else if(vornKorn()){
+		return true;
+	}else{
+		return false;
+	}
+}
+
+boolean linksWK(){
+	if(!linksFrei()){
+		return true;
+	}else if(linksKorn()){
+		return true;
+	}else{
+		return false;
+	}
+}
+//------------------------------------------------------------
+
+//wo frei
+//------------------------------------------------------------
+char frei(){
+	if(!rechtsWK()){
+		return 'r';
+	}else if(!vornWK()){
+		return 'v';
+	}else if(!linksWK()){
+		return 'l';
+	}else{
+		return 'f';
+	}
+}
+//------------------------------------------------------------
+//while korn da
+//------------------------------------------------------------
+void raus(){
+	int i = 0;
+	boolean links = true;
+	while(kornDa() && frei() == 'f'){
+		if(rechtsFrei() && i < 4){
+			rechtsUm();
+			vor();
+			i++;
+		}else{
+			i = 0;
+			if(vornFrei()){
+				vor();
+			}else{
+				linksUm();
+			}
+		}
+	}
+}

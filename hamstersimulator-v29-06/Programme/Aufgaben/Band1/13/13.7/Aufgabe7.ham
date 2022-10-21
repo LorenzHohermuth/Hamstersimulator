@@ -1,0 +1,31 @@
+/*imperative program*/void main() {
+	boolean loop = true;
+    while(loop){
+    	nimm();
+    	vorBisKK();
+    	if(!vornFrei())loop = false;
+    	gib();
+    	kehr();
+    	vor();
+    	vorBisKK();
+    	kehr();
+    	vor();
+    }
+}
+
+void rechtsUm(){
+	linksUm();
+    linksUm();
+    linksUm();
+}
+
+void vorBisKK(){
+	while(kornDa() && vornFrei()){
+		vor();
+	}
+}
+
+void kehr(){
+	linksUm();
+	linksUm();
+}

@@ -1,0 +1,26 @@
+/*imperative program*/int nv = 0;
+int r = 1;
+void main() {
+	gib();
+	vor();
+	while(vornFrei() && !maulLeer()){
+		int x = rechne(); 
+		gibaz(x);
+		nv = r;
+		r = x;
+		vor();
+	}
+}
+
+int rechne(){
+	int x = nv + r;
+	return x;
+}
+
+void gibaz(int n){
+	int i = 0;
+	while(i < n){
+		if(!maulLeer())gib();
+		i++;
+	}
+}

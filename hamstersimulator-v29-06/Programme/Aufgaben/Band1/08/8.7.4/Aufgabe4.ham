@@ -1,0 +1,41 @@
+/*imperative program*/void main() {
+    vor();
+    tuaz(4);
+    linksUm();
+    linksUm();
+    tdaz(4);
+}
+void rechtsUm(){
+	linksUm();
+    linksUm();
+    linksUm();
+}
+
+void vaz(int n){
+	int i=0;
+	while(i < n){
+	vor();
+	i++;
+	}
+}
+
+void tdaz(int n){
+	int i=0;
+	while(i < n){
+	vor();
+	linksUm();
+	vor();
+	rechtsUm();
+	i++;
+	}
+}
+void tuaz(int n){
+	int i=0;
+	while(i < n){
+	linksUm();
+	vor();
+	rechtsUm();
+	vor();
+	i++;
+	}
+}

@@ -1,0 +1,74 @@
+/*imperative program*/void main() {
+    toStart();
+    do {
+        reihe();
+        nextRow();
+    } while(vornFrei());
+    gib();
+}
+
+
+//bewegung
+
+void rechtsUm(){
+	linksUm();
+    linksUm();
+    linksUm();
+}
+
+void kehr(){
+	linksUm();
+	linksUm();
+}
+
+void vaz(int n){
+	for(int i = 0; i < n; i++){
+	vor();
+	}
+}
+
+void vorBisWand(){
+	while(vornFrei()){
+		vor();
+	}
+}
+
+int gvorBisWand(){
+    gib();
+    int x = 0;
+	while(vornFrei()){
+		vor();
+        gib();
+        x++;
+	}
+    return x;
+}
+
+//teilprobleme
+
+void toStart() {
+    vorBisWand();
+    linksUm();
+}
+
+void reihe() {
+    vorBisWand();
+    kehr();
+    int lenght = gvorBisWand();
+    kehr();
+    vaz(half(lenght));
+}
+
+void nextRow() {
+    linksUm();
+    if(vornFrei()){
+        vor();
+        rechtsUm();
+    }
+}
+
+//rechnen
+
+int half(int i) {
+	return i / 2; 
+}

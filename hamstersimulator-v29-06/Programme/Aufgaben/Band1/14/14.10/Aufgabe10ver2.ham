@@ -1,0 +1,219 @@
+/*imperative program*/char richtung = 'o';
+int x = 0;
+int y = 0;
+
+int sy = y;
+int ly = y;
+
+
+
+//	y
+//	^
+//	|
+//	|
+//	|
+//	|
+//	+----------> x
+
+void main() {
+    find();
+    schreib(Integer.toString(sy) + Integer.toString(ly));
+    while(sy < ly){ 
+    	setzt();
+    	sy++;
+    }
+}
+
+//n befehle
+//------------------------------------------------------------
+void nrechtsUm(){
+	nlinksUm();
+	nlinksUm();
+	nlinksUm();
+}
+
+void nkehr(){
+	nlinksUm();
+	nlinksUm();
+}
+void nlinksUm(){
+	linksUm();
+	if(richtung == 'o'){
+		richtung = 'n'; 
+	}else if(richtung == 'n'){
+		richtung = 'w'; 
+	}else if(richtung == 'w'){
+		richtung = 's';
+	}else if(richtung == 's'){
+		richtung = 'o';
+	}
+}
+
+void nvor(){
+	vor();
+	if(richtung == 'o'){
+		x++; 
+	}else if(richtung == 'n'){
+		y++; 
+	}else if(richtung == 'w'){
+		x--;
+	}else if(richtung == 's'){
+		y--;
+	}
+}
+
+void vorBisWand(){
+	while(vornFrei()){
+		nvor();
+	}
+}
+
+void vorBisWandGib(){
+	while(vornFrei()){
+		nvor();
+		if(!kornDa())gib();
+	}
+}
+
+void kehr(){
+	nlinksUm();
+	nlinksUm();
+}
+
+//------------------------------------------------------------
+
+//Wo frei?
+//------------------------------------------------------------
+boolean linksFrei(){
+	nlinksUm();
+	boolean x = vornFrei();
+	nrechtsUm();
+	return x;
+}
+
+boolean rechtsFrei(){
+	nrechtsUm();
+	boolean x = vornFrei();
+	nlinksUm();
+	return x;
+}
+//------------------------------------------------------------
+
+//wo korn?
+//------------------------------------------------------------
+boolean rechtsKorn(){
+	nrechtsUm();
+	vor();
+	boolean x = kornDa();
+	kehr();
+	vor();
+	nrechtsUm();
+	return x;
+}
+
+boolean linksKorn(){
+	nlinksUm();
+	vor();
+	boolean x = kornDa();
+	kehr();
+	vor();
+	nlinksUm();
+	return x;
+}
+
+boolean vornKorn(){
+	if(vornFrei()){
+		nvor();
+		boolean x = kornDa();
+		kehr();
+		nvor();
+		kehr();
+		return x;
+	}else return false;
+}
+
+boolean hintenKorn(){
+	kehr();
+	if(vornFrei()){
+		vor();
+		boolean x = kornDa();
+		kehr();
+		vor();
+		return x;
+	}else return true;
+}
+
+
+boolean linksWK(){
+	if(!linksFrei()){
+		return true;
+	}else if(linksKorn()){
+		return true;
+	}else{
+		return false;
+	}
+}
+//------------------------------------------------------------
+
+//find lowes
+//------------------------------------------------------------
+void find(){
+	vorBisWand();
+	nrechtsUm();
+	int x2 = x;
+	int y2 = y;
+	nvor();
+	while(x2 != x || y2 != y){
+		if(linksFrei()){
+			nlinksUm();
+			nvor();
+		}else if(vornFrei()){
+			nvor();
+		}else{
+			nrechtsUm();
+		}
+		if(y < sy)sy = y;
+		if(y > ly)ly = y;
+	}
+	
+}
+//------------------------------------------------------------
+
+//setzt
+//------------------------------------------------------------
+void setzt(){
+	int x2 = x;
+	int y2 = y;
+	char blick = 'w';
+	boolean setze = true;
+	nvor();
+	while(x2 != x || y2 != y){
+		if(richtung == 'o' || richtung == 'w'){
+			if(richtung == 'o'){
+				blick = 'w';
+			}else{
+				blick = 'o';
+			}
+		}
+		if(sy == y && setze){
+			if(!kornDa())gib();
+			while(richtung != blick){
+				nlinksUm();
+			}
+			vorBisWandGib();
+			kehr();
+			vorBisWandGib();
+			setze = false;
+		}else{
+			setze = true;
+		}
+		if(!linksWK()){
+			nlinksUm();
+			nvor();
+		}else if(vornFrei()){
+			nvor();
+		}else{
+			nrechtsUm();
+		}
+	}
+}

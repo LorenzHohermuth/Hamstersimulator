@@ -1,0 +1,76 @@
+/*imperative program*/void main() {
+	boolean links = true;
+	rechtsUm();
+	boolean switcha = false;
+		
+    while(!kornDa()){
+    	//Wenn Wand auf der Seite
+    	if(!vornFrei()){
+    		if(links){	
+    				linksUm();
+    				vor();
+    				linksUm();
+    				linksUm();
+    				links = false;
+    		}else{
+    			rechtsUm();
+    			vor();
+    			rechtsUm();
+    			links = true;
+    		}
+    	}
+    	vor();
+    	rechtsUm();
+    	vor();
+    	//Wenn Wand vorn
+    	if(!vornFrei()){
+    		if(!links){
+    			rechtsUm();
+    			vor();
+    			rechtsUm();
+    			links = true;
+    		}
+    		else{
+    			linksUm();
+    			if(vornFrei()){
+    				vor();
+    				linksUm();
+    			}else{
+    				linksUm();
+    				vor();
+    				switcha = true;
+    			}
+    			links = false;
+    		}
+    	}
+    	
+    	linksUm();
+    }
+    inDieEcke(links);
+}
+
+void rechtsUm(){
+	linksUm();
+    linksUm();
+    linksUm();
+}
+
+void inDieEcke(boolean links){
+	nimm();
+	if(!links){
+		//rechtsUm();
+	}
+	else{
+		linksUm();
+		linksUm();
+	}
+	
+	while(vornFrei()){
+		vor();
+	}	
+	linksUm();
+	while(vornFrei()){
+		vor();
+	}	
+	linksUm();
+}

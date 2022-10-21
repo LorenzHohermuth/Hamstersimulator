@@ -1,0 +1,60 @@
+# Mobile Tools for Java (J2ME)
+.mtj.tmp/
+
+# Package Files #
+*.jar
+*.war
+*.ear
+*.java
+*.ASE
+*.png
+*.pkc
+*.html
+*.css
+*.mid
+*.idx
+*.bat
+*.txt
+*.gif
+*.db
+*.pl
+*.tmp
+*.list
+*.obj
+*.raw
+*.properties
+*.sh
+*.jpg
+*package-list
+*.7z
+
+
+# virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
+hs_err_pid*
+
+# Eclipse
+.classpath
+.project
+.settings/
+
+# Intellij
+.idea/
+*.iml
+*.iws
+
+# Mac
+.DS_Store
+
+# Maven
+log/
+target/
+
+# Inclusions
+!lib/**
+
+# Compiled Files
+*.class
+bin/
+build/
+/bin1/
+java/build/**

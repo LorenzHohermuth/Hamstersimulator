@@ -1,0 +1,26 @@
+/*imperative program*/void main() {
+    pop(5);
+}
+
+void pop(int n){
+	int i=0;
+	while(i < n){
+	if(!maulLeer()){
+		gib();
+		vor();
+		linksUm();
+		vor();
+		rechtsUm();
+	}
+	else{
+	i = n;
+	}
+	i++;
+	}
+}
+
+void rechtsUm(){
+	linksUm();
+    linksUm();
+    linksUm();
+}

@@ -1,0 +1,56 @@
+/*imperative program*/void main() {
+	//Hamster geht in die linke untere Ecke
+    vor();
+    linksUm();
+    linksUm();
+    linksUm();
+    vor();
+    nimm();
+    
+    //Hamster geht in die linke obere Ecke
+    linksUm();
+    linksUm();
+    linksUm();
+    vor();
+    vor();
+    vor();
+    nimm();
+    
+    //Hamster geht in die rechte obere Ecke
+    
+    linksUm();
+    linksUm();
+    linksUm();
+    vor();
+    vor();
+    vor();
+    vor();
+    vor();
+    nimm();
+    
+    //Hamster geht in die rechte untere Ecke
+    
+    linksUm();
+    linksUm();
+    linksUm();
+    vor();
+    vor();
+    vor();
+    nimm();
+    
+    //Hamster geht in Ausgangs Position
+    
+    linksUm();
+    linksUm();
+    linksUm();
+    vor();
+    vor();
+    vor();
+    vor();
+    linksUm();
+    linksUm();
+    linksUm();
+    vor();
+    linksUm();
+    linksUm();
+}

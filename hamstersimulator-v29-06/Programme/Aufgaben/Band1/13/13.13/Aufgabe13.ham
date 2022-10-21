@@ -1,0 +1,67 @@
+/*imperative program*/void main() {
+	gib();
+	gib();
+	vor();
+	gib();
+    while(zähl() != 3){
+    	if(zähl() == 2){
+    		gib();
+    	}
+    	if(linksFrei()){
+    		linksUm();
+    		vor();
+    		if(!(vornFrei() && linksFrei() || vornFrei() && rechtsFrei() || linksFrei() && rechtsFrei())){
+    		if(!kornDa())gib();
+    		}
+    	}else if(vornFrei()){
+    		vor();
+    		if(!(vornFrei() && linksFrei() || vornFrei() && rechtsFrei() || linksFrei() && rechtsFrei())){
+    		if(!kornDa())gib();
+    		}
+    	}else if(rechtsFrei()){
+    		rechtsUm();
+    		vor();
+    		if(!(vornFrei() && linksFrei() || vornFrei() && rechtsFrei() || linksFrei() && rechtsFrei())){
+    		if(!kornDa())gib();
+    		}
+    	}else{
+    		linksUm();
+    	}
+    }
+    nimm();
+    nimm();
+}
+
+void rechtsUm(){
+	linksUm();
+    linksUm();
+    linksUm();
+}
+
+boolean linksFrei(){
+	linksUm();
+	boolean x = vornFrei();
+	rechtsUm();
+	return x;
+}
+
+boolean rechtsFrei(){
+	rechtsUm();
+	boolean x = vornFrei();
+	linksUm();
+	return x;
+}
+
+int zähl(){
+	int i = 0;
+	while(kornDa()){
+		nimm();
+		i++;
+	}
+	int x = 0;
+	while(x < i){
+		gib();
+		x++;
+	}
+	return i;
+}

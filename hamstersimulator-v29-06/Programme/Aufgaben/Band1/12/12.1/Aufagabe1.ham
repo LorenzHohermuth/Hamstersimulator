@@ -1,0 +1,77 @@
+/*imperative program*/void main() {
+	boolean loop = true;
+	vor();
+    while(loop){
+    	if(linksKorn()){
+    		linksUm();
+    		vor();
+    	}else if(rechtsKorn()){
+    		rechtsUm();
+    	}else{
+    		if(vornFrei()){
+    			vor();
+    		}else{
+    			loop = false;
+    		}
+    	}
+    }
+    linksUm();
+    linksUm();
+    while(kornDa()){
+    	if(linksKorn()){
+    		linksUm();
+    	}else if(rechtsKorn()){
+    		rechtsUm();
+    	}else{
+    		nimm();
+    		if(vornFrei()){
+    			vor();
+    		}
+    	}
+    }
+    alleGib(); 
+}
+
+void rechtsUm(){
+	linksUm();
+    linksUm();
+    linksUm();
+}
+
+void alleGib(){
+	while(!maulLeer()){
+		gib();
+	}
+}
+
+boolean linksKorn(){
+	linksUm();
+	if(vornFrei()){
+		vor();
+		boolean x = kornDa();
+		linksUm();
+		linksUm();
+		vor();
+		linksUm();
+		return x;
+	}else{
+		rechtsUm();
+		return false;
+	}
+}
+
+boolean rechtsKorn(){
+	rechtsUm();
+	if(vornFrei()){
+		vor();
+		boolean x = kornDa();
+		linksUm();
+		linksUm();
+		vor();
+		rechtsUm();
+		return x;
+	}else{
+		linksUm();
+		return false;
+	}
+}

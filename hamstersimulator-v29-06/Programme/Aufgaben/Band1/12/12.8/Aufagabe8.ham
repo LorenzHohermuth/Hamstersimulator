@@ -1,0 +1,64 @@
+/*imperative program*/void main() {
+    vorBisKorn();
+    treppen();
+    while(kornDa()){
+    	vorBisKK();
+    	nächsteSpalte();
+    }
+    rechtsUm();
+    vorBisKorn();
+    linksUm();
+    while(kornDa()){
+    	vor();
+    }
+    rechtsUm();
+}
+
+void rechtsUm(){
+	linksUm();
+    linksUm();
+    linksUm();
+}
+void vorBisKorn(){
+	while(!kornDa()){
+		vor();
+	}
+}
+
+void vorBisWand(){
+	while(vornFrei()){
+		vor();
+	}
+	linksUm();
+	linksUm();
+}
+
+void vorBisKK(){
+	while(kornDa()){
+		nimm();
+		vor();
+	}
+}
+
+void nächsteSpalte(){
+	linksUm();
+	vor();
+	linksUm();
+	vorBisWand();
+}
+
+void treppen(){
+	while(kornDa()){
+		linksUm();
+		vor();
+		rechtsUm();
+		vor();
+	}
+	linksUm();
+	linksUm();
+	vor();
+	vor();
+	linksUm();
+	vorBisWand();
+	
+}

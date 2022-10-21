@@ -1,0 +1,127 @@
+/*imperative program*///   | 3 |0,1 or 3,2
+//---+---+---
+// 2 | > | 0 
+//---+---+---
+//   | 1 | 
+
+void main() {
+	float x = whereManyCorn();
+	while (x != -1) {
+		x = whereManyCorn();
+			if(x != -1) {
+			pathFinder(x);
+			while(kornDa()) {
+				nimm();
+			}
+		}
+	}
+}
+void rechtsUm(){
+	linksUm();
+    linksUm();
+    linksUm();
+}
+
+void kehr() {
+	linksUm();
+	linksUm();
+}
+
+float whereManyCorn() {
+	int mostCorn = 1;
+	float whereCorn = -1;
+	int direction = 0;
+	int i = 0;
+	while(direction < 4) {
+		if(vornFrei()) {
+			vor();
+			int Corn = zähl();
+			if(Corn >= mostCorn){
+				mostCorn = Corn;
+				whereCorn = direction;
+			}
+			//links Körner
+			if(linksFrei()) {
+				linksUm();
+				vor();
+				Corn = zähl();
+				if(Corn > mostCorn){
+					mostCorn = Corn;
+					whereCorn = direction + (float)0.1;
+				}
+				kehr();
+				vor();
+				linksUm();
+			}
+			//rechtsKörner
+			if(rechtsFrei()) {
+				rechtsUm();
+				vor();
+				Corn = zähl();
+				if(Corn >= mostCorn){
+					mostCorn = Corn;
+					whereCorn = direction + (float)0.2;
+				}
+				kehr();
+				vor();
+				rechtsUm();
+			}
+			kehr();
+			vor();
+			kehr();
+		}
+		linksUm();
+		direction++;
+	}
+	return whereCorn;
+}
+
+void pathFinder(float x) {
+	int turn = (int)x;
+	float sup = x - turn;
+	linksAz(turn);
+	vor();
+	if(sup == 0.1) {
+		linksUm();
+		vor();
+	}else if(sup == 0.2) {
+		rechtsUm();
+		vor();
+	}
+}
+
+int zähl() {
+	int x = 0;
+	int i = 0;
+	while(kornDa()) {
+		nimm();
+		x++;
+	}
+	while(i < x) {
+		gib();
+		i++;
+	}
+	return x;
+}
+
+void linksAz(int x) {
+	int i = 0;
+	while(i < x) {
+		linksUm();
+		i++;
+	}
+}
+
+boolean rechtsFrei() {
+	rechtsUm();
+	boolean x = vornFrei();
+	linksUm();
+	return x;
+}
+
+boolean linksFrei() {
+	linksUm();
+	boolean x = vornFrei();
+	rechtsUm();
+	return x;
+}

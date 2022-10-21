@@ -1,0 +1,49 @@
+/*imperative program*/int r = 1;
+void main() {
+    while(!kornDa()){
+    	kreis(r);
+    	r++;
+    }
+    kehr();
+    nimm();
+    ecke();
+}
+
+void rechtsUm(){
+	linksUm();
+	linksUm();
+	linksUm();
+}
+
+void kehr(){
+	linksUm();
+	linksUm();
+}
+
+void vaz(int n){
+	int i=0;
+	while(i < n && !kornDa() && vornFrei()){
+	vor();
+	i++;
+	}
+}
+
+
+void kreis(int r){
+	int i = 0;
+	while(i++ < 4){
+		vaz(r);
+		linksUm();
+	}
+}
+
+void ecke(){
+	while(vornFrei()){
+		vor();
+	}
+	linksUm();
+	while(vornFrei()){
+		vor();
+	}
+	linksUm();
+}

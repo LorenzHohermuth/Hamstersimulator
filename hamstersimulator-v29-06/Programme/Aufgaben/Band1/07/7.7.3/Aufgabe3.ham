@@ -1,0 +1,61 @@
+/*imperative program*/void main(){
+	vor ();
+	// erklimme erste Stufe
+	linksUm ();
+	vor ();
+	linksUm ();
+	linksUm ();
+	linksUm ();
+	vor ();
+	// erklimme zweite Stufe
+	linksUm ();
+	vor ();
+	linksUm ();
+	linksUm ();
+	linksUm ();	
+	vor ();
+	// erklimme dritte Stufe
+	linksUm ();
+	vor ();
+	linksUm ();
+	linksUm ();
+	linksUm ();
+	vor ();
+	// erklimme Gipfel
+	linksUm ();
+	vor ();
+	linksUm ();
+	linksUm ();
+	linksUm ();
+	vor ();
+	//hinabsteigen dritte Stufe
+	vor();
+	linksUm ();
+	linksUm ();
+	linksUm ();
+	vor();
+	linksUm();
+	//hinabsteigen zweite Stufe
+	vor();
+	linksUm ();
+	linksUm ();
+	linksUm ();
+	vor();
+	linksUm();
+	//hinabsteigen erste Stufe
+	vor();
+	linksUm ();
+	linksUm ();
+	linksUm ();
+	vor();
+	linksUm();
+	//hinabsteigen Boden
+	vor();
+	linksUm ();
+	linksUm ();
+	linksUm ();
+	vor();
+	linksUm();
+
+	
+}

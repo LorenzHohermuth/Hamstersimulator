@@ -1,0 +1,34 @@
+/*imperative program*/void main() {
+int v = 0;
+int loopcount = 0;
+    while(loopcount < 4){
+    	if(vornFrei()){
+    		vor();
+    		gib();
+    		v++;
+    	}
+    	else{
+    		linksUm();
+    		linksUm();
+    		vaz(v);
+    		v = 0;
+    		linksUm();
+    		loopcount++;
+    	}
+    }
+gib();
+}
+
+void vaz(int n){
+	int i=0;
+	while(i < n){
+	vor();
+	i++;
+	}
+}
+
+void rechtsUm(){
+	linksUm();
+    linksUm();
+    linksUm();
+}

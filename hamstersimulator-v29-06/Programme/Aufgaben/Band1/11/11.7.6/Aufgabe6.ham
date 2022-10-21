@@ -1,0 +1,35 @@
+/*imperative program*/void main() {
+	gib();
+    while(eckenCheck()){
+    }
+}
+
+void rechtsUm(){
+	linksUm();
+    linksUm();
+    linksUm();
+}
+
+boolean eckenCheck(){
+	boolean loop = true;
+	if(vornFrei()){
+		vor();
+		linksUm();
+		vor();
+		linksUm();
+		linksUm();
+		if(kornDa()){
+			vor();
+			linksUm();
+		}
+		else{
+			vor();
+			linksUm();
+			linksUm();
+		}
+		gib();
+	}else{
+		loop = false;
+	}
+	return loop;
+}

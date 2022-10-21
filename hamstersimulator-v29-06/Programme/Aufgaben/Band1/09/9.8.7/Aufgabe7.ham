@@ -1,0 +1,43 @@
+/*imperative program*/void main() {
+boolean l = true;
+boolean loop = true;
+    while(loop){
+    	if(kornDa()){
+    		nimm();
+    	}
+    	if(vornFrei()){
+    		vor();
+    	}
+    	else if(l){
+    		linksUm();
+    		if(!vornFrei()) loop = false;
+    		else{
+    			vor();
+    			linksUm();
+    		}
+    		l = false;
+    	}
+    	else if(!l){
+    		rechtsUm();
+    		if(!vornFrei()) loop = false;
+    		else{
+    			vor();
+    			rechtsUm();
+    		}
+    		l = true;
+    	}
+    }
+}
+void vaz(int n){
+	int i=0;
+	while(i < n){
+	vor();
+	i++;
+	}
+}
+
+void rechtsUm(){
+	linksUm();
+    linksUm();
+    linksUm();
+}

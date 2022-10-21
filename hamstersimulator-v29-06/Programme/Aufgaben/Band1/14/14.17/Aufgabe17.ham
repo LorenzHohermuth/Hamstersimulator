@@ -1,0 +1,66 @@
+/*imperative program*/void main() {
+	int corn = zählK();
+	vorBisWand();
+	kehr();
+	while(vornFrei()) {
+		cornVor(corn);
+	}
+}
+
+void rechtsUm(){
+	linksUm();
+	linksUm();
+	linksUm();
+}
+
+void kehr(){
+	linksUm();
+	linksUm();
+}
+
+void vorBisWand() {
+	while(vornFrei()){
+		vor();
+	}
+}
+
+void vorBisKorn(){
+	while(!kornDa() && vornFrei()){
+		vor();
+	}
+}
+
+void vorAz(int n){
+	int i=0;
+	while(i < n){
+	vor();
+	i++;
+	}
+}
+
+int zählK() {
+	int corn = 0;
+	int i = 0;
+	while(!maulLeer()){
+		gib();
+		corn++;
+	}
+	while(
+	i < corn){
+		nimm();
+		i++;
+	}
+	return corn;
+}
+
+void cornVor(int az) {
+	vorBisKorn();
+	if(vornFrei()){
+		nimm();
+		kehr();
+		vorAz(az);
+		kehr();
+		gib();
+		vor();
+	}
+}

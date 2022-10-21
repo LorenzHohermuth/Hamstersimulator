@@ -1,0 +1,51 @@
+/*imperative program*/char richtung = 'o';
+int x = 0;
+int y = 0;
+
+//	y
+//	^
+//	|
+//	|
+//	|
+//	|
+//	+----------> x
+
+void main() {
+    
+}
+
+void nrechtsUm(){
+	nlinksUm();
+	nlinksUm();
+	nlinksUm();
+}
+
+void nkehr(){
+	nlinksUm();
+	nlinksUm();
+}
+void nlinksUm(){
+	linksUm();
+	if(richtung == 'o'){
+		richtung = 'n'; 
+	}else if(richtung == 'n'){
+		richtung = 'w'; 
+	}else if(richtung == 'w'){
+		richtung = 's';
+	}else if(richtung == 's'){
+		richtung = 'o';
+	}
+}
+
+void nvor(){
+	vor();
+	if(richtung == 'o'){
+		x++; 
+	}else if(richtung == 'n'){
+		y++; 
+	}else if(richtung == 'w'){
+		x--;
+	}else if(richtung == 's'){
+		y--;
+	}
+}

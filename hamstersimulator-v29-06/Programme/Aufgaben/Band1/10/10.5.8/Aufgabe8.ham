@@ -1,0 +1,64 @@
+/*imperative program*/void main() {
+	gib();
+    while(!maulLeer()){
+		vorBisWand();
+    	linksUm();
+    }
+}
+
+void rechtsUm(){
+	linksUm();
+    linksUm();
+    linksUm();
+}
+
+void vorBisWand(){
+	int count = 0;
+	int i = 0;
+	boolean XD = false;
+	boolean links = true;
+	while(vornFrei()){
+		if(links){
+			vor();
+			linksUm();
+			links = false;
+		}else{
+			vor();
+			rechtsUm();
+			links = true;
+			if(!maulLeer()){
+				gib();
+			}
+		}
+		count++;
+	}
+	//---------------------------------------
+	if(links){
+		linksUm();
+		linksUm();
+	}
+	else{
+		linksUm();
+		vor();
+		linksUm();
+		count--;
+		XD = true;
+	}
+	//---------------------------------------
+	while(i < count){
+		if(links){
+			vor();
+			linksUm();
+			links = false;
+		}else{
+			vor();
+			rechtsUm();
+			links = true;
+		}
+	i++;
+	}
+	if(XD){
+		rechtsUm();
+		XD = false;
+	}
+}

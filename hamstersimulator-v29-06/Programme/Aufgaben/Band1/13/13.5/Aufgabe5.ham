@@ -1,0 +1,58 @@
+/*imperative program*/void main() {
+    linksUm();
+    while(vornFrei()){
+    	rechtsUm();
+    	rechnen();
+    	rechtsUm();
+    	vor();
+    }
+    rechtsUm();
+    rechnen();
+}
+
+void rechtsUm(){
+	linksUm();
+    linksUm();
+    linksUm();
+}
+int howMany(){
+	int körner = 0;
+	while(vornFrei()){
+		vor();
+		if(kornDa()){
+			nimm();
+			körner++;
+		}
+	}
+	linksUm();
+	linksUm();
+	while(vornFrei()){
+		vor();
+	}
+	return körner;
+}
+
+void rechnen(){
+	int x = howMany();
+	if(x == 1){
+		gib();
+	}
+	if(x == 2){
+		rechtsUm();
+		vor();
+		rechtsUm();
+		vor();
+		while(kornDa()){
+			vor();
+		}
+		gib();
+		linksUm();
+		linksUm();
+		while(vornFrei()){
+			vor();
+		}
+		linksUm();
+		vor();
+		rechtsUm();
+	}
+}

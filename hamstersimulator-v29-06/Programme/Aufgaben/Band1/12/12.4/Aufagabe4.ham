@@ -1,0 +1,39 @@
+/*imperative program*/void main() {
+    while(!maulLeer()){
+    	if(linksFrei() && rechtsFrei() || linksFrei() && vornFrei() || rechtsFrei() && vornFrei()){
+    		gib();
+    	}
+    	if(linksFrei()){
+    		linksUm();
+    		vor();
+    	}else if(vornFrei()){
+    		vor();
+    	}else if(rechtsFrei()){
+    		rechtsUm();
+    		vor();
+    	}else{
+    		linksUm();
+    		linksUm();
+    	}
+    }
+}
+
+void rechtsUm(){
+	linksUm();
+    linksUm();
+    linksUm();
+}
+
+boolean linksFrei(){
+	linksUm();
+	boolean x = vornFrei();
+	rechtsUm();
+	return x;
+}
+
+boolean rechtsFrei(){
+	rechtsUm();
+	boolean x = vornFrei();
+	linksUm();
+	return x;
+}

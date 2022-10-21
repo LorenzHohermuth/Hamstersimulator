@@ -1,0 +1,15 @@
+/*imperative program*/void main() {
+	int x = check();
+	char character = (char)x;
+	schreib(Integer.toString(x));
+    schreib(Character.toString(character));
+}
+
+int check(){
+	int i = 0;
+	while(!maulLeer()){
+		gib();
+		i++;
+	}
+	return i;
+}

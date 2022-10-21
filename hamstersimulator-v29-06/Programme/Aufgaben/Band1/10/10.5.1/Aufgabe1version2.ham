@@ -1,0 +1,44 @@
+/*imperative program*/void main() {
+    boolean loop = true;
+    
+    //Hamster Orientiert sich
+    lbw();
+    linksUm();
+    lbw();
+    linksUm();
+    
+    while(loop){
+    	gib();
+    	lbwg();
+    	linksUm();
+    	linksUm();
+    	lbw();
+    	rechtsUm();
+    	if(vornFrei()){
+    		vor();
+    		rechtsUm();
+    	}
+    	else{
+    		loop = false;
+    	}
+    }
+}
+void rechtsUm(){
+	linksUm();
+    linksUm();
+    linksUm();
+}
+
+void lbw(){
+	//Lauf Bis Wand
+	while(vornFrei()){
+		vor();
+	}
+}
+void lbwg(){
+	//Lauf Bis Wand und gib
+	while(vornFrei()){
+		vor();
+		gib();
+	}
+}

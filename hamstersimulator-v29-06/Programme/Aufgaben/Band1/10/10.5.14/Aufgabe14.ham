@@ -1,0 +1,22 @@
+/*imperative program*/void main() {
+    while(!kornDa()){
+    	vor();
+    	linksUm();
+    	vor();
+    	vor();
+    	rechtsUm();
+    	vor();
+    	vor();
+    	rechtsUm();
+    	vor();
+    	vor();
+    	linksUm();
+    }
+    nimm();
+}
+
+void rechtsUm(){
+	linksUm();
+    linksUm();
+    linksUm();
+}

@@ -1,0 +1,69 @@
+/*imperative program*/void main(){
+	vaz(3);
+}
+
+void rechtsUm(){
+	linksUm();
+    linksUm();
+    linksUm();
+}
+
+void kehr(){
+	linksUm();
+	linksUm();
+}
+
+void vaz(int n){
+	for(int i = 0; i < n; i++){
+	vor();
+	}
+}
+
+
+int countFloor(){
+	int x = 0;
+	while(kornDa()) {
+		nimm();
+		x++;
+	}
+	for(int i = 0; i < x; i++) {
+		gib();
+	}
+	return x;
+	
+}
+
+int countMouth(){
+	int x = 0;
+	while(!maulLeer()) {
+		gib();
+		x++;
+	}
+	for(int i = 0; i < x; i++) {
+		nimm();
+	}
+	return x;
+	
+}
+
+void gibaz(int n){
+	int i = 0;
+	while(i < n){
+		if(!maulLeer())gib();
+		i++;
+	}
+}
+
+void inEcke(){
+	vorBisWand();
+	rechtsUm();
+	vorBisWand();
+	linksUm();
+	linksUm();
+}
+
+void vorBisWand(){
+	while(vornFrei()){
+		vor();
+	}
+}

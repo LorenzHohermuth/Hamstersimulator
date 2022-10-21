@@ -1,0 +1,133 @@
+/*imperative program*/void main() {
+    boolean loop = true;
+    while(loop) {
+        if(sort()) {
+            swap();
+        } else {
+            if(vornFrei()) vor();
+            else{
+                kehr();
+                vorBisWand();
+                linksUm();
+                if(vornFrei()) {
+                    vor();
+                }else {
+                    loop = false;
+                }
+                linksUm();
+            }
+        }
+    }
+}
+
+void rechtsUm() {
+    linksUm();
+    linksUm();
+    linksUm();
+}
+
+void kehr() {
+     linksUm();
+     linksUm();
+}
+
+void vaz(int n){
+    for(int i = 0; i < n; i++){
+        vor();
+    }
+}
+
+void gaz(int n){
+    for(int i = 0; i < n; i++){
+        gib();
+    }
+}
+
+void vorBisWand() {
+    while(vornFrei()) {
+        vor();
+    }
+}
+
+void inEcke() {
+    kehr();
+    vorBisWand();
+    rechtsUm();
+    vorBisWand();
+    rechtsUm();
+}
+
+int countFloor(){
+	int x = 0;
+	while(kornDa()) {
+		nimm();
+		x++;
+	}
+	for(int i = 0; i < x; i++) {
+		gib();
+	}
+	return x;
+	
+}
+int collectCount() {
+    int x = 0;
+    while(kornDa()) {
+        nimm();
+        x++;
+    }
+    return x;
+}
+
+void swap() {
+    int pile1 = collectCount();
+    if(!vornFrei()){
+        kehr();
+        vorBisWand();
+        linksUm();
+        vor();
+        linksUm();
+    } else {
+        vor();
+    }
+    int pile2 = collectCount();
+    gaz(pile1);
+    kehr();
+    if(!vornFrei()) {
+        rechtsUm();
+        vor();
+        rechtsUm();
+        vorBisWand();
+    }else {
+        vor();
+        kehr();
+    }
+    gaz(pile2);
+    inEcke();
+}
+
+boolean sort() {
+    int pile1 = countFloor();
+    if(!vornFrei()){
+        kehr();
+        vorBisWand();
+        linksUm();
+        if(!vornFrei()) return false; 
+        vor();
+        linksUm();
+    } else {
+        vor();
+    }
+    int pile2 = countFloor();
+    kehr();
+    if(!vornFrei()) {
+        rechtsUm();
+        vor();
+        rechtsUm();
+        vorBisWand();
+    }else {
+        vor();
+        kehr();
+    }
+
+    return pile1 > pile2;
+}

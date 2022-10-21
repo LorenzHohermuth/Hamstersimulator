@@ -1,0 +1,43 @@
+/*imperative program*/void main() {
+	boolean loop = true;
+    while(!kornDa()){
+    	vor();
+    }
+    while(loop){
+    	while(vornFrei()){
+    		if(kornDa()){
+    			nimm();
+    			linksUm();
+    			vor();
+    			rechtsUm();
+    			vor();
+    		}else{
+    			rechtsUm();
+    			vor();
+    			if(vornFrei()){
+    				vor();
+    			}else{
+    				loop = false;
+    				
+    			}
+    		}
+    	}
+    	if(kornDa()){
+    		nimm();
+    		rechtsUm();
+    		vor();
+    	}
+    	while(kornDa()){
+    		vor();
+    	}
+    	linksUm();
+    	linksUm();
+    	vor();
+    }
+}
+
+void rechtsUm(){
+	linksUm();
+    linksUm();
+    linksUm();
+}

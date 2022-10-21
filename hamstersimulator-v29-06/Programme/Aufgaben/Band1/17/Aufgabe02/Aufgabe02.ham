@@ -1,0 +1,50 @@
+/*imperative program*/
+void main () {
+    uebersteigeBerg ();
+}
+void uebersteigeBerg () {
+    if (!rechtsFrei() || !vornFrei()) {
+        if(!vornFrei()) { 
+        	klettereStufe();
+        	if(vornFrei()) vor();
+        }
+        if(vornFrei()) {
+        	vorBisWand();
+        	if(vornFrei()) { 
+        		rechtsUm();
+        		return;
+        	}
+        }
+        uebersteigeBerg (); // rekursiver Aufruf
+        if(!vornFrei()) klettereStufe();
+        if(vornFrei()) vor();
+    }
+}
+void klettereStufe () {
+    linksUm ();
+    vor ();
+    rechtsUm ();
+}
+void rechtsUm() {
+    linksUm();
+    linksUm();
+    linksUm();
+}
+
+void kehr() {
+     linksUm();
+     linksUm();
+}
+
+void vorBisWand() {
+    while(vornFrei() && !rechtsFrei()) {
+        vor();
+    }
+}
+
+boolean rechtsFrei() {
+    rechtsUm();
+    boolean x = vornFrei();
+    linksUm();
+    return x;
+}

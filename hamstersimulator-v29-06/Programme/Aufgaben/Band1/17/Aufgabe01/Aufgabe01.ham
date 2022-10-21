@@ -1,0 +1,122 @@
+/*imperative program*/
+
+char richtung = 'o';
+int x = 0;
+int y = 0;
+
+int azrounds = 0;
+
+void main () {
+
+    sucheGeradeAb ();
+
+    if ( vornKorn ()) {
+        nvor ();
+        sucheGeradeAb ();
+        nvor ();
+    }
+}
+
+void sucheGeradeAb () {
+
+    if ( x == 0 && y == 0 ) {
+        azrounds++;
+    }
+
+    if(azrounds > 1) {
+        nimm();
+        azrounds = 0;
+    }
+
+    if ( linksKorn ()) {
+        nlinksUm ();
+        nvor ();
+        sucheGeradeAb ();
+        nvor ();
+        nlinksUm ();
+    }
+
+    if ( rechtsKorn ()) {
+        rechtsUm ();
+        nvor ();
+        sucheGeradeAb ();
+        nvor ();
+        rechtsUm ();
+    }
+
+    if ( vornKorn ()) {
+        nvor ();
+        sucheGeradeAb ();
+        nvor ();
+    } else {
+        kehrt ();
+    }
+
+    while ( kornDa ()) {
+        nimm ();
+        azrounds = 0;
+    }
+}
+        
+boolean vornKorn () {
+    if (! vornFrei ()) {
+        return false ;
+    }
+    nvor ();
+    boolean kornGefunden = kornDa ();
+    kehrt ();
+    nvor ();
+    kehrt ();
+    return kornGefunden ;
+}
+        
+boolean linksKorn () {
+    nlinksUm ();
+    boolean kornGefunden = vornKorn ();
+    rechtsUm ();
+    return kornGefunden ;
+}
+        
+boolean rechtsKorn () {
+    rechtsUm ();
+    boolean kornGefunden = vornKorn ();
+    nlinksUm ();
+    return kornGefunden ;
+}
+
+void rechtsUm () {
+    kehrt ();
+    nlinksUm ();
+}
+void kehrt () {
+    nlinksUm ();
+    nlinksUm ();
+}
+
+
+
+void nlinksUm(){
+	linksUm();
+	if(richtung == 'o'){
+		richtung = 'n'; 
+	}else if(richtung == 'n'){
+		richtung = 'w'; 
+	}else if(richtung == 'w'){
+		richtung = 's';
+	}else if(richtung == 's'){
+		richtung = 'o';
+	}
+}
+
+void nvor(){
+	vor();
+	if(richtung == 'o'){
+		x++; 
+	}else if(richtung == 'n'){
+		y++; 
+	}else if(richtung == 'w'){
+		x--;
+	}else if(richtung == 's'){
+		y--;
+	}
+}

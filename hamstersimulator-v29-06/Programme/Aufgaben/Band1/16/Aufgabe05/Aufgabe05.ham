@@ -1,0 +1,47 @@
+/*imperative program*/void main() {
+	//ausrechnen
+	linksUm();
+	int y = howLong();
+	rechtsUm();
+	int x = howLong();
+	//in Mitte
+	kehr();
+	vaz(half(x));
+	linksUm();
+}
+
+void vorBisWand(){
+	while(vornFrei()){
+		vor();
+	}
+}
+
+void rechtsUm(){
+	linksUm();
+    linksUm();
+    linksUm();
+}
+
+void kehr(){
+	linksUm();
+	linksUm();
+}
+
+void vaz(int n){
+	for(int i = 0; i < n; i++){
+	vor();
+	}
+}
+
+int howLong() {
+	int x = 1;
+	while(vornFrei()) {
+		vor();
+		x++;
+	}
+	return x;
+}
+
+int half(int i) {
+	return (i - 1) / 2; 
+}

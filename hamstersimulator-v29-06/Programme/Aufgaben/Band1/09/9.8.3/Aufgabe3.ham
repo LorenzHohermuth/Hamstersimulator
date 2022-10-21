@@ -1,0 +1,51 @@
+/*imperative program*/void main() {
+    cvaz(4);
+    left();
+    cvaz(1);
+    left();
+    
+    cvaz(4);
+    right();
+    cvaz(1);
+    right();
+    
+    cvaz(4);
+    left();
+    cvaz(1);
+    left();
+    
+    cvaz(4);
+    right();
+    cvaz(1);
+    right();
+    
+    cvaz(4);
+    right();
+    cvaz(1);
+}
+
+void cvaz(int n){
+	int i=0;
+	while(i < n){
+	check();
+	vor();
+	i++;
+	}
+}
+
+void right(){
+	linksUm();
+    linksUm();
+    linksUm();
+}
+
+void left(){
+	linksUm();
+}
+
+void check(){
+	while(kornDa()){
+		nimm();	
+	}
+	gib();
+}

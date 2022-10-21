@@ -1,0 +1,12 @@
+/*imperative program*/void main() {
+    boolean change = true;
+    while(!maulLeer() && vornFrei()){
+    	vor();
+    	if(change){
+    		gib();
+    		change = false;
+    	}else{
+    		change = true;
+    	}
+    }
+}

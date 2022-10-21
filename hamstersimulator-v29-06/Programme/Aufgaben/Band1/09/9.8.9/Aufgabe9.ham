@@ -1,0 +1,68 @@
+/*imperative program*/void main() {
+int körner = 0;
+    while(!maulLeer()){
+    	gib();
+    	körner++;
+    }
+    while(kornDa()){
+		nimm();
+	}
+	if(körner == 1){
+		rechtsUm();
+		vaz(5);
+		linksUm();
+		vaz(4);
+		gib();
+	}
+	if(körner == 2){
+		rechtsUm();
+		vor();
+		linksUm();
+		vaz(4);
+		gib();
+		rechtsUm();
+		vor();
+		gib();
+	}
+	if(körner == 3){
+		linksUm();
+		vaz(3);
+		rechtsUm();
+		vaz(4);
+		gib();
+		vor();
+		gib();
+		rechtsUm();
+		vor();
+		gib();
+	}
+	if(körner == 4){
+		linksUm();
+		vaz(7);
+		rechtsUm();
+		vaz(4);
+		gib();
+		vor();
+		gib();
+		rechtsUm();
+		vor();
+		gib();
+		rechtsUm();
+		vor();
+		gib();
+	}	
+}
+
+void vaz(int n){
+	int i=0;
+	while(i < n){
+	vor();
+	i++;
+	}
+}
+
+void rechtsUm(){
+	linksUm();
+    linksUm();
+    linksUm();
+}

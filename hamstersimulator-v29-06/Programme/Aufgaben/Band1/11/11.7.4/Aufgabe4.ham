@@ -1,0 +1,37 @@
+/*imperative program*/void main() {
+    inEcke();
+    linksUm();
+    diagonale();
+    rechtsUm();
+    while(vornFrei()){
+    	vor();
+    }
+    linksUm();
+    linksUm();
+    diagonale();
+}
+void inEcke(){
+	while(vornFrei()){
+		vor();
+	}
+	linksUm();
+	while(vornFrei()){
+		vor();
+	}
+}
+void diagonale(){
+	gib();
+	while(vornFrei()){
+		vor();
+		linksUm();
+		vor();
+		rechtsUm();
+		gib();
+	}
+}
+
+void rechtsUm(){
+	linksUm();
+    linksUm();
+    linksUm();
+}

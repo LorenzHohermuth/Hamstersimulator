@@ -1,0 +1,33 @@
+/*imperative program*/void main() {
+	boolean loop = true;
+	while(loop){
+		while(!linksFrei() && vornFrei()){
+			vor();
+		}
+		if(!vornFrei()){
+			linksUm();
+			vor();
+			rechtsUm();
+			if(vornFrei()){
+				vor();
+			}
+		}else if(linksFrei()){
+			loop = false;
+			linksUm();
+			linksUm();
+			vor();
+		}
+	}
+}
+boolean linksFrei(){
+	rechtsUm();
+	boolean x = vornFrei();
+	linksUm();
+	return x;
+}
+
+void rechtsUm(){
+	linksUm();
+    linksUm();
+    linksUm();
+}

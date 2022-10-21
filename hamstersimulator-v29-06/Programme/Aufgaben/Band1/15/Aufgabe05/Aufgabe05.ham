@@ -1,0 +1,125 @@
+/*imperative program*/void main() {
+	boolean loop = true;
+	kehr();
+	while(loop) {
+	sucheEnde();
+	nimm();
+	if(linksFrei() || rechtsFrei()){
+		kehr();
+		sucheEnde();
+		vor();
+		vor();
+		gib();
+	}else {
+		loop = false;
+	}
+	kehr();
+	vor();
+	vor();
+	}
+	sammleAlle();
+	kreis();
+}
+
+void kehr() {
+	linksUm();
+	linksUm();
+}
+ 
+void rechtsUm() {
+	linksUm();
+    linksUm();
+    linksUm();
+}
+
+boolean linksKorn() {
+	linksUm();
+	if(vornFrei()) {
+		vor();
+		boolean x = kornDa();
+		kehr();
+		vor();
+		linksUm();
+		return x;
+	}else {
+		rechtsUm();
+		return false;
+	}
+}
+
+boolean rechtsKorn() {
+	rechtsUm();
+	if(vornFrei()) {
+		vor();
+		boolean x = kornDa();
+		kehr();
+		vor();
+		rechtsUm();
+		return x;
+	}else {
+		linksUm();
+		return false;
+	}
+}
+
+boolean vornKorn() {
+	if(vornFrei()) {
+		vor();
+		boolean x = kornDa();
+		kehr();
+		vor();
+		kehr();
+		return x;
+	}else {
+		return false;
+	}
+}
+
+void sucheEnde() {
+	boolean loop = true;
+	while(loop) {
+		if(vornKorn()) {
+			vor();
+		}else if(linksKorn()) {
+			linksUm();
+			vor();
+		}else if(rechtsKorn()) {
+			rechtsUm();
+			vor();
+		}else {
+			loop = false;
+		}
+	}
+}
+
+boolean rechtsFrei() {
+	rechtsUm();
+	boolean x = vornFrei();
+	linksUm();
+	return x;
+}
+
+boolean linksFrei() {
+	linksUm();
+	boolean x = vornFrei();
+	rechtsUm();
+	return x;
+}
+
+void sammleAlle() {
+	while(kornDa()) {
+		nimm();
+	}
+}
+
+void kreis() {
+	while(!maulLeer()
+	) {
+		if(vornFrei()) {
+			gib();
+			vor();
+		}else {
+			rechtsUm();
+		}
+	}
+}

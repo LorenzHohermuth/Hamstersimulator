@@ -1,0 +1,50 @@
+/*imperative program*/void main() {
+    while(vornFrei()){
+    	vor();
+    	if(kornDa()){
+    		tausch();
+    	}
+    }
+}
+
+void rechtsUm(){
+	linksUm();
+	linksUm();
+	linksUm();
+}
+
+void kehr(){
+	linksUm();
+	linksUm();
+}
+void tausch(){
+	int num1 = zähl();
+	andere();
+	int num2 = zähl();
+	gibAz(num1);
+	andere();
+	gibAz(num2);
+}
+
+int zähl(){
+	int num = 0;
+	while(kornDa()){
+		nimm();
+		num++;
+	}
+	return num;
+}
+
+void gibAz(int x){
+	int i = 0;
+	while(i < x){
+		gib();
+		i++;
+	}
+}
+
+void andere(){
+	rechtsUm();
+	vor();
+	rechtsUm();
+}

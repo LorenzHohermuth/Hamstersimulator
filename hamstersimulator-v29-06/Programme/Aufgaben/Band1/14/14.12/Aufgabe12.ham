@@ -1,0 +1,151 @@
+/*imperative program*/char richtung = 'o';
+int x = 0;
+int y = 0;
+
+int most = 0;
+int xmost = x;
+int ymost = y;
+int corn = cornMouth();
+
+boolean links = false;
+boolean loop = true;
+
+//	y
+//	^
+//	|
+//	|
+//	|
+//	|
+//	+----------> x
+void main() {
+    while(loop) {
+    	row();
+    	turn();
+    }
+    schreib(Integer.toString(most) + " (" + Integer.toString(xmost) + "/" + Integer.toString(ymost) + ")");
+    nkehr();
+    corner();
+    nkehr();
+    findField();
+}
+
+void nrechtsUm(){
+	nlinksUm();
+	nlinksUm();
+	nlinksUm();
+}
+
+void nkehr(){
+	nlinksUm();
+	nlinksUm();
+}
+void nlinksUm(){
+	linksUm();
+	if(richtung == 'o'){
+		richtung = 'n'; 
+	}else if(richtung == 'n'){
+		richtung = 'w'; 
+	}else if(richtung == 'w'){
+		richtung = 's';
+	}else if(richtung == 's'){
+		richtung = 'o';
+	}
+}
+
+void nvor(){
+	vor();
+	if(richtung == 'o'){
+		x++; 
+	}else if(richtung == 'n'){
+		y++; 
+	}else if(richtung == 'w'){
+		x--;
+	}else if(richtung == 's'){
+		y--;
+	}
+}
+
+void vorBisWand(){
+	while(vornFrei()){
+		nvor();
+	}
+}
+
+void corner(){
+	vorBisWand();
+	nlinksUm();
+	vorBisWand();
+}
+
+int count() {
+	int x = 0;
+	int i = 0;
+	while(kornDa()){
+		nimm();
+		x++;
+	}
+	while(i < x) {
+		gib();
+		i++;
+	}
+	return x;
+}
+
+void row() {
+	while(vornFrei()) {
+		compare();
+		nvor();
+	}
+	compare();
+}
+
+void compare() {
+	int num = count();
+	if(num == corn) {
+		most = num;
+		xmost = x;
+		ymost = y;
+	}
+}
+
+void turn() {
+	if (links) {
+		nlinksUm();
+		if(vornFrei()) {
+			nvor();
+			nlinksUm();
+		}else loop = false;
+	}else if(!links) {
+		nrechtsUm();
+		if(vornFrei()) {
+			nvor();
+			nrechtsUm();
+		}else loop = false;
+	}
+	links = !links;
+}
+
+void findField(){
+	while(xmost > x){
+		nvor();
+	}
+	nrechtsUm();
+	while(ymost < y){
+		nvor();
+	}
+}
+
+int cornMouth(){
+	int n = 0;
+	int i = 0;
+	while(!maulLeer()){
+		gib();
+		n++;
+	}
+	while(i < n){
+		nimm();
+		i++;
+	}
+	schreib(Integer.toString(n));
+	return n;
+}

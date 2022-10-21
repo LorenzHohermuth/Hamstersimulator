@@ -1,0 +1,43 @@
+/*imperative program*/int y = 0;
+void main() {
+	stellen();
+}
+
+int zähl(){
+	int i = 0;
+	while(!maulLeer()){
+		gib();
+		i++;
+	}
+	while(kornDa()){
+		nimm();
+	}
+	return i;
+}
+
+int zeile(int x){
+	y = x;
+	y /= 10;
+	x -= y * 10;
+	return x;
+}
+
+void stellen(){
+	int i = zeile(zähl());
+	schreib("stop");
+	while(y > 0 && vornFrei()){
+		schreib(Integer.toString(y));
+		gibaz(i);
+		vor();
+		i = zeile(y);
+	}
+	gibaz(i);
+}
+
+void gibaz(int n){
+	int i = 0;
+	while(i < n){
+		if(!maulLeer())gib();
+		i++;
+	}
+}

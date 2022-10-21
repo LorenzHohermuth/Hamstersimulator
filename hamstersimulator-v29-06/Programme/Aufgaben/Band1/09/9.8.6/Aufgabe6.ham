@@ -1,0 +1,26 @@
+/*imperative program*/void main() {
+int n = 1;
+int r = 4;
+    while(r > 0){
+    	int i = 0;
+    	while(i < n){
+    		if(!maulLeer()){
+    			gib();
+    			i++;
+    		}
+    		else{i = n;}
+    	}
+    	n++;
+    	vaz(4);
+   		linksUm();
+    	r--;
+    }
+}
+
+void vaz(int n){
+	int i=0;
+	while(i < n){
+	vor();
+	i++;
+	}
+}

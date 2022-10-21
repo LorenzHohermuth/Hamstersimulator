@@ -1,0 +1,39 @@
+/*imperative program*/void main() {
+    vorBisKorn();
+    treppen();
+    treppenDown();
+}
+
+void rechtsUm(){
+	linksUm();
+    linksUm();
+    linksUm();
+}
+void vorBisKorn(){
+	while(!kornDa()){
+		vor();
+	}
+}
+
+void treppen(){
+	while(kornDa()){
+		nimm();
+		linksUm();
+		vor();
+		rechtsUm();
+		vor();
+	}
+	rechtsUm();
+	vor();
+}
+
+void treppenDown(){
+	while(vornFrei()){
+		gib();
+		linksUm();
+		vor();
+		rechtsUm();
+		vor();
+	}
+	gib();
+}

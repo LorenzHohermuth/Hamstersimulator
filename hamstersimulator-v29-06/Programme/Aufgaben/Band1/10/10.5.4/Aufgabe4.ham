@@ -1,0 +1,50 @@
+/*imperative program*/void main() {
+	rechtsUm();
+    int walkBack = mtm();
+    vor();
+    linksUm();
+	schreib(Integer.toString(walkBack));
+	while(vornFrei()){
+		vor();
+		rechtsUm();
+		vor();
+		linksUm();
+	}
+	gib();
+	linksUm();
+	linksUm();
+	while(!vornFrei()){
+		rechtsUm();
+		vor();
+		linksUm();
+		vor();
+		
+	}
+	vaz(walkBack - 1);
+	linksUm();
+	linksUm();
+}
+void rechtsUm(){
+	linksUm();
+    linksUm();
+    linksUm();
+}
+int mtm(){
+	//move to mulde
+	int count = 0;
+	while(!vornFrei()){
+		linksUm();
+		vor();
+		rechtsUm();
+		count++;
+	}
+	return count;
+}
+
+void vaz(int n){
+	int i=0;
+	while(i < n){
+	vor();
+	i++;
+	}
+}

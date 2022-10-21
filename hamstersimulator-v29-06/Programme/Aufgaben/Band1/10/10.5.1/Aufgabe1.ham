@@ -1,0 +1,59 @@
+/*imperative program*/void main() {
+	//Loop ist da um die While Schlaufe zu beenden
+	boolean loop = true;
+	//Die Variable links ist da um abwechlungsweise links und rechts abzubiegen
+	boolean links = true;
+	
+	//Hamster Orientiert sich
+    lbw();
+    linksUm();
+    lbw();
+    linksUm();
+    gib();
+    
+    //Hamster legt Körner
+    while(loop){
+    	while(vornFrei()){
+    		vor();
+    		gib();
+    	}
+    	if(links){
+    		linksUm();
+    		//Checkt ob er in einer Ecke ist.
+    		if(!vornFrei()){loop = false;}
+    		//------------------------------
+    		else{
+    			vor();
+    			gib();
+    			linksUm();
+    		}
+			links = false;
+    	}
+   		else{
+    		rechtsUm();
+    		//Checkt ob er in einer Ecke ist.
+    		if(!vornFrei()){loop = false;}
+    		//------------------------------
+    		else{
+    			vor();
+    			gib();
+    			rechtsUm();
+    		}
+    		links = true;
+    	}
+    }
+}
+
+
+void rechtsUm(){
+	linksUm();
+    linksUm();
+    linksUm();
+}
+
+void lbw(){
+	//Lauf Bis Wand
+	while(vornFrei()){
+		vor();
+	}
+}

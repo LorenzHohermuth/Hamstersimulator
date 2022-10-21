@@ -1,0 +1,42 @@
+/*javascript program*/// Aufgabe:
+// der Hamster soll den Gipfel eines vor ihm stehenden
+// Berges erklimmen
+
+// der Hamster soll zum Berg laufen
+function laufeZumBerg() {
+    while (vornFrei()) {
+        vor();
+    }
+}
+
+// der Hamster soll den Berg erklimmen
+function erklimmeDenBerg() {
+    while (!gipfelErreicht()) {
+        erklimmeEineStufe();
+    }
+}
+
+// der Hamster soll eine Stufe erklimmen
+function erklimmeEineStufe() {
+    linksUm();  // nun schaut der Hamster nach oben
+    vor();      // der Hamster erklimmt die Mauer
+    rechtsUm(); // der Hamster wendet sich wieder dem Berg zu
+    vor();      // der Hamster springt auf den Vorsprung
+}
+
+// der Hamster dreht sich nach rechts um
+function rechtsUm() {
+    linksUm();
+    linksUm();
+    linksUm();
+}
+
+// hat der Hamster den Gipfel erreicht?
+function gipfelErreicht() {
+    return vornFrei();
+}
+
+// der Hamster soll zunaechst bis zum Berg laufen
+// und dann den Berg erklimmen
+laufeZumBerg();
+erklimmeDenBerg();

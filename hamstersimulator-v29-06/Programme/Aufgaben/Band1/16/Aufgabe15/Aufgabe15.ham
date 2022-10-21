@@ -1,0 +1,112 @@
+/*imperative program*/void main() {
+    int[] list = whatsThePattern();
+    search(list);
+    rechtsUm();
+    vor();
+    rechtsUm();
+    gvaz(list);
+}
+
+void rechtsUm() {
+    linksUm();
+    linksUm();
+    linksUm();
+}
+
+void kehr() {
+     linksUm();
+     linksUm();
+}
+
+void vaz(int n){
+    for(int i = 0; i < n; i++){
+        vor();
+    }
+}
+
+void gvaz(int[] list){
+    for(int i = list.length - 1; i >= 0; i--){
+        vor();
+        for(int i2 = 0; i2 < list[i]; i2++) {
+            gib();
+        }
+    }
+}
+
+void vorBisWand() {
+    while(vornFrei()) {
+        vor();
+    }
+}
+
+int countCollect() {
+    int x = 0;
+    while(kornDa()) {
+        nimm();
+        x++;
+    }
+    return x;
+}
+
+int countFloor(){
+	int x = 0;
+	while(kornDa()) {
+		nimm();
+		x++;
+	}
+	for(int i = 0; i < x; i++) {
+		gib();
+	}
+	return x;
+	
+}
+
+int[] whatsThePattern() {
+    int[] list = new int[3];
+    int i = 0;
+    rechtsUm();
+    vor();
+    linksUm();
+    while(kornDa()) {
+        list[i] = countCollect();
+        vor();
+        i++;
+    }
+    kehr();
+    vorBisWand();
+    rechtsUm();
+    vor();
+    rechtsUm();
+    return list;
+}
+
+String arrayToString(int[] list) {
+    String text = "{";
+    for(int i = 0; i < list.length; i++) {
+        text += list[i] + ", ";
+    }
+    text += "}";
+    return text;
+}
+
+void search(int[] list) {
+    int i = 0;
+    int x = 0;
+    boolean loop = true;
+    schreib("stop");
+    while(loop && vornFrei()) {
+        i = 0;
+        while(list[i] != countFloor() && vornFrei()) {
+            vor();
+        }
+        vor();
+        i++;
+        while(i < list.length && list[i] == countFloor() && vornFrei()) {
+            x++;
+            vor();
+            i++;
+        }
+
+        if(x == list.length) loop = false;
+    }
+}

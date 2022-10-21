@@ -1,0 +1,46 @@
+/*imperative program*/void main() {
+    rechtsUm();
+    vor();
+    linksUm();
+    while(vornFrei()){
+    	vorBisKorn();
+    	tausch();
+    }
+}
+
+void rechtsUm(){
+	linksUm();
+    linksUm();
+    linksUm();
+}
+
+void vorBisKorn(){
+	while(!kornDa() && vornFrei()){
+		vor();
+	}
+}
+
+void tausch(){
+	int i = 0;
+	while(kornDa()){
+		nimm();
+		i++;
+	}
+	rechtsUm();
+	vor();
+	linksUm();
+	while(kornDa()){
+		nimm();
+	}
+	while(i > 0){
+		gib();
+		i--;
+	}
+	linksUm();
+	vor();
+	rechtsUm();
+	while(!maulLeer()){
+		gib();
+	}
+	vor();
+}

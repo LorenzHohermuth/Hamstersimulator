@@ -1,0 +1,20 @@
+/*imperative program*/void main() {
+    lieg();
+    lieg();
+    lieg();
+    lieg();
+}
+
+void lbw(){
+	//Lauf Bis Wand
+	while(vornFrei()){
+		vor();
+	}
+}
+void lieg(){
+	//lauf in Ecke und gib
+	lbw();
+	linksUm();
+	lbw();
+	gib();
+}

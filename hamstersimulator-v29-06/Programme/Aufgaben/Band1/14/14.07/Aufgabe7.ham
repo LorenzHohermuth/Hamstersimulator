@@ -1,0 +1,57 @@
+/*imperative program*/int num = zähl();
+void main() {
+schreib("stop");
+    int bit = 64;
+    while(num > 0){
+    	if(zeile(num, bit)){
+    		vaz(bit);
+    		gib();
+    		kehr();
+    		vaz(bit);
+    		kehr();
+    	}else{
+    		bit--;
+    	}
+    }
+}
+
+void rechtsUm(){
+	linksUm();
+	linksUm();
+	linksUm();
+}
+
+void kehr(){
+	linksUm();
+	linksUm();
+}
+
+int zähl(){
+	int i = 0;
+	while(!maulLeer()){
+		gib();
+		i++;
+	}
+	while(kornDa()){
+		nimm();
+	}
+	return i;
+}
+
+boolean zeile(int zahl, int c){
+	double a = Math.pow(2,c);
+	if(a <= num){
+		num -= a;
+		return true;
+	}else{
+		return false;
+	}
+}
+
+void vaz(int n){
+	int i=0;
+	while(i < n){
+	vor();
+	i++;
+	}
+}

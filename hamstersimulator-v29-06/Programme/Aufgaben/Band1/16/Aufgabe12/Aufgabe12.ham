@@ -1,0 +1,85 @@
+/*imperative program*/void main() {
+    while(vornFrei()) {
+        int wo = search();
+        change(wo);
+    }
+}
+
+void kehr(){
+	linksUm();
+	linksUm();
+}
+
+void vorBisWand(){
+	while(vornFrei()){
+		vor();
+	}
+}
+
+void vaz(int n){
+	for(int i = 0; i < n; i++){
+	vor();
+	}
+}
+
+int countFloor(){
+	int x = 0;
+	while(kornDa()) {
+		nimm();
+		x++;
+	}
+	for(int i = 0; i < x; i++) {
+		gib();
+	}
+	return x;
+	
+}
+
+int collectCount() {
+    int x = 0;
+    while(kornDa()) {
+        nimm();
+        x++;
+    }
+    return x;
+}
+
+void giveNum(int n) {
+    for(int i = 0; i < n; i++) {
+        gib();
+    }
+}
+
+void change(int where) {
+    where -= 1;
+    vor();
+    int num2 = collectCount();
+    vaz(where);
+    int collect = collectCount();
+    giveNum(num2);
+    kehr();
+    vaz(where);
+    kehr();
+    giveNum(collect);
+
+}
+
+int search() {
+    int where = 0;
+    int place = 0;
+    int num1 = 1000;
+    int num2 = 0;
+    while(vornFrei()) {
+        vor();
+        place++;
+        num2 = countFloor();
+        if(num2 < num1) {
+            where = place;
+            num1 = num2;
+        }
+    }
+    kehr();
+    vaz(place);
+    kehr();
+    return where;
+}

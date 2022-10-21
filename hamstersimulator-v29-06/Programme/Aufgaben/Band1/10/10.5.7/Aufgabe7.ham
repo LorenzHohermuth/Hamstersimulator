@@ -1,0 +1,35 @@
+/*imperative program*/void main() {
+	gib();
+    while(!maulLeer()){
+    	linksUm();
+    	int vorGegangen = vorBisWand();
+    	gib();
+    	linksUm();
+    	linksUm();
+    	vaz(vorGegangen);
+    	linksUm();
+    	linksUm();
+    }
+}
+void vaz(int n){
+	int i=0;
+	while(i < n){
+	vor();
+	i++;
+	}
+}
+
+void rechtsUm(){
+	linksUm();
+    linksUm();
+    linksUm();
+}
+
+int vorBisWand(){
+	int count = 0;
+	while(vornFrei()){
+		vor();
+		count++;
+	}
+	return count;
+}

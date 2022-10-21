@@ -1,0 +1,78 @@
+/*imperative program*/void main() {
+	if(zähl() >= groesse()) {
+		while(vornFrei()) {
+			reihe();
+		}
+	}
+}
+
+int zähl() {
+	int x = 0;
+	while(!maulLeer()) {
+		gib();
+		x++;
+	}
+	while(kornDa()) {
+		nimm();
+	}
+	return x;
+}
+
+int messe() {
+	int x = 1;
+	while(vornFrei()) {
+		vor();
+		x++;
+	}
+	return x;
+}
+
+int groesse() {
+	inEcke();
+	int y = messe();
+	rechtsUm();
+	int x = messe();
+	linksUm();
+	linksUm();
+	return x * y;
+}
+
+void inEcke(){
+	vorBisWand();
+	linksUm();
+	vorBisWand();
+	linksUm();
+	linksUm();
+}
+
+void vorBisWand(){
+	while(vornFrei()){
+		vor();
+	}
+}
+
+void rechtsUm(){
+	linksUm();
+    linksUm();
+    linksUm();
+}
+
+void vorBisWandG() {
+	gib();
+	while(vornFrei()) {
+		vor();
+		gib();
+	}
+}
+
+void reihe() {
+	vorBisWandG();
+	linksUm();
+	linksUm();
+	vorBisWand();
+	rechtsUm();
+	if (vornFrei()) {
+		vor();
+		rechtsUm();
+	}
+}

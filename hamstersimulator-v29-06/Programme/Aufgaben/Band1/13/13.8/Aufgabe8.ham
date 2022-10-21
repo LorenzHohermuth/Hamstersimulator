@@ -1,0 +1,46 @@
+/*imperative program*/boolean links = false;
+boolean korn = true;
+void main() {
+    rechtsUm();
+    while(vornFrei() && !maulLeer()){
+    	reihe();
+    }
+    if(!maulLeer())reihe();
+}
+
+void rechtsUm(){
+	linksUm();
+    linksUm();
+    linksUm();
+}
+
+void reihe(){
+	if(links){
+		rechtsUm();
+	}else{
+		linksUm();
+	}
+	sk();
+	while(vornFrei() && !maulLeer()){
+		vor();
+		sk();
+	}
+	if(links && !maulLeer()){
+		linksUm();
+		if(vornFrei())vor();
+		links = false;
+	}else if(!maulLeer()){
+		rechtsUm();
+		if(vornFrei())vor();
+		links = true;
+	}
+}
+
+void sk(){
+	if(korn){
+		gib();
+		korn = false;
+	}else{
+		korn = true;
+	}
+}

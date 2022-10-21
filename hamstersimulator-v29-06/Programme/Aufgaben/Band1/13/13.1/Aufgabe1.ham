@@ -1,0 +1,31 @@
+/*imperative program*/boolean gerade = true;
+void main() {
+    vorBisWandS();
+    if(!gerade){
+    	while(!maulLeer()){
+    		gib();
+    	}
+    }
+}
+
+void rechtsUm(){
+	linksUm();
+    linksUm();
+    linksUm();
+}
+void vorBisWandS(){
+	while(vornFrei()){
+		sammel();
+	}
+	sammel();
+}
+
+void sammel(){
+	if(kornDa()){
+		nimm();
+		gerade = !gerade;
+		
+	}else{
+		vor();
+	}
+}

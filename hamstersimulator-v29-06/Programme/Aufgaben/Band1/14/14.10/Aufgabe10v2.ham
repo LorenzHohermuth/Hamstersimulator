@@ -1,0 +1,224 @@
+/*imperative program*/int x, y, x2, x3, y2 = 0;
+int richtung = 0;
+int save = 0;
+boolean n=true;
+
+//main
+void main() 
+{
+        bisWand();
+        rechtsUm();
+        do{
+        //start------
+            if(linksLeer())
+            {
+                nLinksUm();
+                nVor();
+                if(x>x2)
+                {
+                    x2=x;
+                }
+                 if(x<x3)
+                {
+                    x3=x;
+                }
+            }
+            else if(vornFrei())
+            {
+                nVor();
+                if(x>x2)
+                {
+                    x2=x;
+                }
+                 if(x<x3)
+                {
+                    x3=x;
+                }
+            }
+            else if(rechtsLeer())
+            {
+                nRechtsUm();
+                nVor();
+                if(x>x2)
+                {
+                    x2=x;
+                }
+                 if(x<x3)
+                {
+                    x3=x;
+                }
+            }
+            else
+            {
+                nRechtsUm();
+            }
+    
+        //ende-------
+        }while(!(x==0) || !(y==0));
+        x3--;
+         while(!(x2==x3))
+         {
+             do{
+             //start------
+                
+                  if(linksLeer())
+                  {
+                      nLinksUm();
+                      nVor();
+                  }
+                  else if(vornFrei())
+                  {
+                      nVor();
+                     
+                  }
+                  else if(rechtsLeer())
+                  {
+                      nRechtsUm();
+                      nVor();
+                  }
+                  else
+                  {
+                      nRechtsUm();
+                  }
+                  if(x==x2)
+                  {
+                     if(n==true)
+                     {
+                         n=false;
+                         y2=y;
+                         zuRichtung();
+                         nRechtsUm();
+                         gibS();
+                         while(vornFrei())
+                         {
+                             gibS();
+                             nVor();
+                             gibS();
+                         }
+                         nKehrt();
+                         while(vornFrei())
+                         {
+                             gibS();
+                             nVor();
+                             gibS();
+                         }
+                         nKehrt();
+                         while(!(y2==y))
+                         {
+                             nVor();
+                         }
+                         zuSave();
+                     }
+                 }
+                 else
+                 {
+                     n=true;
+                 }
+             //ende-------
+             }while(!(x==0) || !(y==0));
+             x2--;
+        }
+}
+
+
+//booleans
+boolean linksLeer()
+{
+    linksUm();
+    boolean vornLeer = vornFrei();
+    rechtsUm();
+    return vornLeer;
+}
+
+boolean rechtsLeer()
+{
+    rechtsUm();
+    boolean vornLeer = vornFrei();
+    linksUm();
+    return vornLeer;
+}
+
+//normale voids
+void rechtsUm()
+{
+  linksUm();
+  linksUm();
+  linksUm();
+}
+
+void bisWand()
+{
+    while(vornFrei())
+    {
+        vor();
+    }
+}
+
+void kehrt () {
+linksUm ();
+linksUm ();
+}
+
+void gibS()
+{
+    if(!maulLeer() && !kornDa())
+    {
+        gib();
+    }
+}
+
+
+//Koordinaten voids
+void nLinksUm () {
+linksUm ();
+richtung = ( richtung + 1) % 4;
+}
+
+void nKehrt () {
+nLinksUm ();
+nLinksUm ();
+}
+
+void nRechtsUm () {
+nLinksUm ();
+nLinksUm ();
+nLinksUm ();
+}
+
+void nVor()
+{
+    vor();
+    if(richtung == 0)
+    {
+        x++;
+    }
+    else if(richtung == 1)
+    {
+        y++;
+    }
+    else if(richtung == 2)
+    {
+        x--;
+    }
+     else if(richtung == 3)
+    {
+        y--;
+    }
+}
+
+void zuSave()
+{
+    while (!(richtung==save))
+    {
+        nLinksUm();
+    }
+}
+
+void zuRichtung()
+{
+    save=richtung;
+    while (!(richtung==0))
+    {
+        nLinksUm();
+    }
+}

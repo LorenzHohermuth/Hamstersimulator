@@ -1,0 +1,89 @@
+/*imperative program*/void main() {
+	while(kornDa()) {
+		compare();
+	}
+}
+
+void rechtsUm(){
+	linksUm();
+    linksUm();
+    linksUm();
+}
+
+void kehr(){
+	linksUm();
+	linksUm();
+}
+
+void tillWall(){
+	while(vornFrei()){
+		vor();
+	}
+}
+
+void takeRow() {
+	linksUm();
+	nimm();
+	while(vornFrei()) {
+		vor();
+		if(kornDa()){
+			nimm();
+		}
+	}
+	kehr();
+	tillWall();
+	linksUm();
+}
+
+void giveRow() {
+	while(!maulLeer()) {
+		gib();
+		if(vornFrei()) vor();
+	}
+	kehr();
+	tillWall();
+	linksUm();
+}
+
+int howHigh() {
+	int height = 1;
+	if(kornDa()) {
+		linksUm();
+		while(vornFrei()) {
+			vor();
+			if(kornDa()) {
+				height++;
+			}
+		}
+		kehr();
+		tillWall();
+		linksUm();
+	} else {
+		height = 0;
+	}
+	return height;
+}
+
+void change() {
+	takeRow();
+	kehr();
+	vor();
+	rechtsUm();
+	giveRow();
+	takeRow();
+	vor();
+	linksUm();
+	giveRow();
+}
+
+void compare() {
+	int tower1 = howHigh();
+	vor();
+	int tower2 = howHigh();
+	if(tower1 > tower2 && tower2 != 0) {
+		change();
+		kehr();
+		tillWall();
+		kehr();
+	}
+}

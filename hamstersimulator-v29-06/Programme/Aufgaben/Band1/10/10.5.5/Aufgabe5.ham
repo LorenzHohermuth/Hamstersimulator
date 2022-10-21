@@ -1,0 +1,57 @@
+/*imperative program*/void main() {
+
+	boolean links = true;
+
+	rechtsUm();
+    while(!kornDa()){
+    	if(vornFrei()){
+    		if(!links){
+    			rechtsUm();
+    			if(vornFrei()){
+    				//rechtsUm();
+    				vor();
+    				linksUm();
+    				vor();
+    			}else{
+    				rechtsUm();
+    				vor();
+    				rechtsUm();
+    			}
+			}else{
+    			linksUm();
+    			vor();
+    			rechtsUm();
+    			vor();
+    			links = true;
+    		}
+       	}else{
+       		if(links){
+    			linksUm();
+    			if(vornFrei()){
+    				vor();
+    				linksUm();
+    				linksUm();
+    			}else{
+    				linksUm();
+    				vor();
+    				linksUm();
+    			}
+    			links = false;
+    		}else{
+    			rechtsUm();
+    			if(vornFrei()){
+    				vor();
+    				linksUm();
+    				linksUm();
+    			}
+    			links = true;
+    		}
+    	}
+    }
+}
+
+void rechtsUm(){
+	linksUm();
+    linksUm();
+    linksUm();
+}

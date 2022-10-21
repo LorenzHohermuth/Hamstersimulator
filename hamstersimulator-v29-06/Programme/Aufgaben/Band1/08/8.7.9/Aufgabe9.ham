@@ -1,0 +1,125 @@
+/*imperative program*/void main() {
+    zero();
+    vaz(2);
+    one();
+    vaz(2);
+    two();
+    vaz(2);
+    three();
+    vaz(2);
+    four();
+}
+
+void rechtsUm(){
+	linksUm();
+    linksUm();
+    linksUm();
+}
+
+void gaz(int n){
+	int i=0;
+	while(i < n){
+	gib();
+	vor();
+	i++;
+	}
+}
+void daz(int n){
+	int i=0;
+	while(i < n){
+	gib();
+	vor();
+	linksUm();
+	vor();
+	rechtsUm();
+	i++;
+	}
+}
+
+void vaz(int n){
+	int i=0;
+	while(i < n){
+	vor();
+	i++;
+	}
+}
+
+void zero(){
+	gaz(2);
+	linksUm();
+	gaz(4);
+	linksUm();
+	gaz(2);
+	linksUm();
+	gaz(4);
+	linksUm();
+	vaz(2);
+}
+
+void one(){
+	vaz(2);
+	linksUm();
+	gaz(4);
+	linksUm();
+	daz(2);
+	gib();
+	linksUm();
+	vaz(2);
+	linksUm();
+	vaz(2);
+}
+
+void two(){
+	linksUm();
+	gaz(2);
+	rechtsUm();
+	gaz(2);
+	linksUm();
+	gaz(2);
+	linksUm();
+	gaz(2);
+	gib();
+	linksUm();
+	vaz(4);
+	linksUm();
+	vor();
+	gaz(1);
+	gib();
+}
+
+void three(){
+	gaz(2);
+	linksUm();
+	gaz(2);
+	linksUm();
+	vor();
+	linksUm();
+	linksUm();
+	gaz(1);
+	linksUm();
+	gaz(2);
+	linksUm();
+	gaz(2);
+	gib();
+	linksUm();
+	vaz(4);
+	linksUm();
+	vaz(2);
+}
+
+void four(){
+	vaz(2);
+	linksUm();
+	gaz(2);
+	linksUm();
+	gaz(2);
+	rechtsUm();
+	gaz(2);
+	gib();
+	rechtsUm();
+	vaz(2);
+	rechtsUm();
+	gaz(2);
+	vaz(2);
+	linksUm();
+}
