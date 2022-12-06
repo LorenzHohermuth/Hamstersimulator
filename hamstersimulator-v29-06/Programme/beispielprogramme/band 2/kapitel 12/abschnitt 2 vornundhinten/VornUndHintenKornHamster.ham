@@ -1,3 +1,0 @@
-/*class*/interface VornUndHintenKornHamster extends VornKornHamster {
-    public abstract boolean hintenKorn();
-}

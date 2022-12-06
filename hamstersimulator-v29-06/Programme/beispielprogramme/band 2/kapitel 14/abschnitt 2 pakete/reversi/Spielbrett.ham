@@ -1,5 +1,0 @@
-/*class*/package reversi;
-
-public class Spielbrett {
-    // ... 
-}

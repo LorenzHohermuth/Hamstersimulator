@@ -1,0 +1,115 @@
+/*imperative program*/
+int Lvar = 0;  //für Lvar
+int felder = 25;
+void main() {
+    loesen();
+}
+
+void rechtsUm() {
+    linksUm();
+    linksUm();
+    linksUm();
+}
+
+void kehr() {
+     linksUm();
+     linksUm();
+}
+
+void vaz(int n){
+    for(int i = 0; i < n; i++){
+        vor();
+    }
+}
+
+void vorBisWand() {
+    while(vornFrei()) {
+        vor();
+    }
+}
+
+
+boolean Lfunc(char turn){
+    if(Lvar == 2 && turn == 'r') {
+        rechtsUm();
+        Lvar++;
+        Lfunc(turn);
+        linksUm();
+    } else if(Lvar == 2 && turn == 'l') {
+        linksUm();
+        Lvar++;
+        Lfunc(turn);
+        rechtsUm();
+    } else if(Lvar != 4 && vornFrei()) {
+        vor();
+        Lvar++;
+        Lfunc(turn);
+        vor();
+    } else {
+        kehr();
+        if(kornDa()) Lvar = 0;;
+    }
+    return Lvar == 4;
+}
+
+
+boolean checkL(char turn) {
+    Lvar = 0;  //für Lvar
+    boolean result = Lfunc(turn);
+    kehr();
+    return result;
+}
+
+void Lgo(char turn) {
+    vaz(2);
+    if(turn == 'l') {
+        linksUm();
+    } else {
+        rechtsUm();
+    }
+    vor();
+}
+
+void LgoBk(char turn) {
+    kehr();
+    vor();
+    if(turn == 'l') {
+        rechtsUm();
+    } else {
+        linksUm();
+    }
+    vaz(2);
+    kehr();
+}
+
+void loesen() {
+    gib();
+    felder--;
+    int richtung = 0;
+    while(!geloest() && (richtung < 4)) {
+        if(checkL('l')) {
+            Lgo('l');
+            loesen();
+            if(geloest()) {
+                return;
+            }
+            LgoBk('l');
+        }
+        if(checkL('r')) {
+            Lgo('r');
+            loesen();
+            if(geloest()) {
+                return;
+            }
+            LgoBk('r');
+        }
+        linksUm();
+        richtung++;
+    }
+    nimm();
+    felder++;
+}
+
+boolean geloest() {
+    return felder == 0;
+}
