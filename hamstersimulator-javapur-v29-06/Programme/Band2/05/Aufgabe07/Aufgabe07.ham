@@ -1,4 +1,50 @@
 /*object-oriented program*/
-void main() {
+import java.lang.Math;
+
+class BinHamster extends Hamster {
+    public int[] intToBinList(int inputInt){
+        int compareInt = inputInt;
+        int pow = 0;
+        while(compareInt - Math.pow(2, pow) > 0) {
+            pow++;
+        }
+        int[] outputListIntToBinHam = new int[pow];
+        pow = 0;
+        while(compareInt != 0) {
+            while(compareInt - Math.pow(2, pow) >= 0) {
+                pow++;
+            }
+            pow--;
+            compareInt -= Math.pow(2,pow);
+            outputListIntToBinHam[pow] = 1;
+            pow = 0;
+        }
+        for(int i = 0; i < outputListIntToBinHam.length; i++) {
+            if(outputListIntToBinHam[i] != 1) {
+                outputListIntToBinHam[i] = 0;
+            }
+        }
+        return outputListIntToBinHam;
+    }
     
+    public void give(int[] list){
+    	while(this.vornFrei()){
+    		this.vor();
+    	}
+        this.linksUm();
+        this.linksUm();
+        for(int i = 0; i < list.length; i++) {
+            this.vor();
+            if (list[i] == 1) this.gib();
+        }
+    }
 }
+Hamster paul = Hamster.getStandardHamster();
+void main() {
+    BinHamster hans = new BinHamster();
+    hans.init(2, 2, Hamster.OST, 100);
+    int[] list = hans.intToBinList(paul.getAnzahlKoerner());
+    hans.give(list);
+}
+
+

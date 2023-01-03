@@ -1,0 +1,118 @@
+/*object-oriented program*/
+class SortHamster extends Hamster{
+
+    public void rechtsUm(){
+        this.linksUm();
+        this.linksUm();
+        this.linksUm();
+    }
+
+    public void kehr(){
+        this.linksUm();
+        this.linksUm();
+    }
+
+    public void wall(){
+        while(this.vornFrei()) {
+            this.vor();
+        }
+    }
+
+    public void sort(){
+        this.rechtsUm();
+        this.wall();
+        this.linksUm();
+
+        while(this.vornFrei()) {
+            this.takeAll();
+            int stack1 = this.getAnzahlKoerner();
+            this.putBack();
+            this.vor();
+            this.takeAll();
+            int stack2 = this.getAnzahlKoerner();
+            this.putBack();
+            if(stack1 > stack2) {
+                this.change();
+                this.backToStart();
+            }
+        }
+    }
+
+    void change() {
+        this.takeAll();
+        int safe = this.getAnzahlKoerner();
+        this.kehr();
+        this.vor();
+        this.kehr();
+        this.takeAll();
+        this.give(safe);
+        this.vor();
+        this.putBack();
+    }
+
+    void give (int Az){
+        this.linksUm();
+        for(int i = 0; i < Az - 1; i++) {
+            this.gib();
+            this.vor();
+        }
+        if(Az != 0) this.gib();
+        this.kehr();
+        this.wall();
+        this.linksUm();
+    }
+
+    void backToStart() {
+        this.kehr();
+        this.wall();
+        this.kehr();
+    }
+
+    void takeAll() {
+        this.linksUm();
+
+        while(this.vornFrei()) {
+            this.sureCorn();
+            this.vor();
+        }
+        this.sureCorn();
+
+        this.kehr();
+
+        this.wall();
+
+        this.linksUm();
+    }
+
+    void putBack() {
+        this.linksUm();
+
+        while(this.vornFrei()) {
+            this.sureGive();
+            this.vor();
+        }
+        this.sureGive();
+
+        this.kehr();
+
+        this.wall();
+
+        this.linksUm();
+    }
+
+    void sureCorn() {
+        if(this.kornDa()) {
+            this.nimm();
+        }
+    }
+    void sureGive() {
+        if(!this.maulLeer()) {
+            this.gib();
+        }
+    }
+}
+void main() {
+    SortHamster hans = new SortHamster();
+    hans.init(1, 1, Hamster.OST, 0);
+    hans.sort();
+}
