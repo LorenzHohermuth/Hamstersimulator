@@ -1,0 +1,126 @@
+/*imperative program*/
+int Lvar = 0;  //für Lvar
+void main() {
+   test();
+}
+
+void rechtsUm() {
+    linksUm();
+    linksUm();
+    linksUm();
+}
+
+void kehr() {
+     linksUm();
+     linksUm();
+}
+
+void vaz(int n){
+    for(int i = 0; i < n; i++){
+        vor();
+    }
+}
+
+void vorBisWand() {
+    while(vornFrei()) {
+        vor();
+    }
+}
+
+
+boolean Lfunc(char turn){
+    if(Lvar == 2 && turn == 'r') {
+        rechtsUm();
+        Lvar++;
+        Lfunc(turn);
+        linksUm();
+    } else if(Lvar == 2 && turn == 'l') {
+        linksUm();
+        Lvar++;
+        Lfunc(turn);
+        rechtsUm();
+    } else if(Lvar != 4 && vornFrei()) {
+        vor();
+        Lvar++;
+        Lfunc(turn);
+        vor();
+    } else {
+        kehr();
+        if(kornDa()) Lvar = 0;;
+    }
+    return Lvar == 4;
+}
+
+
+boolean checkL(char turn) {
+    Lvar = 0;  //für Lvar
+    boolean result = Lfunc(turn);
+    kehr();
+    return result;
+}
+
+void Lgo(char turn) {
+    vaz(2);
+    if(turn == 'l') {
+        linksUm();
+    } else {
+        rechtsUm();
+    }
+    vor();
+}
+
+void LgoAndBk(char turn){
+    vaz(2);
+    if(turn == 'l') {
+        linksUm();
+    } else {
+        rechtsUm();
+    }
+    vor();
+    gib();
+    kehr();
+    vor();
+    if(turn == 'l') {
+        rechtsUm();
+    } else {
+        linksUm();
+    }
+    vaz(2);
+    kehr();
+}
+
+void checkAll() {
+    char turn = 'l';
+    while(checkL(turn)) {
+        LgoAndBk(turn);
+        linksUm();
+    }
+    turn = 'r';
+    while(checkL(turn)) {
+        LgoAndBk(turn);
+        linksUm();
+    }
+    Lgo(turn);
+}
+
+void test() {
+    char turn = 'l';
+    int x = 0;
+    while(true) {
+        if(x >= 4 && turn == 'l') {
+            turn = 'r';
+            x = 0;
+        }
+        if(x >= 4 && turn == 'r') {
+            turn = 'l';
+            x = 0;
+        }
+        if(checkL(turn)) {
+            Lgo(turn);
+            gib();
+        }else {
+            linksUm();
+            x++;
+        }
+    }
+}
