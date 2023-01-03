@@ -1,0 +1,45 @@
+/*object-oriented program*/
+Hamster paul = Hamster.getStandardHamster();
+void main() {
+    inCorner();
+    paul.linksUm();
+    paul.linksUm();
+    diagonal();
+    paul.linksUm();
+    vorBisWand();
+    paul.linksUm();
+    paul.linksUm();
+    diagonal();
+
+}
+
+void diagonal() {
+    while(paul.vornFrei()) {
+        if(!paul.kornDa()) {
+            paul.gib();
+        }
+        rechtsUm();
+        paul.vor();
+        paul.linksUm();
+        paul.vor();
+    }
+    paul.gib();
+}
+
+void rechtsUm() {
+    paul.linksUm();
+    paul.linksUm();
+    paul.linksUm();
+}
+
+void inCorner() {
+    vorBisWand();
+    paul.linksUm();
+    vorBisWand();
+}
+
+void vorBisWand() {
+    while(paul.vornFrei()) {
+        paul.vor();
+    }
+}

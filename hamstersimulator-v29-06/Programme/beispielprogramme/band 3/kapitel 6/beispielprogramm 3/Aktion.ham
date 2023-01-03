@@ -1,3 +1,0 @@
-/*class*/interface Aktion {
-    public void ausfuehren(Hamster hamster);
-}

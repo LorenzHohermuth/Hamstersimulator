@@ -1,0 +1,144 @@
+/*imperative program*/
+boolean fin = false;
+void main() {
+    damenProblem();
+}
+
+void rechtsUm() {
+    linksUm();
+    linksUm();
+    linksUm();
+}
+
+void kehr() {
+     linksUm();
+     linksUm();
+}
+
+void vorBisWand() {
+    while(vornFrei()) {
+        vor();
+    }
+}
+
+boolean rechtsFrei() {
+    rechtsUm();
+    if (vornFrei()) {
+        linksUm();
+        return true;
+    } else {   
+        linksUm();
+        return false;
+    }
+} 
+
+void nextRow() {
+    rechtsUm();
+    if(!vornFrei()) {
+        fin = true;
+    } else {
+        vor();
+        rechtsUm();
+        vorBisWand();
+        kehr();
+    }
+}
+
+void damenProblem() {
+    if(!fin) {
+        if(noQueenAround()) {
+            gib();
+            nextRow();
+            damenProblem();
+        } else if(vornFrei()) {
+            vor();
+            damenProblem();
+        } else if(!vornFrei()) {
+            topRowCorn();
+        }
+    }
+}
+
+boolean noQueenAround() {
+    boolean noQueen = true;
+    for(int i = 0; i < 4; i++) {
+        if(!noQueenVorn()) {
+            noQueen = false;
+        }
+        linksUm();
+    }
+    if(noQueen) {
+        for(int i = 0; i < 4; i++) {
+            if(!noQueenDie()) {
+                noQueen = false;
+            }
+            linksUm();
+        }
+    }
+    return noQueen;
+}
+
+boolean noQueenVorn() {
+    boolean giveBk = true;
+    if(vornFrei()) {
+        vor();
+        if(kornDa()) {
+            kehr();
+            vor();
+            return false;
+        }
+        giveBk = noQueenVorn();
+        vor();
+    }
+    else {
+        kehr();
+        return true;
+    }
+    return giveBk;
+}
+
+boolean noQueenDie() {
+    boolean giveBk = true;
+    if(vornFrei() && rechtsFrei()) {
+        vor();
+        rechtsUm();
+        vor();
+        linksUm();
+        if(kornDa()) {
+            kehr();
+            vor();
+            rechtsUm();
+            vor();
+            linksUm();
+            return false;
+        }
+        giveBk = noQueenDie();
+        vor();
+        rechtsUm();
+        vor();
+        linksUm();
+    }
+    else {
+        kehr();
+        return true;
+    }
+    return giveBk;
+}
+
+
+void topRowCorn() {
+    linksUm();
+    vor();
+    linksUm();
+    while(!kornDa()) {
+        vor();
+    }
+    nimm();
+    kehr();
+    if(vornFrei()) {
+        vor();
+        damenProblem();
+    }else {
+        topRowCorn();
+    }
+}

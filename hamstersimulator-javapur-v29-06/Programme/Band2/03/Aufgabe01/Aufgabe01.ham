@@ -1,0 +1,36 @@
+/*object-oriented program*/
+
+Hamster paul = Hamster.getStandardHamster();
+void main() {
+    vorBisWand();
+    while(!paul.vornFrei()) {
+        paul.linksUm();
+        paul.vor();
+        rechtsUm();
+        paul.vor();
+    }
+
+}
+
+void rechtsUm() {
+    paul.linksUm();
+    paul.linksUm();
+    paul.linksUm();
+}
+
+void kehr() {
+     paul.linksUm();
+     paul.linksUm();
+}
+
+void vaz(int n){
+    for(int i = 0; i < n; i++){
+        paul.vor();
+    }
+}
+
+void vorBisWand() {
+    while(paul.vornFrei()) {
+        paul.vor();
+    }
+}

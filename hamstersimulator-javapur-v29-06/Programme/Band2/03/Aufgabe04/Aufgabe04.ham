@@ -1,0 +1,18 @@
+/*object-oriented program*/
+Hamster paul = new Hamster();
+
+
+void main() {
+    paul.init(1, 1, 2, 4);
+    while(!paul.kornDa()) {
+        paul.gib();
+        vorBisWand();
+        paul.linksUm();
+    }
+}
+
+void vorBisWand() {
+    while(paul.vornFrei()) {
+        paul.vor();
+    }
+}

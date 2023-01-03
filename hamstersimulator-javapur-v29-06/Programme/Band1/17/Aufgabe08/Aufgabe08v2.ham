@@ -1,0 +1,119 @@
+/*imperative program*/
+// tutorial https://studyflix.de/informatik/quicksort-beispiel-1329
+import java.util.Arrays;
+import java.*;
+void main() {
+    printCorn(sort(countFloorRow()));
+}
+
+int[] countFloorRow() {
+    int[] list = new int[messure()];
+    int i = 0;
+    while(vornFrei()) {
+        vor();
+        list[i] = countFloor();
+        i++;
+    }
+    kehr();
+    vorBisWand();
+    kehr();
+    return list;
+}
+
+int countFloor(){
+	int x = 0;
+	while(kornDa()) {
+		nimm();
+		x++;
+	}
+	return x;
+	
+}
+
+void giveAmount(int num){
+	for(int i = 0; i < num; i++) {
+        gib();
+    }
+}
+
+void kehr() {
+     linksUm();
+     linksUm();
+}
+
+void vorBisWand() {
+    while(vornFrei()) {
+        vor();
+    }
+}
+
+int messure() {
+    int length = 0;
+    while(vornFrei()) {
+        vor();
+        length++;
+    }
+    kehr();
+    for(int i = 0; i < length; i++) {
+        vor();
+    }
+    kehr();
+    return length;
+}
+
+void printList(int[] list) {
+    String text = "[";
+    for(int i = 0; i < list.length; i++) {
+        text += "{" + list[i] + "}";
+    }
+    text += "]";
+    schreib(text);
+}
+
+int[] sort(int[] list) {
+    if(list.length < 2) return list;
+    int pivot = list[0];
+    int pivotPosition = 0;
+    int iposition = 1;
+    int jposition = list.length - 1;
+    while (jposition >= iposition && list.length > 2) {
+        while(list[iposition] < pivot && iposition != list.length - 1) {
+            iposition++;
+        }
+        int i = list[iposition];
+        while(list[jposition] >= pivot && jposition >= iposition) {
+            jposition--;
+        }
+        int j = list[jposition];
+        if(jposition == iposition && j == i) iposition++;
+        if(jposition > iposition) {
+            list[iposition] = j;
+            list[jposition] = i;
+        }
+    }
+    if(pivot > list[jposition]) {
+        pivotPosition = jposition;
+        list[0] = list[jposition];
+        list[jposition] = pivot;
+    }
+    int[] lList = Arrays.copyOfRange(list, 0, pivotPosition);
+    int[] rList = Arrays.copyOfRange(list, pivotPosition + 1, list.length);
+    int[] returnList = new int[list.length];
+    System.arraycopy(sort(lList), 0, returnList, 0, lList.length);
+    returnList[pivotPosition] = pivot;
+    System.arraycopy(sort(rList), 0, returnList, lList.length + 1, rList.length);  
+    return returnList;
+}
+
+void printCorn(int[] list) {
+    for(int i = 0; i < list.length; i++) {
+        vor();
+        gaz(list[i]);
+    }
+}
+
+void gaz(int n){
+    for(int i = 0; i < n; i++){
+        gib();
+    }
+}

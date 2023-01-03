@@ -1,4 +1,0 @@
-/*object-oriented program*/void main() {
-    new HinlaufHamster(Hamster.getStandardHamster(), Hamster
-            .getStandardHamster().getAnzahlKoerner());
-}

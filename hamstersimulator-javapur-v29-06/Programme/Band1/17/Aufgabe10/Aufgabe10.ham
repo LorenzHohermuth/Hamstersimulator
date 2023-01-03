@@ -1,0 +1,198 @@
+/*imperative program*/
+int azDortHin = 0;
+void main() {
+    tower();
+}
+
+void rechtsUm() {
+    linksUm();
+    linksUm();
+    linksUm();
+}
+
+
+void kehr() {
+     linksUm();
+     linksUm();
+}
+
+void nbk() {
+    kehr();
+    nvor();
+    kehr();
+}
+
+void vaz(int n){
+    for(int i = 0; i < n; i++){
+        nvor();
+    }
+}
+
+void gibAll() {
+    while(!maulLeer()) {
+        gib();
+    }
+}
+
+void nimmAll() {
+    while(kornDa()) {
+        nimm();
+    }
+}
+
+void vorBisWand() {
+    while(vornFrei()) {
+        vor();
+    }
+}
+
+void vorBisWandOrKornAndBKifCorn() {
+    while(vornFrei() && !kornDa()) {
+        vor();
+    }
+    if(kornDa()) {
+        kehr();
+        vor();
+        kehr();
+    }
+}
+
+void vorBisWandOrKorn(){
+    while(vornFrei() && !kornDa()) {
+        vor();
+    }
+}
+
+void vorBisKorn() {
+    while(!kornDa()) {
+        vor();
+    }
+}
+
+void set(int src, int dest) {
+    vaz(src);
+    rechtsUm();
+    vorBisKorn();
+    nimm();
+}
+
+
+void search1() {
+    while(whitchNum() != 1) {
+        nvor();
+    }
+}
+
+int searchBiggest() {
+    int biggest = 0;
+    int pos = 0;
+    for(int i = 0; i < 3; i++) {
+        int num = whitchNum();
+        if(num >= biggest) {
+            biggest = num;
+            pos = i;
+        }
+        nvor();
+    }
+    return pos;
+}
+
+int whitchNum() {
+    int num = 0;
+    rechtsUm();
+    vorBisWandOrKorn();
+    num = countFloor();
+    kehr();
+    vorBisWand();
+    rechtsUm();
+    return num;
+}
+
+int countFloor(){
+	int x = 0;
+	while(kornDa()) {
+		nimm();
+		x++;
+	}
+	for(int i = 0; i < x; i++) {
+		gib();
+	}
+	return x;
+	
+}
+
+int countMouth(){
+	int x = 0;
+	while(!maulLeer()) {
+		gib();
+		x++;
+	}
+	for(int i = 0; i < x; i++) {
+		nimm();
+	}
+	return x;
+	
+}
+
+void nvor() {
+    if(vornFrei()) {
+        vor();
+    }else {
+        kehr();
+        vaz(2);
+        kehr();
+    }
+}
+
+void ngib() {
+    rechtsUm();
+    vorBisWandOrKornAndBKifCorn();
+    gibAll();
+    kehr();
+    vorBisWand();
+    rechtsUm();
+}
+
+void nnimm() {
+    rechtsUm();
+    vorBisWandOrKorn();
+    nimmAll();
+    kehr();
+    vorBisWand();
+    rechtsUm();
+}
+
+void tower() {
+    while(true) {
+        nnimm();
+        dortHin();
+        if(azDortHin > 2) {
+            ngib();
+            search1();
+        }
+        azDortHin = 0;
+    }
+    
+}
+
+void dortHin() {
+    azDortHin++;
+    nvor();
+    int x = whitchNum();
+    int y = countMouth();
+    schreib(Integer.toString(azDortHin));
+    if(y == 0) {
+        azDortHin = 3;
+        return;
+    }
+    if(azDortHin < 3) {
+        if((y < x && (y + 2) != x) || x == 0) {
+            ngib();
+            azDortHin = 0;
+        }
+        else {
+            dortHin();
+        }
+        nbk();
+    }else nbk();
+}

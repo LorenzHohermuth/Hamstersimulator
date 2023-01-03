@@ -1,0 +1,111 @@
+/*imperative program*/
+// tutorial https://studyflix.de/informatik/mergesplit-1324
+import java.util.Arrays;
+import java.*;
+void main() {
+    printCorn(split(countFloorRow()));
+}
+
+int[] countFloorRow() {
+    int[] list = new int[messure()];
+    int i = 0;
+    while(vornFrei()) {
+        vor();
+        list[i] = countFloor();
+        i++;
+    }
+    kehr();
+    vorBisWand();
+    kehr();
+    return list;
+}
+
+int countFloor(){
+	int x = 0;
+	while(kornDa()) {
+		nimm();
+		x++;
+	}
+	return x;
+	
+}
+
+void kehr() {
+     linksUm();
+     linksUm();
+}
+
+void vorBisWand() {
+    while(vornFrei()) {
+        vor();
+    }
+}
+
+int messure() {
+    int length = 0;
+    while(vornFrei()) {
+        vor();
+        length++;
+    }
+    kehr();
+    for(int i = 0; i < length; i++) {
+        vor();
+    }
+    kehr();
+    return length;
+}
+
+void printList(int[] list) {
+    String text = "[";
+    for(int i = 0; i < list.length; i++) {
+        text += "{" + list[i] + "}";
+    }
+    text += "]";
+    schreib(text);
+}
+
+
+void printCorn(int[] list) {
+    for(int i = 0; i < list.length; i++) {
+        vor();
+        gaz(list[i]);
+    }
+}
+
+void gaz(int n){
+    for(int i = 0; i < n; i++){
+        gib();
+    }
+}
+
+int[] split(int[] list) {
+    if(list.length == 1) {
+       return list; 
+    }
+    int[] lList = Arrays.copyOfRange(list, 0, list.length / 2);
+    int[] rList = Arrays.copyOfRange(list, list.length / 2, list.length);
+    list = sort(split(lList), split(rList));
+    return list;
+} 
+
+int[] sort(int[] lList, int[] rList) {
+    int l = 0;
+    int r = 0;
+    int pos = 0;
+    int[] returnList = new int[lList.length + rList.length];
+    while(lList.length > l && rList.length > r) {
+        int lValue = lList[l];
+        int rValue = rList[r];
+        if(lList[l] < rList[r]){
+            returnList[pos] = lValue;
+            l++;
+        } else {
+            returnList[pos] = rValue;
+            r++;
+        }
+        pos++;
+    }
+    if(lList.length > l)System.arraycopy(lList, l, returnList, pos, lList.length - l);
+    if(rList.length > r)System.arraycopy(rList, r, returnList, pos, rList.length - r);
+    return returnList;
+}
