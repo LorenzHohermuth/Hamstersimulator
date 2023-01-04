@@ -1,3 +1,64 @@
-/*object-oriented program*/void main() {
-    
+/*object-oriented program*/
+import java.util.ArrayList; 
+ArrayList<ChainHamster> HamsterList = new ArrayList<ChainHamster>();
+
+class ChainHamster extends Hamster{
+
+    public void eatAll () {
+        for(int i = 0; i < 10; i++) {
+            collectAll();
+            vor();
+            if(!vornFrei() && getBlickrichtung() == 1) {
+                linksUm();
+                linksUm();
+                linksUm();
+                if(!vornFrei()) {
+                    break;
+                }
+                collectAll();
+                vor();
+                i++;
+                linksUm();
+                linksUm();
+                linksUm();
+            }
+            else if(!vornFrei() && getBlickrichtung() == 3) {
+                linksUm();
+                if(!vornFrei()) {
+                    break;
+                }
+                collectAll();
+                vor();
+                i++;
+                linksUm();
+            }
+        }
+        if(vornFrei()) {
+            addHam();
+        }
+    }
+
+
+    void addHam() {
+        ChainHamster Ham = new ChainHamster();
+        HamsterList.add(Ham);
+        int len = HamsterList.size();
+        ChainHamster NewHamster = HamsterList.get(len -1);
+        ChainHamster OldHamster = HamsterList.get(len - 2);
+        NewHamster.init(OldHamster.getReihe(), OldHamster.getSpalte(), OldHamster.getBlickrichtung(), 0);
+        NewHamster.eatAll();
+
+    }
+
+    void collectAll() {
+        while(kornDa()) {
+            nimm();
+        }
+    }
+}
+void main() {
+    ChainHamster hans = new ChainHamster();
+    HamsterList.add(hans);
+    hans.init(0, 0, Hamster.OST, 0);
+    hans.eatAll();
 }

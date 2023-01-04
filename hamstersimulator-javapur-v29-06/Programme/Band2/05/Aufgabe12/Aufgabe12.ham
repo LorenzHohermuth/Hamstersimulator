@@ -1,0 +1,36 @@
+/*object-oriented program*/
+import java.util.ArrayList;
+Hamster paul = Hamster.getStandardHamster();
+ArrayList<NEWHamster> HamList = new ArrayList<NEWHamster>();
+
+class NEWHamster extends Hamster {
+    public void collect() {
+        while(vornFrei()) {
+            vor();
+            if(kornDa()) {
+                nimm();
+            }
+        }
+    }
+}
+
+void main() {
+    HamSwarm();
+}
+
+void HamSwarm(){
+    NEWHamster peter = new NEWHamster();
+    peter.init(paul.getReihe(), paul.getSpalte(), Hamster.SUED, 0);
+    HamList.add(peter);
+    for(int i = 0; paul.vornFrei() ; i++) {
+        paul.vor();
+        NEWHamster Ham = new NEWHamster();
+        Ham.init(paul.getReihe(), paul.getSpalte(), Hamster.SUED, 0);
+        HamList.add(Ham);
+    }
+    for(int i = 0; i < HamList.size(); i++) {
+        NEWHamster Collector = HamList.get(i);
+        Collector.collect();
+    }
+}
+

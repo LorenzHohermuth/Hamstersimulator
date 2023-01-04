@@ -1,0 +1,87 @@
+/*object-oriented program*/
+Hamster paul = Hamster.getStandardHamster();
+BacisHamster hans = new BacisHamster();
+
+class BacisHamster extends Hamster{
+    public void rechtsUm(){
+        linksUm();
+        linksUm();
+        linksUm();
+    }
+
+    public void kehr(){
+        linksUm();
+        linksUm();
+    }
+
+    public void wall(){
+        while(vornFrei()) {
+            vor();
+        }
+    }
+
+    public boolean rechtsFrei() {
+        rechtsUm();
+        boolean output = vornFrei();
+        linksUm();
+        return output;
+    }
+
+    public boolean linksFrei() {
+        linksUm();
+        boolean output = vornFrei();
+        rechtsUm();
+        return output;
+    }
+
+    void followWallR() {
+        if(rechtsFrei()) {
+            rechtsUm();
+            vor();
+        }
+        else if(vornFrei()) {
+            vor();
+        }else{
+            linksUm();
+        }
+    }
+
+    public void goToStart() {
+        while(rechtsFrei() || linksFrei()) {
+            followWallR();
+        }
+    }
+
+    public void deco() {
+        rechtsUm();
+        while(rechtsFrei() || linksFrei()) {
+            linksUm();
+            vor();
+            rechtsUm();
+            vor();
+            gib();
+        }
+        vor();
+        rechtsUm();
+        vor();
+        while(rechtsFrei() || linksFrei()) {
+            gib();
+            linksUm();
+            vor();
+            rechtsUm();
+            vor();
+        }
+    }
+    
+    public void goToCorner() {
+        rechtsUm();
+        wall();
+        linksUm();
+    }
+}
+void main() {
+    hans.init(1, 1, Hamster.OST, 100);
+    hans.goToCorner();
+    hans.goToStart();
+    hans.deco();
+}
