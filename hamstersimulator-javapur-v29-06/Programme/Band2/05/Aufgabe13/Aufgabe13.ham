@@ -1,0 +1,72 @@
+/*object-oriented program*/
+
+class BacisHamster extends Hamster{
+    public void rechtsUm(){
+        linksUm();
+        linksUm();
+        linksUm();
+    }
+
+    public void kehr(){
+        linksUm();
+        linksUm();
+    }
+
+    public void wall(){
+        while(vornFrei()) {
+            vor();
+        }
+    }
+
+    public boolean rechtsFrei() {
+        rechtsUm();
+        boolean output = vornFrei();
+        linksUm();
+        return output;
+    }
+
+    public boolean linksFrei() {
+        linksUm();
+        boolean output = vornFrei();
+        rechtsUm();
+        return output;
+    }
+
+    public void slalom() {
+        boolean linksUm = true;
+        while(!kornDa()){
+            if(!vornFrei()) {
+                if(linksUm) {
+                    linksUm();
+                    vor();
+                    rechtsUm();
+                    vor();
+                    while(!rechtsFrei) {
+                        vor();
+                    }
+                    rechtsUm();
+                    vor();
+                    linksUm();
+                }else{
+                    rechtsUm();
+                    vor();
+                    linksUm();
+                    vor();
+                    while(!linksFrei) {
+                        vor();
+                    }
+                    linksUm();
+                    vor();
+                    rechtsUm();
+                }
+            }
+            else{
+                vor();
+            }
+        }
+    }
+    nimm();
+}
+void main() {
+    
+}
