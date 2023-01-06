@@ -1,0 +1,87 @@
+/*object-oriented program*/
+
+Hamster paul = Hamster.getStandardHamster();
+Hamster hans = new Hamster();
+
+void main() {
+    hans.init(2, 1, 1, 0);
+    slalom();
+}
+void linksUm() {
+    paul.linksUm();
+    hans.linksUm();
+}
+
+void vor() {
+    paul.vor();
+    hans.vor();
+}
+
+void nimm() {
+    paul.nimm();
+    hans.nimm();
+}
+
+boolean vornFrei() {
+    return paul.vornFrei() && hans.vornFrei();
+}
+
+boolean kornDa() {
+    return paul.kornDa() && hans.kornDa();
+}
+
+public void rechtsUm(){
+    linksUm();
+    linksUm();
+    linksUm();
+}
+
+public boolean rechtsFrei() {
+    rechtsUm();
+    boolean output = vornFrei();
+    linksUm();
+    return output;
+}
+
+public boolean linksFrei() {
+    linksUm();
+    boolean output = vornFrei();
+    rechtsUm();
+    return output;
+}
+
+void slalom() {
+    boolean linksUm = true;
+    while(!kornDa()){
+        if(!vornFrei()) {
+            if(linksUm) {
+                linksUm();
+                vor();
+                rechtsUm();
+                vor();
+                while(!rechtsFrei()) {
+                    vor();
+                }
+                rechtsUm();
+                vor();
+                linksUm();
+            }else{
+                rechtsUm();
+                vor();
+                linksUm();
+                vor();
+                while(!linksFrei()) {
+                    vor();
+                }
+                linksUm();
+                vor();
+                rechtsUm();
+            }
+            linksUm = !linksUm;
+        }
+        else{
+            vor();
+        }
+    }
+    nimm();
+}

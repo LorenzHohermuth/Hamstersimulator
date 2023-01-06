@@ -1,5 +1,7 @@
 /*object-oriented program*/
 
+Hamster paul = Hamster.getStandardHamster();
+
 class BacisHamster extends Hamster{
     public void rechtsUm(){
         linksUm();
@@ -11,7 +13,7 @@ class BacisHamster extends Hamster{
         linksUm();
         linksUm();
     }
-
+    
     public void wall(){
         while(vornFrei()) {
             vor();
@@ -24,14 +26,14 @@ class BacisHamster extends Hamster{
         linksUm();
         return output;
     }
-
+    
     public boolean linksFrei() {
         linksUm();
         boolean output = vornFrei();
         rechtsUm();
         return output;
     }
-
+    
     public void slalom() {
         boolean linksUm = true;
         while(!kornDa()){
@@ -41,7 +43,7 @@ class BacisHamster extends Hamster{
                     vor();
                     rechtsUm();
                     vor();
-                    while(!rechtsFrei) {
+                    while(!rechtsFrei()) {
                         vor();
                     }
                     rechtsUm();
@@ -52,21 +54,25 @@ class BacisHamster extends Hamster{
                     vor();
                     linksUm();
                     vor();
-                    while(!linksFrei) {
+                    while(!linksFrei()) {
                         vor();
                     }
                     linksUm();
                     vor();
                     rechtsUm();
                 }
+                linksUm = !linksUm;
             }
             else{
                 vor();
             }
         }
+        nimm();
     }
-    nimm();
 }
+
 void main() {
-    
+    BacisHamster hans = new BacisHamster();
+    hans.init(paul.getReihe(), paul.getSpalte(), 1, 0);
+    hans.slalom();
 }
