@@ -1,0 +1,49 @@
+/*imperative program*/
+void main() {
+korn();
+korn();
+   
+}
+
+void ernteReihe() {
+    zweiVorUndNimm(); 
+    zweiVorUndNimm(); 
+    zweiVorUndNimm();
+}
+
+void zweiVorUndNimm() {
+    zweiVor();
+    if (kornDa())
+    {
+     nimm();
+    }
+    else
+    {
+    gib();
+    }
+   
+}
+
+void zweiVor() {
+    vor(); 
+    vor();
+}
+
+void rechtsUm() {
+    linksUm(); 
+    linksUm(); 
+    linksUm();
+}
+
+//körner ablegen oder aufheben
+void korn(){
+    ernteReihe(); 
+    rechtsUm();
+    zweiVor(); 
+    rechtsUm();
+    ernteReihe();
+    rechtsUm();
+    zweiVor();
+    rechtsUm();
+    
+}

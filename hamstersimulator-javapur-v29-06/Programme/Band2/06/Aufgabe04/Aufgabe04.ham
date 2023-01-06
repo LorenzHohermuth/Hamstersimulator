@@ -1,0 +1,30 @@
+/*object-oriented program*/
+void main() {
+    
+    ZufallsHamster Hamster1 = new ZufallsHamster();
+    ZufallsHamster Hamster2 = new ZufallsHamster();
+    ZufallsHamster Hamster3 = new ZufallsHamster();
+    ZufallsHamster Hamster4 = new ZufallsHamster();
+}
+
+class ZufallsHamster extends Hamster {
+
+    // Konstruktor
+    ZufallsHamster() {
+        // ein neuer Hamster wird zufaellig irgendwo im
+        // Territorium erzeugt
+        int r = ZufallsHamster.erzeugeZufallsZahl(Territorium
+                .getAnzahlReihen() - 1);
+        int s = ZufallsHamster.erzeugeZufallsZahl(Territorium
+                .getAnzahlSpalten() - 1);
+        int b = ZufallsHamster.erzeugeZufallsZahl(3);
+        this.init(r, s, b, 0);
+        this.nachwuchs = null;
+        this.nachwuchs2 = null;
+    }
+
+    // erzeugt Zufallszahl zwischen 0 und max
+    static int erzeugeZufallsZahl(int max) {
+        return (int) (Math.random() * (max + 1));
+    }
+}

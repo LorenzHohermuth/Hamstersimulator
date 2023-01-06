@@ -1,0 +1,88 @@
+/*javascript program*/// Ein neu erzeugter Hamster grast das Territorium ab und
+// zaehlt dabei die gesammelten Koerner
+
+function AbgrasHamster(r, s, b, k) {
+    JSHamster.call(this, r, s, b, k);
+    
+    this.gesammelt = 0;
+
+    this.kehrt = function() {
+        this.linksUm();
+        this.linksUm();
+    }
+    
+    this.rechtsUm = function() {
+        this.kehrt();
+        this.linksUm();
+    }
+
+    this.laufeZurueck = function() {
+        while (this.vornFrei()) {
+            this.vor();
+        }
+    }
+
+    this.sammle = function() {
+        while (this.kornDa()) {
+            this.nimm();
+            this.gesammelt += 1;
+        }
+    }
+
+    this.laufeZurWand = function() {
+        while (this.vornFrei()) {
+            this.vor();
+        }
+    }
+  
+    this.laufeInEcke = function() {
+        this.laufeZurWand();
+        this.linksUm();
+        this.laufeZurWand();
+        this.linksUm();
+    }
+
+    this.ernteEineReihe = function() {
+        this.sammle();
+        while (this.vornFrei()) {
+            this.vor();
+            this.sammle();
+        }
+    }
+
+    this.ernteEineReiheUndLaufeZurueck = function() {
+        this.ernteEineReihe();
+        this.kehrt();
+        this.laufeZurueck();
+    }
+        
+    this.gesammelteKoerner = function() {
+        return this.gesammelt;
+    }
+}
+AbgrasHamster.prototype = Object.create(JSHamster.prototype);
+
+// Hauptprogramm
+
+paul = new AbgrasHamster(2, 3, Hamster.WEST, 0);
+paul.laufeInEcke();
+paul.ernteEineReiheUndLaufeZurueck();
+paul.rechtsUm();
+while (paul.vornFrei()) {
+    paul.vor();
+    paul.rechtsUm();
+    paul.ernteEineReiheUndLaufeZurueck();
+    paul.rechtsUm();
+}
+paul.schreib("Gesammelte Koerner = " + paul.gesammelteKoerner());
+
+
+
+
+
+
+
+
+
+
+

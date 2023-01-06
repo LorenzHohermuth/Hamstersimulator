@@ -1,0 +1,9 @@
+/*javascript program*/paul = Hamster.getStandardHamster();
+willi = new Hamster(paul);
+maria = new Hamster(paul.getReihe()+1, paul.getSpalte(), Hamster.OST, 0);
+while (paul.vornFrei() && willi.vornFrei() && maria.vornFrei()) {
+    paul.vor();
+    willi.vor();
+    maria.vor();
+}
+paul.schreib("Fertig!");

@@ -1,0 +1,70 @@
+/*javascript program*/// Aufgabe:
+// der Hamster steht irgendwo in einem beliebigen Territorium
+// ohne innere Mauern; er soll alle Körner fressen
+
+function kehrt() {
+    linksUm();
+    linksUm();
+}
+    
+function rechtsUm() {
+    kehrt();
+    linksUm();
+}
+
+function laufeZurueck() {
+    while (vornFrei()) {
+        vor();
+    }
+}
+
+function sammle() {
+    while (kornDa()) {
+        nimm();
+    }
+}
+
+function laufeZurWand() {
+    while (vornFrei()) {
+        vor();
+    }
+}
+        
+function laufeInEcke() {
+    laufeZurWand();
+    linksUm();
+    laufeZurWand();
+    linksUm();
+}
+
+function ernteEineReihe() {
+    sammle();
+    while (vornFrei()) {
+        vor();
+        sammle();
+    }
+}
+
+function ernteEineReiheUndLaufeZurueck() {
+    ernteEineReihe();
+    kehrt();
+    laufeZurueck();
+}
+
+laufeInEcke();
+ernteEineReiheUndLaufeZurueck();
+rechtsUm();
+while (vornFrei()) {
+    vor();
+    rechtsUm();
+    ernteEineReiheUndLaufeZurueck();
+    rechtsUm();
+}
+
+
+
+
+
+
+
+
