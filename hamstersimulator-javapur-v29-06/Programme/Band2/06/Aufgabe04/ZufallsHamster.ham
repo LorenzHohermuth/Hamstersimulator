@@ -1,0 +1,19 @@
+/*class*/class ZufallsHamster extends Hamster {
+
+    // Konstruktor
+    ZufallsHamster() {
+        // ein neuer Hamster wird zufaellig irgendwo im
+        // Territorium erzeugt
+        int r = ZufallsHamster.erzeugeZufallsZahl(Territorium
+                .getAnzahlReihen() - 1);
+        int s = ZufallsHamster.erzeugeZufallsZahl(Territorium
+                .getAnzahlSpalten() - 1);
+        int b = ZufallsHamster.erzeugeZufallsZahl(3);
+        this.init(r, s, b, 0);
+    }
+
+    // erzeugt Zufallszahl zwischen 0 und max
+    static int erzeugeZufallsZahl(int max) {
+        return (int) (Math.random() * (max + 1));
+    }
+}

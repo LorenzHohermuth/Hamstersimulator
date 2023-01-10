@@ -1,0 +1,88 @@
+/*object-oriented program*/
+void main(){
+    Hamster paul = Hamster.getStandardHamster();
+    LabHamster willi = new LabHamster(paul);
+    willi.Labyrinth();
+}
+
+class LabHamster extends Hamster{
+
+    LabHamster(int r, int s, int b, int k){
+        this.init(r, s, b,k );
+    }
+
+    LabHamster(Hamster Ham){
+        this.init(Ham.getReihe(), Ham.getSpalte(), Ham.getBlickrichtung(), Ham.getAnzahlKoerner());
+    }
+
+    void rechtsUm(){
+        linksUm();
+        linksUm();
+        linksUm();
+    }
+
+    boolean vornFreiTer(){
+        boolean frei = false;
+        if(this.getBlickrichtung() == 0){
+            frei = Territorium.mauerDa(this.getReihe() - 1, this.getSpalte());
+        }else if(this.getBlickrichtung() == 1) {
+            frei = Territorium.mauerDa(this.getReihe(), this.getSpalte() + 1);
+        }else if(this.getBlickrichtung() == 2) {
+            frei = Territorium.mauerDa(this.getReihe() + 1, this.getSpalte());
+        }else if(this.getBlickrichtung() == 3) {
+            frei = Territorium.mauerDa(this.getReihe(), this.getSpalte() - 1);
+        }
+        return !frei;
+    }
+
+    boolean rechtsFreiTer(){
+        boolean frei = false;
+        if(this.getBlickrichtung() == 0){
+            frei = Territorium.mauerDa(this.getReihe(), this.getSpalte() + 1);
+        }else if(this.getBlickrichtung() == 1) {
+            frei = Territorium.mauerDa(this.getReihe() + 1, this.getSpalte());
+        }else if(this.getBlickrichtung() == 2) {
+            frei = Territorium.mauerDa(this.getReihe(), this.getSpalte() - 1);
+        }else if(this.getBlickrichtung() == 3) {
+            frei = Territorium.mauerDa(this.getReihe() - 1, this.getSpalte());
+        }
+        return !frei;
+    }
+
+    boolean linksFreiTer(){
+        boolean frei = false;
+        if(this.getBlickrichtung() == 0){
+            frei = Territorium.mauerDa(this.getReihe(), this.getSpalte() - 1);
+        }else if(this.getBlickrichtung() == 1) {
+            frei = Territorium.mauerDa(this.getReihe() - 1, this.getSpalte());
+        }else if(this.getBlickrichtung() == 2) {
+            frei = Territorium.mauerDa(this.getReihe(), this.getSpalte() + 1);
+        }else if(this.getBlickrichtung() == 3) {
+            frei = Territorium.mauerDa(this.getReihe() + 1, this.getSpalte());
+        }
+        return !frei;
+    }
+
+    void Labyrinth() {
+        if(kornDa()){
+            nimm();
+            linksUm();
+            linksUm();
+            return;
+        }else if(linksFreiTer()) {
+            linksUm();
+            vor();
+            Labyrinth();
+            vor();
+            rechtsUm();
+        }else if(!vornFreiTer()) {
+            rechtsUm();
+            Labyrinth();
+            linksUm();
+        }else{
+            vor();
+            Labyrinth();
+            vor();
+        }
+    }
+}

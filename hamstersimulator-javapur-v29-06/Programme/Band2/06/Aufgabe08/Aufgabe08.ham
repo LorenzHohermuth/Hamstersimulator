@@ -1,0 +1,94 @@
+/*object-oriented program*/
+Hamster paul = Hamster.getStandardHamster();
+ChaseHamster hans = new ChaseHamster(0,0,1,0);
+void main() {
+while(paul.getReihe() != hans.getReihe() || paul.getSpalte() != hans.getSpalte()) {
+    laufRand();
+    hans.chase(paul);
+    hans.chase(paul);
+}
+}
+
+int erzeugeZufallsZahl(int max) {
+    return (int) (Math.random() * (max + 1));
+}
+
+void laufRand() {
+    int randNum = erzeugeZufallsZahl(3);
+    switch (randNum) {
+        case 1:
+            paul.linksUm();
+            break;
+        case 2:
+            paul.linksUm();
+            paul.linksUm();
+            break;
+        case 3:
+            paul.linksUm();
+            paul.linksUm();
+            paul.linksUm();
+            break;
+        default:
+            break;
+    }
+    if(paul.vornFrei())paul.vor();
+
+}
+
+class ChaseHamster extends Hamster{
+    ChaseHamster(int r, int s, int b, int k){
+        this.init(r, s, b, k);
+    }
+
+    void rechtsUm(){
+        linksUm();
+        linksUm();
+        linksUm();
+    }
+
+    boolean linksFrei(){
+        linksUm();
+        boolean frei = vornFrei();
+        rechtsUm();
+        return frei;
+    }
+
+    boolean rechtsFrei(){
+        rechtsUm();
+        boolean frei = vornFrei();
+        linksUm();
+        return frei;
+    }
+
+    void chase(Hamster ham) {
+        if(this.getSpalte() < ham.getSpalte()){
+            while(this.getBlickrichtung() != 1) {
+                linksUm();
+            }
+        }else if(this.getSpalte() > ham.getSpalte()){
+            while(this.getBlickrichtung() != 3) {
+                linksUm();
+            }
+        }else if(this.getReihe() < ham.getReihe()){
+            while(this.getBlickrichtung() != 2) {
+                linksUm();
+            }
+        }else if(this.getReihe() > ham.getReihe()){
+            while(this.getBlickrichtung() != 0) {
+                linksUm();
+            }
+        }
+        
+        if(!this.vornFrei()){
+            if(this.linksFrei()) {
+                linksUm();
+                vor();
+            }else if(this.rechtsFrei()) {
+                rechtsUm();
+                vor();
+            }
+        }else{
+            vor();
+        }
+    }
+}

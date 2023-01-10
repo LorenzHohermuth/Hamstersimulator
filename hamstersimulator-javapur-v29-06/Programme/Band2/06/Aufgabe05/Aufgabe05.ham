@@ -1,0 +1,12 @@
+/*object-oriented program*/
+void main() {
+    Hamster paul = Hamster.getStandardHamster();
+    ZufallsHamster Hamster1 = new ZufallsHamster();
+    ZufallsHamster Hamster2 = new ZufallsHamster();
+    ZufallsHamster Hamster3 = new ZufallsHamster();
+    ZufallsHamster Hamster4 = new ZufallsHamster();
+    Hamster1.search(paul);
+    Hamster2.search(paul);
+    Hamster3.search(paul);
+    Hamster4.search(paul);
+}

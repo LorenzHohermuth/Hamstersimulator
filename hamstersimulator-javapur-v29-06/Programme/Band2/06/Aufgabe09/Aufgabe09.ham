@@ -1,0 +1,27 @@
+/*object-oriented program*/
+void main(){
+    searchKorn();
+}
+
+void searchKorn() {
+    for(int y = 0; y < Territorium.getAnzahlReihen(); y++) {
+        for(int x = 0; x < Territorium.getAnzahlSpalten(); x++) {
+            if(Territorium.getAnzahlKoerner(y,x) > 0) {
+                DanceHamster Ham = new DanceHamster(y, x, 0, 0);
+                while(Ham.kornDa()) {
+                    Ham.nimm();
+                }
+                Ham.linksUm();
+                Ham.linksUm();
+                Ham.linksUm();
+                Ham.linksUm();
+            }
+        }
+    }
+}
+
+class DanceHamster extends Hamster{
+    DanceHamster(int r,int s,int b,int k){
+        this.init(r ,s ,b ,k );
+    }
+}

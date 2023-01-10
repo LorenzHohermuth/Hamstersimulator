@@ -1,0 +1,76 @@
+/*object-oriented program*/
+void main(){
+    Hamster paul = Hamster.getStandardHamster();
+    WallHamster willi = new WallHamster(paul.getReihe(), paul.getSpalte(), paul.getBlickrichtung(), 0);
+    willi.rundUm();
+}
+
+class WallHamster extends Hamster{
+
+    WallHamster(int r, int s, int b, int k){
+        this.init(r, s, b,k );
+    }
+
+    void rechtsUm(){
+        linksUm();
+        linksUm();
+        linksUm();
+    }
+
+    boolean vornFreiTer(){
+        boolean frei = false;
+        if(this.getBlickrichtung() == 0){
+            frei = Territorium.mauerDa(this.getReihe() - 1, this.getSpalte());
+        }else if(this.getBlickrichtung() == 1) {
+            frei = Territorium.mauerDa(this.getReihe(), this.getSpalte() + 1);
+        }else if(this.getBlickrichtung() == 2) {
+            frei = Territorium.mauerDa(this.getReihe() + 1, this.getSpalte());
+        }else if(this.getBlickrichtung() == 3) {
+            frei = Territorium.mauerDa(this.getReihe(), this.getSpalte() - 1);
+        }
+        return !frei;
+    }
+
+    boolean vornRechtsTer(){
+        boolean frei = false;
+        if(this.getBlickrichtung() == 0){
+            frei = Territorium.mauerDa(this.getReihe(), this.getSpalte() + 1);
+        }else if(this.getBlickrichtung() == 1) {
+            frei = Territorium.mauerDa(this.getReihe() + 1, this.getSpalte());
+        }else if(this.getBlickrichtung() == 2) {
+            frei = Territorium.mauerDa(this.getReihe(), this.getSpalte() - 1);
+        }else if(this.getBlickrichtung() == 3) {
+            frei = Territorium.mauerDa(this.getReihe() - 1, this.getSpalte());
+        }
+        return !frei;
+    }
+
+    boolean vornLinksTer(){
+        boolean frei = false;
+        if(this.getBlickrichtung() == 0){
+            frei = Territorium.mauerDa(this.getReihe(), this.getSpalte() - 1);
+        }else if(this.getBlickrichtung() == 1) {
+            frei = Territorium.mauerDa(this.getReihe() - 1, this.getSpalte());
+        }else if(this.getBlickrichtung() == 2) {
+            frei = Territorium.mauerDa(this.getReihe(), this.getSpalte() + 1);
+        }else if(this.getBlickrichtung() == 3) {
+            frei = Territorium.mauerDa(this.getReihe() + 1, this.getSpalte());
+        }
+        return !frei;
+    }
+
+    void rundUm(){ 
+         int y = this.getReihe();
+         int x = this.getSpalte();
+         do{
+            if(vornLinksTer()) {
+                linksUm();
+                vor();
+            }else if(!vornFreiTer()) {
+                rechtsUm();
+            }else{
+                vor();
+            }
+         }while(this.getReihe() != y || this.getSpalte() != x);
+    }
+}

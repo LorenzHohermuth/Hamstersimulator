@@ -1,0 +1,46 @@
+/*class*/class ZufallsHamster extends Hamster {
+
+    // Konstruktor
+    ZufallsHamster() {
+        // ein neuer Hamster wird zufaellig irgendwo im
+        // Territorium erzeugt
+        int r = ZufallsHamster.erzeugeZufallsZahl(Territorium
+                .getAnzahlReihen() - 1);
+        int s = ZufallsHamster.erzeugeZufallsZahl(Territorium
+                .getAnzahlSpalten() - 1);
+        int b = ZufallsHamster.erzeugeZufallsZahl(3);
+        this.init(r, s, b, 1);
+    }
+
+    // erzeugt Zufallszahl zwischen 0 und max
+    static int erzeugeZufallsZahl(int max) {
+        return (int) (Math.random() * (max + 1));
+    }
+
+    void search(Hamster ham) {
+        while(ham.getReihe() != this.getReihe()) {
+            if(ham.getReihe() > this.getReihe()) {
+                DrehRichtung(2);
+            }
+            if(ham.getReihe() < this.getReihe()) {
+                DrehRichtung(0);
+            }
+            vor();
+        }
+        while(ham.getSpalte() != this.getSpalte()) {
+            if(ham.getSpalte() > this.getSpalte()) {
+                DrehRichtung(1);
+            }
+            if(ham.getSpalte() < this.getSpalte()) {
+                DrehRichtung(3);
+            }
+            vor();
+        }
+        gib();
+    }
+    void DrehRichtung(int richtung){
+        while(this.getBlickrichtung() != richtung) {
+            linksUm();
+        }
+    }
+}

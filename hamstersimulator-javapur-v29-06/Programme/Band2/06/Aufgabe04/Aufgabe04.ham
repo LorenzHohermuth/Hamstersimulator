@@ -1,30 +1,62 @@
 /*object-oriented program*/
 void main() {
-    
+    SuchHamster hans = new SuchHamster(0,0,1,3);
     ZufallsHamster Hamster1 = new ZufallsHamster();
     ZufallsHamster Hamster2 = new ZufallsHamster();
     ZufallsHamster Hamster3 = new ZufallsHamster();
     ZufallsHamster Hamster4 = new ZufallsHamster();
+    hans.search();
 }
 
-class ZufallsHamster extends Hamster {
+class SuchHamster extends Hamster{
 
-    // Konstruktor
-    ZufallsHamster() {
-        // ein neuer Hamster wird zufaellig irgendwo im
-        // Territorium erzeugt
-        int r = ZufallsHamster.erzeugeZufallsZahl(Territorium
-                .getAnzahlReihen() - 1);
-        int s = ZufallsHamster.erzeugeZufallsZahl(Territorium
-                .getAnzahlSpalten() - 1);
-        int b = ZufallsHamster.erzeugeZufallsZahl(3);
-        this.init(r, s, b, 0);
-        this.nachwuchs = null;
-        this.nachwuchs2 = null;
+    SuchHamster(int r, int s, int b, int k){
+        this.init(r, s, b, k);
     }
 
-    // erzeugt Zufallszahl zwischen 0 und max
-    static int erzeugeZufallsZahl(int max) {
-        return (int) (Math.random() * (max + 1));
+    void search(){
+        while(!maulLeer()) {
+            for(int i = 0; i < Territorium.getAnzahlReihen(); i++) {
+                for(int j = 0; j < Territorium.getAnzahlSpalten(); j++) {
+                    if(Territorium.getAnzahlHamster(i,j) > 0 && !(i == this.getReihe() && j == this.getSpalte()) && Territorium.getAnzahlKoerner(i,j) == 0){
+                        vor(j);
+                        rechtsUm();
+                        vor(i);
+                        gib();
+                        kehr();
+                        wall();
+                        linksUm();
+                        wall();
+                        kehr();
+                    }
+                    if(maulLeer()) break;
+                }
+                if(maulLeer()) break;
+            }
+        }
+    }
+
+    void wall() {
+        while(vornFrei()) {
+            vor();
+        }
+    }
+
+    void vor(int Anzahl){
+        for(int i = 0; i < Anzahl ; i++) {
+            vor();
+        }
+    }
+
+    void rechtsUm(){
+        linksUm();
+        linksUm();
+        linksUm();
+    }
+
+    void kehr(){
+        linksUm();
+        linksUm();
     }
 }
+
