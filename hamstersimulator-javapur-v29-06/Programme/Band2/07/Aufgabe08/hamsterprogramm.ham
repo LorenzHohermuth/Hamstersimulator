@@ -1,0 +1,7 @@
+/*object-oriented program*/// Testprogramm
+void main() {
+    TestHamster paul = new TestHamster(5,5,1,0);
+    if(!paul.vornLinksFrei()) {
+        paul.schreib("mauer da");
+    }
+}

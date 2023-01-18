@@ -1,0 +1,72 @@
+/*class*/class DezimalHamster extends OktalHamster {
+    // Konstruktor
+    DezimalHamster(int r, int s, int b, int k) {
+        super(r, s, b, k);
+    }
+
+    void zeichne8() {
+        this.vorUndGib(3);
+        this.rechtsUm();
+        this.vorUndGib(4);
+        this.rechtsUm();
+        this.vorUndGib(2);
+        this.rechtsUm();
+        this.vorUndGib(2);
+        this.rechtsUm();
+        this.vor();
+        this.kehr();
+        this.gib();
+        this.vor();
+        this.rechtsUm();
+        this.vorUndGib(2);
+        this.linksUm();
+        this.vor();
+        this.kehr();
+    }
+
+    void zeichne9() {
+        this.vorUndGib(3);
+        this.rechtsUm();
+        this.vorUndGib(4);
+        this.rechtsUm();
+        this.vorUndGib(2);
+        this.rechtsUm();
+        this.vor(2);
+        this.rechtsUm();
+        this.vor();
+        this.kehr();
+        this.gib();
+        this.vor();
+        this.gib();
+        this.rechtsUm();
+        this.vorUndGib(2);
+        this.linksUm();
+        this.vor();
+        this.kehr();
+    }
+
+    // zeichnet die uebergebene Dezimalzahl als Zahl
+    // zur Basis 8 aus Koernern
+    void zeichne(int dezimalZahl) {
+        this.setzeBlickrichtung(Hamster.OST);
+        if (dezimalZahl < 10) {
+            this.zeichneZiffer(dezimalZahl);
+            this.vor(4);
+        } else {
+            this.zeichne(dezimalZahl / 10); // Rekursion!
+            this.zeichneZiffer(dezimalZahl % 10);
+            this.vor(4);
+        }
+    }
+
+    // zeichnet die uebergebene Ziffer aus Koernern
+    void zeichneZiffer(int ziffer) {
+        super.zeichneZiffer(ziffer); // Aufruf der geerbten
+                                     // Methode
+        if (ziffer == 8) {
+            this.zeichne8();
+        } else if (ziffer == 9) {
+            this.zeichne9();
+        }
+    }
+}

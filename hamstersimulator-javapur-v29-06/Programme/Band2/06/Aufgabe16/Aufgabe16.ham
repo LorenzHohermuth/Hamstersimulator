@@ -1,0 +1,86 @@
+/*object-oriented program*/
+BetterHamster paul = new BetterHamster(0, 0, Hamster.OST, 0);
+void main() {
+    do{
+        int[] posKorn = paul.suchKorn();
+        paul.goTo(posKorn[0], posKorn[1]);
+    }while(paul.getY() != -1);
+}
+
+class BetterHamster extends Hamster{
+    BetterHamster(int r, int s, int b, int k){
+        this.init(r, s, b, k);
+    }
+
+
+    void kehr(){
+        linksUm();
+        linksUm();
+    }
+
+    int[] suchKorn(){
+        for(int y = 0; y < Territorium.getAnzahlReihen(); y++) {
+            for(int x = 0; x < Territorium.getAnzahlSpalten(); x++) {
+                if(Territorium.getAnzahlKoerner(y, x) > 0) {
+                    int[] Cords = {y,x};
+                    return Cords;
+                }
+            }
+            if(Territorium.mauerDa(y + 1,0)) {
+                int[] Cords = {-1,-1};
+                return Cords;
+            }else{
+                y++;
+                for(int x2 = Territorium.getAnzahlSpalten();x2 >= 0;x2--) {
+                    if(Territorium.getAnzahlKoerner(y,x2) > 0) {
+                        int[] Cords = {y,x2};
+                        return Cords;
+                    }
+                }
+            }
+        }
+        int[] Cords = {-1,-1};
+        return Cords;
+    }
+
+    void goTo(int y, int x){
+        if(y == -1){
+            return;
+        }
+        int blickrichtung = this.getBlickrichtung();
+        int anzahlNachVornReihe = y - this.getReihe();
+        int anzahlNachVornSpalte = x - this.getSpalte();
+        //in richtige reihe gehen
+        while(this.getBlickrichtung() != 2) {
+            linksUm();
+        }
+        if(anzahlNachVornReihe < 0) {
+            kehr();
+            anzahlNachVornReihe *= -1;
+        }
+        for(int i = 0; i < anzahlNachVornReihe; i++) {
+            vor();
+        }
+        //in richtige spalte gehen
+        while(this.getBlickrichtung() != 1) {
+            linksUm();
+        }
+        if(anzahlNachVornSpalte < 0) {
+            kehr();
+            anzahlNachVornSpalte *= -1;
+        }
+        for(int i = 0; i < anzahlNachVornSpalte; i++) {
+            vor();
+        }
+        while(kornDa()) {
+            nimm();
+        }
+    }
+
+    int getY(){
+        int[] list = suchKorn();
+        return list[0];
+    }
+}
+
+ 

@@ -6,19 +6,17 @@
 
     // grast das komplette Territorium ab
     void abgrasen() {
-        int r = 0;
-        while (r < Territorium.getAnzahlReihen()) {
-            int s = 0;
-            while (s < Territorium.getAnzahlSpalten()) {
+        int r = Territorium.getAnzahlReihen();
+        while (r >= 0) {
+            int s = Territorium.getAnzahlSpalten();
+            while (s >= 0 ) {
                 if (Territorium.getAnzahlKoerner(r, s) > 0) {
                     this.laufeZuKachel(r, s);
-                    this
-                            .nimm(Territorium.getAnzahlKoerner(
-                                    r, s));
+                    this.nimm(Territorium.getAnzahlKoerner(r, s));
                 }
-                s = s + 1;
+                s--;
             }
-            r = r + 1;
+            r--;
         }
     }
 }

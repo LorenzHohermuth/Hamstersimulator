@@ -1,0 +1,5 @@
+/*object-oriented program*/// Testprogramm
+void main() {
+    AllroundHamster paul = new AllroundHamster(0,0,1,100000);
+    paul.diagonal();
+}

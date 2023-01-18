@@ -1,0 +1,173 @@
+/*class*/
+class TestHamster extends AllroundHamster{
+    TestHamster(int r, int s, int b, int k){
+        super(r, s, b, k);
+    }
+
+    boolean rechtsFrei(){
+        int reihe = this.getReihe();
+        int spalte = this.getSpalte();
+        switch (this.getBlickrichtung()) {
+            case 0:
+                spalte++;
+                break;
+            case 1:
+                reihe++;
+                break;
+            case 2:
+                spalte--;
+                break;
+            case 3:
+                reihe--;
+                break;
+        }
+        return !Territorium.mauerDa(reihe, spalte);
+    }
+
+    boolean linksFrei(){
+        int reihe = this.getReihe();
+        int spalte = this.getSpalte();
+        switch (this.getBlickrichtung()) {
+            case 0:
+                spalte--;
+                break;
+            case 1:
+                reihe--;
+                break;
+            case 2:
+                spalte++;
+                break;
+            case 3:
+                reihe++;
+                break;
+        }
+        return !Territorium.mauerDa(reihe, spalte);
+    }
+
+    boolean hintenFrei(){
+        int reihe = this.getReihe();
+        int spalte = this.getSpalte();
+        switch (this.getBlickrichtung()) {
+            case 0:
+                reihe++;
+                break;
+            case 1:
+                spalte--;
+                break;
+            case 2:
+                reihe--;
+                break;
+            case 3:
+                spalte++;
+                break;
+        }
+        return !Territorium.mauerDa(reihe, spalte);
+    }
+
+    boolean vornLinksFrei(){
+        int reihe = this.getReihe();
+        int spalte = this.getSpalte();
+        switch (this.getBlickrichtung()) {
+            case 0:
+                spalte--;
+                reihe--;
+                break;
+            case 1:
+                reihe--;
+                spalte++;
+                break;
+            case 2:
+                spalte++;
+                reihe++;
+                break;
+            case 3:
+                reihe++;
+                spalte--;
+                break;
+        }
+        return !Territorium.mauerDa(reihe, spalte);
+    }
+
+    boolean vornRechtsFrei(){
+        int reihe = this.getReihe();
+        int spalte = this.getSpalte();
+        switch (this.getBlickrichtung()) {
+            case 0:
+                spalte++;
+                reihe--;
+                break;
+            case 1:
+                reihe++;
+                spalte++;
+                break;
+            case 2:
+                spalte--;
+                reihe++;
+                break;
+            case 3:
+                reihe--;
+                spalte--;
+                break;
+        }
+        return !Territorium.mauerDa(reihe, spalte);
+    }
+
+    boolean hintenLinksFrei(){
+        int reihe = this.getReihe();
+        int spalte = this.getSpalte();
+        switch (this.getBlickrichtung()) {
+            case 0:
+                spalte--;
+                reihe++;
+                break;
+            case 1:
+                reihe--;
+                spalte--;
+                break;
+            case 2:
+                spalte++;
+                reihe--;
+                break;
+            case 3:
+                reihe++;
+                spalte++;
+                break;
+        }
+        return !Territorium.mauerDa(reihe, spalte);
+    }
+
+    boolean hintenRechtsFrei(){
+        int reihe = this.getReihe();
+        int spalte = this.getSpalte();
+        switch (this.getBlickrichtung()) {
+            case 0:
+                spalte++;
+                reihe++;
+                break;
+            case 1:
+                reihe++;
+                spalte--;
+                break;
+            case 2:
+                spalte--;
+                reihe--;
+                break;
+            case 3:
+                reihe--;
+                spalte++;
+                break;
+        }
+        return !Territorium.mauerDa(reihe, spalte);
+    }
+
+    boolean ringsherumFrei(){
+        return vornFrei()
+            && rechtsFrei()
+            && linksFrei()
+            && hintenFrei()
+            && vornLinksFrei()
+            && vornRechtsFrei()
+            && hintenRechtsFrei()
+            && hintenLinksFrei();
+    }
+}

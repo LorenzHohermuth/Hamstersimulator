@@ -1,0 +1,4 @@
+/*object-oriented program*/void main() {
+    AbgrasHamster paul = new AbgrasHamster(Hamster.getStandardHamster());
+    paul.abgrasen();
+}
