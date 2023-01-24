@@ -55,8 +55,8 @@
     }
 
     void matixOut(){
-        for(int r = 0; r < AuskunftsHamster.ANZAHL / 2; r++) {
-            for(int s = 0; s < AuskunftsHamster.ANZAHL; s++) {
+        for(int r = 0; r < AuskunftsHamster.ANZAHL; r++) {
+            for(int s = r; s < AuskunftsHamster.ANZAHL; s++) {
                 this.laufeZuKachel(r, s);
                 if(!verbindungen[r][s]) gib();
             }
