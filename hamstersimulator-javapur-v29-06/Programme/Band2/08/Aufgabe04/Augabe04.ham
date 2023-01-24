@@ -1,0 +1,71 @@
+/*object-oriented program*/
+void main() {
+    TerHamster paul = new TerHamster(0,0,1,0);
+    paul.turn(180);
+}
+
+
+class TerHamster extends AllroundHamster{
+
+    int SIZE = Territorium.getAnzahlReihen();
+
+    boolean[][] cornMap;
+
+    TerHamster(int r, int s, int b, int k){
+        super(r, s, b, k);
+        cornMap = new boolean[SIZE][SIZE];
+    }
+
+    void scan() {
+        for(int r = 0; r < SIZE; r++) {
+            for(int s = 0; s < SIZE; s++) {
+                if(Territorium.getAnzahlKoerner(r, s) > 0) {
+                    cornMap[r][s] = true;
+                }else{
+                    cornMap[r][s] = false;
+                }
+            }
+        }
+    }
+
+    void collectAll() {
+        for(int r = 0; r < SIZE; r++) {
+          for(int s = 0; s < SIZE; s++) {
+            if(cornMap[r][s]) {
+                laufeZuKachel(r, s);
+                nimm();
+            }
+          }  
+        }
+    }
+
+    void turn90() {
+        boolean[][] nach90 = new boolean[SIZE][SIZE];
+        for(int r = 0; r < SIZE; r++){
+            for(int s = 0; s < SIZE; s++){
+                nach90[s][(r - (SIZE-1)) * -1] = cornMap[r][s];
+            }
+        }
+        cornMap = nach90;
+    }
+
+    void turn(int angle){
+        scan();
+        collectAll();
+        for(int i = 0; i < angle / 90; i++) {
+            turn90();
+        }
+        setCorn();
+    }
+
+    void setCorn(){
+        for(int r = 0; r < SIZE; r++){
+            for(int s = 0; s < SIZE; s++){
+                if(cornMap[r][s]) {
+                    laufeZuKachel(r, s);
+                    gib();
+                }
+            }
+        }
+    }
+}
