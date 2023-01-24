@@ -1,0 +1,4 @@
+/*object-oriented program*/void main() {
+    SwitchHamster paul = new SwitchHamster();
+    paul.swap();
+}
