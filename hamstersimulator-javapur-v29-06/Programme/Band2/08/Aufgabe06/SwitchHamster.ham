@@ -1,0 +1,36 @@
+/*class*/class SwitchHamster extends AllroundHamster{
+    
+    final static int SIZE_R = Territorium.getAnzahlReihen();
+    final static int SIZE_S = Territorium.getAnzahlSpalten();
+
+    static boolean cornMap[][]; 
+
+    SwitchHamster(int r){
+        super(r,0,1,SIZE_R * SIZE_S);
+        cornMap = new boolean[SIZE_R][SIZE_S];
+    }
+
+    void scan(){
+        for(int r = this.getReihe(); r < SIZE_R; r++){
+            for(int s = 0; s < SIZE_S; s++){
+                if(Territorium.getAnzahlKoerner(r, s) > 0) {
+                    cornMap[r][s] = true;
+                }
+            }
+        }
+    }
+
+    void swap(){
+        scan();
+        for(int r = this.getReihe(); r < SIZE_R; r += 2){
+            for(int s = 0; s < SIZE_S; s++){
+                this.laufeZuKachel(r,s);
+                if(cornMap[r][s]) {
+                    nimm();
+                }else{
+                    gib();
+                }
+            }
+        }
+    }
+}
