@@ -1,0 +1,5 @@
+/*object-oriented program*/void main() {
+    Hamster hans = Hamster.getStandardHamster();
+    GameMaster paul = new GameMaster(0,0,1,10000);
+    paul.exe(hans.getAnzahlKoerner());
+}

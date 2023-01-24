@@ -1,0 +1,59 @@
+/*class*/class GameMaster extends AllroundHamster{
+
+    final static int SIZE = Territorium.getAnzahlReihen();
+
+    static int[][] cornAroundMap;
+
+    GameMaster(int r, int s, int b, int k){
+        super(r, s, b, k);
+        cornAroundMap = new int[SIZE][SIZE];
+    }
+
+    void scan(){
+        for(int r = 0; r < SIZE; r++){
+            for(int s = 0; s < SIZE; s++){
+                int corn = howMuchCorn(r,s);
+                cornAroundMap[r][s] = corn;
+            }
+        }
+    }
+    
+    void refresh(){
+        for(int r = 0; r < SIZE; r++){
+            for(int s = 0; s < SIZE; s++){
+                int corn = cornAroundMap[r][s];
+                if(corn == 3) {
+                    laufeZuKachel(r,s);
+                    if(!kornDa())gib();
+                }else if(corn == 2) {
+                    
+                }else{
+                    laufeZuKachel(r,s);
+                    if(kornDa())nimm();
+                }
+            }
+        }
+    }
+
+
+    int howMuchCorn(int reihe, int spalte){
+        int anzahl = 0;
+        int r = reihe - 1;
+        for(int i = 0; i < 3; i++) {
+            int s = spalte - 1;
+            for(int j = 0; j < 3; j++) {
+                anzahl += Territorium.getAnzahlKoerner(r, s); 
+                s++;
+            }
+            r++;
+        }
+        return anzahl - Territorium.getAnzahlKoerner(reihe, spalte);
+    }
+
+    void exe(int num) {
+        for(int i = 0; i < num; i++) {
+            scan();
+            refresh();
+        }
+    }
+}
