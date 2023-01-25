@@ -1,0 +1,4 @@
+/*object-oriented program*/void main() {
+    NewDamen paul = new NewDamen(0,0,1,10000);
+    paul.exe();
+}

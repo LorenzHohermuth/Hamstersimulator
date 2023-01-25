@@ -1,0 +1,141 @@
+/*class*/
+import java.util.ArrayList;
+class NewDamen extends AllroundHamster{
+
+    final static int SIZE = Territorium.getAnzahlReihen();
+
+    static boolean[][] damenPlace;
+
+    NewDamen(int r, int s, int b, int k){
+        super(r, s, b, k);
+        damenPlace = new boolean[SIZE][SIZE];
+    }
+
+    void exe(){
+        setup();
+        while(somethingBlocked()) {
+            newPosition(SIZE);
+        }
+        printMat(damenPlace);
+        setmap();
+    }
+
+    void setup(){
+        for(int i = 0; i < SIZE; i++) {
+            damenPlace[i][0] = true;
+        }
+    }
+
+    boolean somethingBlocked() {
+        for(int r = 0; r < SIZE; r++){
+            for(int s = 0; s < SIZE; s++){
+                if(damenPlace[r][s]) {
+                    if(blocked(r, s)) return true;
+                    s = SIZE;
+                }
+            }
+        }
+        return false;
+    }
+
+    boolean blocked(int r, int s){
+        damenPlace[r][s] = false;
+        boolean x = vertikalBlocked(s) || diagonalBlocked(r, s);
+        damenPlace[r][s] = true;
+        return x;
+    }
+
+    boolean vertikalBlocked(int s){
+        for(int i = 0; i < SIZE; i++) {
+            if(damenPlace[i][s]) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    boolean diagonalBlocked(int reihe, int spalte){
+        int r = reihe;
+        int s = spalte;
+        while(r < SIZE && s < SIZE) {
+            if(damenPlace[r][s]) {
+                return true;
+            }
+            r++;
+            s++;
+        }
+
+        r = reihe;
+        s = spalte;
+        while(r >= 0 && s >= 0) {
+            if(damenPlace[r][s]) {
+                return true;
+            }
+            r--;
+            s--;
+        }
+
+        r = reihe;
+        s = spalte;
+        while(r >= 0 && s < SIZE) {
+            if(damenPlace[r][s]) {
+                return true;
+            }
+            r--;
+            s++;
+        }
+
+        r = reihe;
+        s = spalte;
+        while(r < SIZE && s >= 0) {
+            if(damenPlace[r][s]) {
+                return true;
+            }
+            r++;
+            s--;
+        }
+
+        return false;
+    }
+
+    void newPosition(int num) {
+        int r = num - 1;
+        for(int s = 0; s < SIZE; s++){
+            if(damenPlace[r][s]) {
+                damenPlace[r][s] = false;
+                if(s == SIZE - 1) {
+                    damenPlace[r][0] = true;
+                    newPosition(num - 1);
+                    return;
+                }
+                damenPlace[r][s + 1] = true;
+                return;
+            }
+        }
+    }
+
+    void printMat(boolean[][] Mat){
+        String Output = "";
+        for(int r = 0; r < SIZE; r++){
+            for(int s = 0; s < SIZE; s++){
+                if(Mat[r][s]) {
+                    Output += "x";
+                }else
+                Output += "o";
+            }
+            Output += '\n';
+        }
+        schreib(Output);
+    }
+
+    void setmap(){
+        for(int r = 0; r < SIZE; r++){
+            for(int s = 0; s < SIZE; s++){
+                if(damenPlace[r][s]) {
+                    laufeZuKachel(r,s);
+                    gib();
+                }
+            }
+        }
+    }
+}
