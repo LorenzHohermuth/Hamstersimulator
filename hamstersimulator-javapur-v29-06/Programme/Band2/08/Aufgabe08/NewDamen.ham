@@ -129,11 +129,13 @@ class NewDamen extends AllroundHamster{
     }
 
     void setmap(){
+        int i = 0;
+        AllroundHamster[] map = new AllroundHamster[SIZE];
         for(int r = 0; r < SIZE; r++){
             for(int s = 0; s < SIZE; s++){
                 if(damenPlace[r][s]) {
-                    laufeZuKachel(r,s);
-                    gib();
+                    map[i] = new AllroundHamster(r,s,1,0);
+                    i++;
                 }
             }
         }
