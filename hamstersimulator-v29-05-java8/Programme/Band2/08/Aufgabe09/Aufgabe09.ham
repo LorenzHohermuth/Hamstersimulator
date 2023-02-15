@@ -1,0 +1,5 @@
+/*object-oriented program*/void main() {
+    GameHamster hans = new GameHamster(Hamster.getStandardHamster());
+    hans.spawn();
+    hans.exe();
+}

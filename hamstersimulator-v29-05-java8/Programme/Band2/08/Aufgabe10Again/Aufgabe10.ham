@@ -1,0 +1,4 @@
+/*object-oriented program*/void main() {
+    MatSortHam hans = new MatSortHam(0,0,1,0);
+    hans.exe();
+} 

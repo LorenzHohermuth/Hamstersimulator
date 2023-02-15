@@ -89,7 +89,7 @@ class GameHamster extends Hamster{
         return frei != 0;
     }
 
-     int erzeugeZufallsZahl(int max) {
+    int erzeugeZufallsZahl(int max) {
         return (int) (Math.random() * (max + 1));
     }
 
