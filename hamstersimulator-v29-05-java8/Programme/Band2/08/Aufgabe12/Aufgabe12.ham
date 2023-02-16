@@ -1,0 +1,8 @@
+/*object-oriented program*/void main() {
+    ZufallsHamster hans = new ZufallsHamster();
+    ZufallsHamster heidi = new ZufallsHamster();
+    while (Hamster.getAnzahlHamster() <= 20) {
+        hans.lauf();
+        heidi.lauf();
+    }
+} 

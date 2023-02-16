@@ -1,0 +1,82 @@
+/*object-oriented program*/void main() {
+    SortMatrix hans = new SortMatrix(0,0,1,0);
+    hans.exe();
+} 
+
+class SortMatrix extends AllroundHamster{
+    
+    SortMatrix(int r, int s, int b, int k){
+        super(r,s,b,k);
+        
+    }
+
+    void exe(){
+        int[][] mat = scan();
+        mat = matrixSortieren(mat);
+        give(mat);
+    }
+
+    int[][] scan(){
+        int[][] field = new int[Territorium.getAnzahlReihen()][Territorium.getAnzahlSpalten()];
+        for(int r = 0; r < Territorium.getAnzahlReihen(); r++) {
+            for(int s = 0; s < Territorium.getAnzahlSpalten(); s++) {
+                field[r][s] = Territorium.getAnzahlKoerner(r,s);
+            }
+        }
+        printMarix(field);
+        return field;
+    }
+    
+    int[][] matrixSortieren(int[][] matrix){
+        int before = matrix[0][0];
+        int rBefore = 0;
+        int sBefore = 0;
+        for(int r = 0; r < matrix.length; r++) {
+            for(int s = 1; s < matrix[0].length; s++) {
+            	int now = matrix[r][s];
+                if(before > now) {
+                    matrix[rBefore][sBefore] = now;
+                    matrix[r][s] = before;
+                    before = matrix[0][0];
+                    rBefore = 0;
+                    sBefore = 0;
+                    r = 0;
+                    s = 0;
+                }else{
+                    rBefore = r;
+                    sBefore = s;
+                    before = matrix[r][s];
+                }
+            }
+        }
+        return matrix;
+    }
+
+
+    void give(int[][] mat){
+        for(int r = 0; r < Territorium.getAnzahlReihen(); r++) {
+            for(int s = 0; s < Territorium.getAnzahlSpalten(); s++) {
+                laufeZuKachel(r,s);
+                nimmAlle();
+            }
+        }
+        for(int r = 0; r < Territorium.getAnzahlReihen(); r++) {
+            for(int s = 0; s < Territorium.getAnzahlSpalten(); s++) {
+                laufeZuKachel(r,s);
+                gib(mat[r][s]);
+            }
+        }
+    }
+
+    void printMarix(int[][] Mat){
+        String Output = "";
+        for(int r = 0; r < Territorium.getAnzahlReihen(); r++) {
+            for(int s = 0; s < Territorium.getAnzahlSpalten(); s++) {
+                int i = Mat[r][s];
+                Output += Integer.toString(i) + ',';
+            }
+            Output += '\n';
+        }
+        schreib(Output);
+    }
+}

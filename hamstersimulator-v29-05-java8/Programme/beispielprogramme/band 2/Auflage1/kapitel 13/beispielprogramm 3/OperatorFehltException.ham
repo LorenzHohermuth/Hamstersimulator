@@ -1,2 +1,0 @@
-/*class*/// Fehlertyp: es wurde kein oder ein ungueltiger Operator angegeben
-class OperatorFehltException extends Exception {}

@@ -1,0 +1,78 @@
+/*class*/
+class TurmHamster extends AllroundHamster{
+    
+    final static int TER_REIHEN = Territorium.getAnzahlReihen();
+    final static int TER_SPALTEN = Territorium.getAnzahlSpalten();
+    AllroundHamster[] soldiers;
+
+    TurmHamster(Hamster Ham){
+        super(Ham.getReihe(), Ham.getSpalte(), Ham.getBlickrichtung(), Ham.getAnzahlKoerner());
+        soldiers = new AllroundHamster[TER_SPALTEN];
+        for(int i = 0; i < soldiers.length; i++) {
+            soldiers[i] = new AllroundHamster(TER_REIHEN -1, i, 0, 0);
+        }
+        collect();
+        int[] sorted = getArr();
+        sorted = sort(sorted);
+        give();
+    }
+
+    void collect(){
+        for(AllroundHamster Hamster : soldiers){
+            while(Hamster.vornFrei()) {
+                if(Hamster.kornDa()) {
+                    Hamster.nimm();
+                }
+                Hamster.vor();
+            }
+            if(Hamster.kornDa()) {
+                Hamster.nimm();
+            }
+            Hamster.kehr();
+            while(Hamster.vornFrei()) {
+                Hamster.vor();
+            }
+            Hamster.kehr();
+        }
+    }
+
+    int[] getArr(){
+        int[] anzahlKoerner = new int[TER_SPALTEN];
+        for(int i = 0; i < TER_SPALTEN; i++) {
+            anzahlKoerner[i] = soldiers[i].getAnzahlKoerner();
+        }
+        return anzahlKoerner;
+    }
+    
+    int[] sort(int[] arr){
+        int before = 0;
+        int beforeIndex = 0;
+        for(int i = 0; i < arr.length; i++) {
+            int now = arr[i];
+            if(before > now) {
+                AllroundHamster beforeHam = soldiers[beforeIndex];
+                AllroundHamster nowHam = soldiers[i];
+                soldiers[i] = beforeHam;
+                soldiers[beforeIndex] = nowHam; 
+                arr[i] = before;
+                arr[beforeIndex] = now;
+                before = 0;
+                beforeIndex = 0;
+                i = 0;
+            }else{
+                before = arr[i];
+                beforeIndex = i;
+            }
+        }
+        return arr;
+    }
+
+    void give(){
+        for(AllroundHamster Ham : soldiers){
+            while(!Ham.maulLeer()) {
+                Ham.gib();
+                if(Ham.vornFrei())Ham.vor();
+            }
+        }
+    }
+}

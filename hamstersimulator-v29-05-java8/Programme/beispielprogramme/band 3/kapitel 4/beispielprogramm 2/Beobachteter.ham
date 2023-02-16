@@ -1,3 +1,0 @@
-/*class*/interface Beobachteter {
-    public abstract void hinzufuegen(Beobachter obj);
-}

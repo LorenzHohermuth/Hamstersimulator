@@ -1,3 +1,0 @@
-/*class*/interface Beobachter {
-    public abstract void benachrichtigen(Beobachteter obj);
-}

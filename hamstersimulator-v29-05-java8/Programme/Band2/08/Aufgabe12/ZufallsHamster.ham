@@ -1,0 +1,60 @@
+/*class*/class ZufallsHamster extends AllroundHamster {
+
+    final static int N = 3;
+    int anzahlNachwuchs = 0;
+
+    ZufallsHamster[] nachwuchs = new ZufallsHamster[N];
+
+    // Konstruktor
+    ZufallsHamster(){
+        super(ZufallsHamster.erzeugeZufallsZahl(Territorium.getAnzahlReihen() - 1), ZufallsHamster.erzeugeZufallsZahl(Territorium.getAnzahlSpalten() - 1), ZufallsHamster.erzeugeZufallsZahl(3), 0);
+    }
+
+    void lauf() {
+        // der Hamster laeuft zufaellig irgendwohin
+        int zahl = ZufallsHamster.erzeugeZufallsZahl(3);
+        if (zahl == 0) {
+            if (this.vornFrei())
+                this.vor();
+        } else if (zahl == 1) {
+            this.linksUm();
+            if (this.vornFrei())
+                this.vor();
+        } else if (zahl == 2) {
+            this.kehr();
+            if (this.vornFrei())
+                this.vor();
+        } else {
+            this.rechtsUm();
+            if (this.vornFrei())
+                this.vor();
+        }
+
+        
+        // falls sich auf der neuen Kachel schon Hamster
+        // befinden, und der Hamster noch keinen Nachwuchs hat,
+        // "paart" er sich und erzeugt Nachwuchs
+        if (Territorium.getAnzahlHamster(this.getReihe(), this.getSpalte()) > 1 && anzahlNachwuchs < N) {
+            
+            nachwuchs[anzahlNachwuchs] = new ZufallsHamster();
+            nachwuchs[anzahlNachwuchs].lauf();
+            anzahlNachwuchs++;
+            
+            // Aufruf des obigen Konstruktors und damit
+            // "Zufallsinitialisierung"
+        }
+        
+        if (anzahlNachwuchs != 0) {
+           for(ZufallsHamster Ham : nachwuchs) {
+                if(Ham != null) {
+                    Ham.lauf();
+                }
+           }
+        }
+    }
+
+    // erzeugt Zufallszahl zwischen 0 und max
+    static int erzeugeZufallsZahl(int max) {
+        return (int) (Math.random() * (max + 1));
+    }
+}

@@ -1,8 +1,0 @@
-/*object-oriented program*/void main() {
-    Hamster paul = new SammelHamster(Hamster
-            .getStandardHamster());
-    Hamster karl = new SammelHamster(Hamster
-            .getStandardHamster());
-    paul.start();
-    karl.start();
-}
