@@ -1,0 +1,17 @@
+/*object-oriented program*/void main() {
+    Drillinge beide = new Drillinge(0, 0, Hamster.OST, 0);
+
+    // umdrehen, zuruecklaufen und dabei Koerner ablegen
+    for(int r = 0; r < Territorium.getAnzahlReihen(); r++){
+        for(int s = 0; s < Territorium.getAnzahlSpalten(); s++){
+           beide.laufeZuKachel(r, s);
+           beide.nimmAlle();
+        }
+    }
+    for(int r = 0; r < Territorium.getAnzahlReihen(); r++){
+        for(int s = 0; s < Territorium.getAnzahlSpalten(); s++){
+           beide.laufeZuKachel(r, s);
+           beide.gib();
+        }
+    }
+}

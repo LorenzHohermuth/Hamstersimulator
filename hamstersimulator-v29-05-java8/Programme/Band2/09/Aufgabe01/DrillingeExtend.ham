@@ -1,0 +1,74 @@
+/*class*/class DrillingeExtend extends Zwillinge {
+
+    AllroundHamster mittlerer;
+
+    Zwillinge zwillinge;
+    
+    boolean mittlererHatGenommen;
+
+    DrillingeExtend(int r, int s, int b, int k) {
+        super(r, s, b, k);
+        mittlerer = new AllroundHamster(r, s, b, k);
+        aeltererHatGenommen = false;
+    }
+
+    boolean vornFrei() {
+        return zwillinge.vornFrei();
+    }
+
+    boolean kornDa() {
+        return zwillinge.kornDa();
+    }
+
+    boolean maulLeer() {
+        return zwillinge.maulLeer();
+    }
+
+    void vor() {
+        zwillinge.vor();
+        mittlerer.vor();
+    }
+
+    void linksUm() {
+        zwillinge.linksUm();
+        mittlerer.linksUm();
+    }
+
+    void nimm() {
+        if (!aelterer.kornDa())
+            return;
+        if (!aeltererHatGenommen) {
+            aelterer.nimm();
+            aeltererHatGenommen = true;
+        } else if(!mittlererHatGenommen){
+            mittlerer.nimm();
+            mittlererHatGenommen = true;
+        }else{
+            juengerer.nimm();
+             aeltererHatGenommen = false;
+            mittlererHatGenommen = false;
+        }
+    }
+
+    void gib() {
+        if (!juengerer.maulLeer()) {
+            juengerer.gib();
+        }else if (!mittlerer.maulLeer()){
+            mittlerer.gib();
+        } else if (!aelterer.maulLeer()) {
+            aelterer.gib();
+        }
+    }
+
+    void laufeZuKachel(int r, int s){
+        aelterer.laufeZuKachel(r, s);
+        mittlerer.laufeZuKachel(r, s);
+        juengerer.laufeZuKachel(r, s);
+    }
+
+    void nimmAlle(){
+        aelterer.nimmAlle();
+        mittlerer.nimmAlle();
+        juengerer.nimmAlle();
+    }
+}
