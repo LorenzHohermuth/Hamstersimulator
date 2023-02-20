@@ -1,0 +1,12 @@
+/*object-oriented program*/void main() {
+    AllroundHamster julia = new AllroundHamster(Hamster.getStandardHamster());
+    Speicher kacheln = new Speicher();
+    while(julia.vornFrei()) {
+        kacheln.hinzufuegen(julia.nimmAlle());
+        julia.vor();
+    }
+    kacheln.hinzufuegen(julia.nimmAlle());
+    kacheln.sort();
+    julia.schreib(kacheln.print());
+
+}

@@ -1,0 +1,6 @@
+/*object-oriented program*/void main() {
+    AllroundHamster julia = new AllroundHamster(Hamster.getStandardHamster());
+    Position pos1 = new Position(1, 1);
+    Speicher kacheln = new Speicher();
+    kacheln.hinzufuegen(pos1);
+}

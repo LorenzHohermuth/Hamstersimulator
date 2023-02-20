@@ -1,0 +1,18 @@
+/*class*/class Stapel {
+    Speicher speicher;
+
+    Stapel() {
+        speicher = new Speicher(); // Speicher
+    }
+
+    // legt pos oben auf dem Stapel ab
+    void drauflegen(Position pos) {
+        speicher.hinzufuegen(pos);
+    }
+
+    // entfernt das oberste Element des Stapels und liefert es
+    // als Wert zurueck
+    Position herunternehmen() {
+        return speicher.entfernen();
+    }
+}

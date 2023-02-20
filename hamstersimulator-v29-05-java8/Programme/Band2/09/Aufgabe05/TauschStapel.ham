@@ -1,0 +1,13 @@
+/*class*/class TauschStapel extends Stapel{
+  TauschStapel(int maxGroesse) {
+    super(maxGroesse);
+  }
+
+  void tausch(){
+    Position top = super.speicher[oberstesElement];
+    Position second = super.speicher[oberstesElement - 1];
+
+    super.speicher[oberstesElement] = second;
+    super.speicher[oberstesElement - 1] = top;
+  }
+}

@@ -1,0 +1,141 @@
+/*class*/// Hilfsklasse zum Speichern der eigentlichen Werte
+class SpeicherElement {
+    int wert; // der gespeicherte Wert
+
+    SpeicherElement naechstes; // Referenz zum naechsten Element
+
+    SpeicherElement(int wert) {
+        this.wert = wert;
+        naechstes = null;
+    }
+
+    int getWert() {
+        return wert;
+    }
+
+    void setWert(int wert){
+        this.wert = wert;
+    }
+
+    SpeicherElement getNaechstes() {
+        return naechstes;
+    }
+
+    void setNaechstes(SpeicherElement elem) {
+        naechstes = elem;
+    }
+}
+
+class Speicher {
+
+    SpeicherElement erstes; // Referenz zum ersten Element
+
+    int anzahl; // Anzahl an gespeicherten Werten
+
+    Speicher() {
+        erstes = null;
+        anzahl = 0;
+    }
+
+    // fuegt einen uebergebenen Wert hinten an den Speicher an
+    void hinzufuegen(int wert) {
+        SpeicherElement neuesElement = new SpeicherElement(wert);
+        anzahl++;
+        if (erstes == null) {
+            erstes = neuesElement;
+        } else {
+            SpeicherElement elem = erstes;
+            while (elem.getNaechstes() != null) {
+                elem = elem.getNaechstes();
+            }
+            elem.setNaechstes(neuesElement);
+        }
+    }
+
+    // entfernt den uebergebenen Wert aus dem Speicher;
+    // kommt er mehrfach im Speicher vor, werden alle
+    // Vorkommen entfernt
+    void entfernen(int wert) {
+        while (erstes != null && erstes.getWert() == wert) {
+            erstes = erstes.getNaechstes();
+            // erstes ist damit aus dem Speicher entfernt
+        }
+        if (erstes == null)
+            return;
+
+            SpeicherElement vorheriges = erstes;
+            SpeicherElement merker = vorheriges.getNaechstes();
+            while (merker != null) {
+                if (merker.getWert() == wert) {
+                    vorheriges.setNaechstes(merker.getNaechstes());
+                    // Element ist damit aus dem Speicher entfernt
+                } else {
+                    vorheriges = merker;
+                }
+                merker = merker.getNaechstes();
+        }
+    }
+
+    // ueberprueft, ob der uebergebene Wert im Speicher
+    // gespeichert ist
+    boolean istEnthalten(int wert) {
+        SpeicherElement elem = erstes;
+        while (elem != null) {
+            if (elem.getWert() == wert) {
+                return true;
+            }
+            elem = elem.getNaechstes();
+        }
+        return false;
+    }
+
+    // liefert die Anzahl an gespeicherten Werten
+    int getAnzahl() {
+        return anzahl;
+    }
+
+    // die naechsten drei Funktionen liefern im Zusammenspiel der
+    // Reihe nach die gespeicherten Werte
+
+    SpeicherElement merker = null;
+
+    void beginnDurchlauf() {
+        merker = erstes;
+    }
+
+    boolean endeErreicht() {
+        return merker == null;
+    }
+
+    int liefereNaechstenWert() {
+        int wert = merker.getWert();
+        merker = merker.getNaechstes();
+        return wert;
+    }
+
+    void sort(){
+        SpeicherElement before = erstes;
+        for(int i = 0; i < anzahl; i++) {
+            SpeicherElement now = before.getNaechstes();
+            if(before.getWert() > now.getWert()) {
+                int nowValue = now.getWert();
+                now.setWert(before.getWert());
+                before.setWert(nowValue);
+                before = erstes;
+                i = 0;
+            }else{
+                before = now;
+            }
+        }
+    }
+
+    String print() {
+        beginnDurchlauf();
+        String output = Integer.toString(merker.getWert()) + "\n";
+        while(!endeErreicht()) {
+            output += Integer.toString(liefereNaechstenWert());
+            output += "\n";
+        }
+        return output;
+    }
+}

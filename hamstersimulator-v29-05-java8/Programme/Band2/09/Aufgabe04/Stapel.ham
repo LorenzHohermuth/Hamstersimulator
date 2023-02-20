@@ -1,0 +1,41 @@
+/*class*/class Stapel {
+
+    Position[] speicher; // Speicher
+
+    int oberstesElement; // Index auf oberstes Element
+
+    Stapel(int maxGroesse) {
+        speicher = new Position[maxGroesse];
+        oberstesElement = -1;
+    }
+
+    // legt pos oben auf dem Stapel ab
+    void drauflegen(Position pos) {
+        if (!istVoll()) {
+            oberstesElement++;
+            speicher[oberstesElement] = pos;
+        }
+    }
+
+    // entfernt das oberste Element des Stapels und liefert es
+    // als Wert zurueck
+    Position herunternehmen() {
+        if (!istLeer()) {
+            Position ergebnis = speicher[oberstesElement];
+            oberstesElement--;
+            return ergebnis;
+        } else {
+            return null;
+        }
+    }
+
+    // ueberprueft, ob der Stapel voll ist
+    boolean istVoll() {
+        return oberstesElement == speicher.length - 1;
+    }
+
+    // ueberprueft, ob der Stapel leer ist
+    boolean istLeer() {
+        return oberstesElement == -1;
+    }
+}

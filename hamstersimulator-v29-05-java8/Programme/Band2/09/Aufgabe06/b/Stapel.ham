@@ -1,0 +1,13 @@
+/*class*/class Stapel extends Speicher {
+
+    // legt pos oben auf dem Stapel ab
+    void drauflegen(Position pos) {
+        super.hinzufuegen(pos);
+    }
+
+    // entfernt das oberste Element des Stapels und liefert es
+    // als Wert zurueck
+    Position herunternehmen() {
+        return entfernen();
+    }
+}
