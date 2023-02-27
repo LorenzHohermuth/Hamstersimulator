@@ -1,0 +1,4 @@
+/*object-oriented program*/void main() {
+    VokalHamster paul = new VokalHamster();
+    paul.koernerVokal();
+}

@@ -1,0 +1,6 @@
+/*object-oriented program*/void main() {
+    LottoHamster paul = new LottoHamster(Hamster.getStandardHamster());
+
+    paul.pick();
+    paul.fill();
+}

@@ -1,0 +1,4 @@
+/*object-oriented program*/void main() {
+    VertrauensHamster paul = new VertrauensHamster(Hamster.getStandardHamster());
+    paul.lotst();
+}

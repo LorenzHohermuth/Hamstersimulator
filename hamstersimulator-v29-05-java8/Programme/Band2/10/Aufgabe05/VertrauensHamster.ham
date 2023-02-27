@@ -1,0 +1,18 @@
+/*class*/class VertrauensHamster extends AllroundHamster{
+    VertrauensHamster(Hamster Ham){
+        super(Ham.getReihe(), Ham.getSpalte(), Ham.getBlickrichtung(), Ham.getAnzahlKoerner());
+    }
+
+    void lotst(){
+        String yn = "";
+        do{
+            yn = liesZeichenkette("Bin ich am Korn angelangt? (y/n)");
+            if(yn.equals("n")) {
+                int richtung = liesZahl("wo hin N=0, O=1, S=2, W=3");
+                setzeBlickrichtung(richtung);
+                vor();
+            }
+        }while(yn.equals("n"));
+        nimm();
+    }
+}

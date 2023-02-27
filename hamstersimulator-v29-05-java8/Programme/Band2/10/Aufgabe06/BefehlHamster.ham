@@ -1,0 +1,26 @@
+/*class*/class BefehlHamster extends AllroundHamster{
+    BefehlHamster(Hamster Ham){
+        super(Ham.getReihe(), Ham.getSpalte(), Ham.getBlickrichtung(), Ham.getAnzahlKoerner());
+    }
+
+    void befolge(){
+        while(true) {
+            String befehl = liesZeichenkette("gib einen befehl ein");
+            if(befehl.equals("vor")) {
+                vor();
+            }
+            if(befehl.equals("linksUm")) {
+                linksUm();
+            }
+            if(befehl.equals("nimm")) {
+                nimm();
+            }
+            if(befehl.equals("gib")) {
+                gib();
+            }
+            if(befehl.equals("stop")) {
+                return;
+            }
+        }
+    }
+}

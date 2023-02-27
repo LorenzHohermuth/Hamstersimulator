@@ -1,0 +1,57 @@
+/*class*/class TurmHamster extends AllroundHamster() {
+
+    final static int N = 3;
+
+    TurmHamster(){
+        super(0,0,1,0);
+    }
+
+    while(!spielFertig()) {
+        int von = liesZahl("von fels (1/2/3)");
+        laufeZuKachel(0, von--);
+        sammleKorn();
+        int nach = liesZahl("nach fels (1/2/3)");
+    }
+
+    boolean spielFertig(){
+        int understenStein = Territorium.getAnzahlKoerner(Territorium.getAnzahlReihen - 1, 2);
+        for(int i = 0; i < N; i++) {
+            if(Territorium.getAnzahlKoerner(Territorium.getAnzahlReihen - 1 - i, 2) != N - i) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    void sammleKorn(){
+        setzeBlickrichtung(2);
+        while(!kornDa() && vornFrei()) {
+            vor();
+        }
+        if(!vornFrei()) {
+            schreib("es liegt kein korn au dieser spalte");
+            return;
+        }
+        nimmAlle();
+    }
+
+    boolean gibKorn(){
+        setzeBlickrichtung(2);
+        while(!kornDa() && vornFrei()) {
+            vor();
+        }
+        if(kornDa()){
+            int x = nimmAlle();
+            if(x > getAnzahlKoerner()) {
+                kehr();
+                laufeZurWand();
+                return false;
+            }
+            gib(x);
+            kehr();
+            vor();
+        }
+        gibAlle();
+        return true;
+    }
+}

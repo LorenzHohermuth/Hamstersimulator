@@ -1,0 +1,21 @@
+/*class*/class NumHamster extends AllroundHamster{
+    NumHamster(Hamster Ham){
+        super(Ham.getReihe(), Ham.getSpalte(), Ham.getBlickrichtung(), Ham.getAnzahlKoerner());
+    }
+
+    void linksNummber(){
+        int linksUm = 0;
+        String satz = liesZeichenkette("gib einen satz ein");
+        String[] chars = satz.split("");
+        String[] numbers = {"0","1","2","3","4","5","6","7","8","9"};
+        for(int i = 0; i < chars.length; i++) {
+            for(int j = 0; j < numbers.length; j++) {
+                if(chars[i].equals(numbers[j])) {
+                    linksUm += Integer.parseInt(chars[i]);
+                }
+            }
+        }
+        schreib("" + linksUm);
+        linksUm(linksUm);
+    }
+}

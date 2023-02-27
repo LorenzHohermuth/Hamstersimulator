@@ -1,0 +1,4 @@
+/*object-oriented program*/void main() {
+    NumHamster paul = new NumHamster(Hamster.getStandardHamster());
+    paul.linksNummber();
+}

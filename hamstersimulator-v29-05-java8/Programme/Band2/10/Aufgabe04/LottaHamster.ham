@@ -1,0 +1,32 @@
+/*class*/class LottoHamster extends AllroundHamster{
+
+    int[] lottoZahlen;
+    int[] arrInt;
+
+    LottoHamster(Hamster Ham){
+        super(Ham.getReihe(), Ham.getSpalte(), Ham.getBlickrichtung(), Ham.getAnzahlKoerner());
+    }
+
+    void pick(){
+        String input = liesZeichenkette("gebe 6 zahlen ein die durch \",\" geteilt sind");
+        schreib(input);
+        input = input.replace(" ", "");
+        String[] arr = input.split(",");
+        arrInt = new int[arr.length];
+        for(int i = 0; i < arr.length; i++) {
+            arrInt[i] = Integer.parseInt(arr[i]);
+        }
+    }
+
+    void fill(){
+        for(int num : arrInt) {
+            int numR = num / 7;
+            int numS = (num - 1) % 7;
+            if(num % 7 == 0)numR--;
+            laufeZuKachel(numR, numS);
+            gib();
+        }
+    }
+}
+
+//15,42,35,12,49,29

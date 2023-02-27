@@ -1,0 +1,196 @@
+/*class*/class NumHamster extends AllroundHamster{
+    NumHamster(){
+        super(1, 1, 1, 100);
+    }
+
+    void koernerNum(){
+        String satz = liesZeichenkette("gib einene zahl ein");
+        String[] chars = satz.split("");
+        for(int i = 0; i < chars.length; i++) {
+            if(chars[i].equals("1")) {
+                one();
+            }else if(chars[i].equals("2")) {
+                two();
+            }else if(chars[i].equals("3")) {
+                three();
+            }else if(chars[i].equals("4")) {
+                four();
+            }else if(chars[i].equals("5")) {
+                five();
+            }else if(chars[i].equals("6")) {
+                six();
+            }else if(chars[i].equals("7")) {
+                seven();
+            }else if(chars[i].equals("8")) {
+                eight();
+            }else if(chars[i].equals("9")) {
+                nine();
+            }else if(chars[i].equals("-")) {
+                minus();
+            }
+
+            if(vornFrei()) vor();
+            if(vornFrei()) vor();
+        }
+    }
+
+    void one(){
+        vorUndgib(2);
+        rechtsUm();
+        vorUndgib(4);
+        kehr();
+        vor(4);
+        rechtsUm();
+    }
+
+    void two(){
+        gib();
+        vorUndgib(2);
+        rechtsUm();
+        vorUndgib(2);
+        rechtsUm();
+        vorUndgib(2);
+        linksUm();
+        vorUndgib(2);
+        linksUm();
+        vorUndgib(2);
+        linksUm();
+        vor(4);
+        rechtsUm();
+    }
+
+    void three(){
+        gib();
+        vorUndgib(2);
+        rechtsUm();
+        vorUndgib(2);
+        rechtsUm();
+        vorUndgib(2);
+        kehr();
+        vor(2);
+        rechtsUm();
+        vorUndgib(2);
+        rechtsUm();
+        vorUndgib(2);
+        rechtsUm();
+        vor(4);
+        rechtsUm();
+        vor(2);
+    }
+
+
+
+    void four(){
+        rechtsUm();
+        gib();
+        vorUndgib(2);
+        linksUm();
+        vorUndgib(2);
+        rechtsUm();
+        vorUndgib(2);
+        kehr();
+        vor(2);
+        vorUndgib(2);
+        rechtsUm();
+    }
+
+    void five(){
+        vor(2);
+        gib();
+        kehr();
+        vorUndgib(2);
+        linksUm();
+        vorUndgib(2);
+        linksUm();
+        vorUndgib(2);
+        rechtsUm();
+        vorUndgib(2);
+        rechtsUm();
+        vorUndgib(2);
+        kehr();
+        vor(2);
+        linksUm();
+        vor(4);
+        rechtsUm();
+    }
+
+    void six(){
+        rechtsUm();
+        vor(2);
+        linksUm();
+        vorUndgib(2);
+        rechtsUm();
+        vorUndgib(2);
+        rechtsUm();
+        vorUndgib(2);
+        rechtsUm();
+        vorUndgib(4);
+        rechtsUm();
+        vorUndgib(2);
+    }
+
+    void seven(){
+        gib();
+        vorUndgib(2);
+        rechtsUm();
+        vorUndgib(4);
+        kehr();
+        vor(4);
+        rechtsUm();
+    }
+
+    void eight(){
+        vor(2);
+        rechtsUm();
+        vorUndgib(4);
+        rechtsUm();
+        vorUndgib(2);
+        rechtsUm();
+        vorUndgib(2);
+        rechtsUm();
+        vorUndgib(1);
+        kehr();
+        vor();
+        rechtsUm();
+        vorUndgib(2);
+        rechtsUm();
+        vorUndgib(2);
+    }
+
+    void nine(){
+        vor(2);
+        rechtsUm();
+        vorUndgib(4);
+        rechtsUm();
+        vorUndgib(2);
+        kehr();
+        vor(2);
+        linksUm();
+        vor(2);
+        linksUm();
+        vorUndgib(2);
+        rechtsUm();
+        vorUndgib(2);
+        rechtsUm();
+        vorUndgib(2);
+    }
+
+
+    void minus(){
+        rechtsUm();
+        vor(2);
+        linksUm();
+        gib();
+        vorUndgib(2);
+        linksUm();
+        vor(2);
+        rechtsUm();
+    }
+
+    void vorUndgib(int widerholungen){
+        for(int i = 0; i < widerholungen; i++) {
+            vor();
+            gib();
+        }
+    }
+}

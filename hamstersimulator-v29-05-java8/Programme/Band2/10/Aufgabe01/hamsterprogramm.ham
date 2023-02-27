@@ -1,0 +1,19 @@
+/*object-oriented program*/void main() {
+    AllroundHamster paul = new AllroundHamster(0, 0,
+            Hamster.OST, Hamster.getStandardHamster().getAnzahlKoerner());
+    int reihe = 0;
+    int spalte = 0;
+    do {
+        reihe = paul.liesZahl("Bitte teile mir die r-Koordinate einer "
+                        + "Kachel mit, auf der ein Korn liegt,\n oder "
+                        + "gib -1 ein, wenn es keine Koerner mehr im "
+                        + "Territorium gibt!");
+        if (paul.maulLeer()) {
+            break;
+        } else {
+            spalte = paul.liesZahl("Bitte teile mir nun die s-Koordinate der " + "Kachel mit!");
+            paul.laufeZuKachel(reihe, spalte);
+            paul.gib();
+        }
+    } while (!paul.maulLeer());
+}

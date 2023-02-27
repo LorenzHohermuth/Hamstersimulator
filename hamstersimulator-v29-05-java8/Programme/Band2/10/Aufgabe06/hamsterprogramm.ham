@@ -1,0 +1,4 @@
+/*object-oriented program*/void main() {
+    BefehlHamster paul = new BefehlHamster(Hamster.getStandardHamster());
+    paul.befolge();
+}

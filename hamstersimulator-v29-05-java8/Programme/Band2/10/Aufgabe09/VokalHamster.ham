@@ -1,0 +1,112 @@
+/*class*/class VokalHamster extends AllroundHamster{
+    VokalHamster(){
+        super(0, 0, 1, 100);
+    }
+
+    void koernerVokal(){
+        String satz = liesZeichenkette("gib einene satz ein");
+        String[] chars = satz.split("");
+        for(int i = 0; i < chars.length; i++) {
+            if(chars[i].equals("a")) {
+                a();
+                if(vornFrei()) vor();
+                if(vornFrei()) vor();
+            }else if(chars[i].equals("e")) {
+                e();
+                if(vornFrei()) vor();
+                if(vornFrei()) vor();
+            }else if(chars[i].equals("i")) {
+                i();
+                if(vornFrei()) vor();
+                if(vornFrei()) vor();
+            }else if(chars[i].equals("o")) {
+                o();
+                if(vornFrei()) vor();
+                if(vornFrei()) vor();
+            }else if(chars[i].equals("u")) {
+                u();
+                if(vornFrei()) vor();
+                if(vornFrei()) vor();
+            }
+        }
+    }
+
+    void a(){
+        vor(2);
+        rechtsUm();
+        vorUndgib(4);
+        kehr();
+        vor(2);
+        linksUm();
+        vorUndgib(1);
+        vor();
+        linksUm();
+        vor(2);
+        kehr();
+        gib();
+        vorUndgib(4);
+        rechtsUm();
+        vorUndgib(2);
+    }
+
+    void e(){
+        rechtsUm();
+        vor(2);
+        linksUm();
+        vorUndgib(2);
+        kehr();
+        vor(2);
+        linksUm();
+        vor(2);
+        linksUm();
+        vorUndgib(2);
+        kehr();
+        vor(2);
+        rechtsUm();
+        gib();
+        vorUndgib(4);
+        rechtsUm();
+        vorUndgib(2);
+    }
+
+    void i(){
+        vor();
+        rechtsUm();
+        gib();
+        vorUndgib(4);
+        kehr();
+        vor(4);
+        rechtsUm();
+        vor();
+    }
+
+    void o(){
+        vor(2);
+        rechtsUm();
+        vorUndgib(4);
+        rechtsUm();
+        vorUndgib(2);
+        rechtsUm();
+        vorUndgib(4);
+        rechtsUm();
+        vorUndgib(2);
+    }
+
+    void u(){
+        gib();
+        rechtsUm();
+        vorUndgib(4);
+        linksUm();
+        vorUndgib(2);
+        linksUm();
+        vorUndgib(4);
+        rechtsUm();
+    }
+
+    void vorUndgib(int widerholungen){
+        for(int i = 0; i < widerholungen; i++) {
+            vor();
+            gib();
+        }
+    }
+}
