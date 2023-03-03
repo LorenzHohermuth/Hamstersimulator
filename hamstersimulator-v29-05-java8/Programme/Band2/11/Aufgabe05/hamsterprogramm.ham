@@ -1,0 +1,23 @@
+/*object-oriented program*/void main() {
+    Hamster paul = Hamster.getStandardHamster();
+    Stapel stapel1 = new Stapel(5);
+    Stapel stapel2 = new Stapel(5);
+    stapel1.drauflegen(1);
+    stapel2.drauflegen(1);
+    stapel1.drauflegen(2);
+    stapel2.drauflegen(2);
+    stapel1.drauflegen(3);
+    stapel2.drauflegen(3);
+    stapel1.drauflegen(4);
+    stapel2.drauflegen(5);
+    stapel1.drauflegen(6);
+    stapel2.drauflegen(7);
+
+    paul.schreib(Integer.toString(stapel1.hashCode()));
+    Stapel stapel3 = (Stapel)stapel1.clone();
+    if(stapel1.equals(stapel1 == stapel3)) {
+        paul.schreib("true");
+    }else paul.schreib("false");
+
+    paul.schreib(stapel2.toString());
+}

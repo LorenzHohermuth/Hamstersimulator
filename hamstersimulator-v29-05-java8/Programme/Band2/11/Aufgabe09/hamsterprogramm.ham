@@ -1,0 +1,9 @@
+/*object-oriented program*/void main () {
+    MutterHamster maria = new MutterHamster(0 , 0 , Hamster.OST , 0);
+    KindHamster[] kinder = new KindHamster[4];
+    kinder[0] = new KukucksHamster(0,0,1,0);
+    kinder[1] = new KindHamster(0 , 0 , Hamster.OST , 0);
+    kinder[2] = new KindHamster(0 , 0 , Hamster.OST , 0);
+    kinder[3] = new KindHamster(0 , 0 , Hamster.OST , 0);
+    maria.kinderFuetterung( kinder );
+}

@@ -1,0 +1,12 @@
+/*class*/class HamsterSpawner extends AllroundHamster{
+    HamsterSpawner(int i){
+        super(0,0,1,0);
+        Hamster[] hamList = new Hamster[i];
+        for(Hamster ham : hamList){
+            ham = new Hamster(randInt(Territorium.getAnzahlReihen()), randInt(Territorium.getAnzahlSpalten()), 1, 0);
+        }
+    }
+    int randInt(int max) {
+        return (int)(Math.random() * (max));
+      }
+}

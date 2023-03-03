@@ -1,0 +1,16 @@
+/*object-oriented program*/void main () {
+    MenschHamster paul = new MenschHamster();
+    StrategieHamster fritz = new StrategieHamster();
+
+    Spiele37 spieler = paul;
+    int before = 0;
+    while(!spieler.ueberschreitet()) {
+        spieler.laufe();
+        if(spieler == paul) {
+            spieler = fritz;
+        }else{
+            spieler = paul;
+        }
+    }
+    spieler.vor();
+}

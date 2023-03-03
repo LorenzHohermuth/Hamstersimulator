@@ -1,0 +1,10 @@
+/*class*/class UngehorsamerKindHamster extends KindHamster{
+    UngehorsamerKindHamster(int r, int s, int b, int k){
+        super(r,s,b,k);
+    }
+
+    void einKornSuchenUndFressen(){
+        super.einKornSuchenUndFressen();
+        super.einKornSuchenUndFressen();
+    }
+}

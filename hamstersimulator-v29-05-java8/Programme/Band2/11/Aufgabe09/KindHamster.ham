@@ -1,0 +1,5 @@
+/*class*/class KindHamster extends AllroundHamster{
+    KindHamster(int r, int s, int b, int k){
+        super(r,s,b,k);
+    }
+}

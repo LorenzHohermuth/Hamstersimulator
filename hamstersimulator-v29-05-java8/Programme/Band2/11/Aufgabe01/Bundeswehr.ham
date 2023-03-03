@@ -1,0 +1,12 @@
+/*class*/class Bundeswehr {
+    static SoldatenHamster[] erzeugeSoldaten(int anzahl) {
+        SoldatenHamster[] soldaten = new SoldatenHamster[anzahl];
+        for (int i = 0; i < anzahl; i++) {
+            soldaten[i] = new VerweigererHamster(0, i,
+                    Hamster.SUED, 0);
+        }
+        // ein Verweigerer schleicht sich unter die Soldaten
+        // (Polymorphie)
+        return soldaten;
+    }
+}

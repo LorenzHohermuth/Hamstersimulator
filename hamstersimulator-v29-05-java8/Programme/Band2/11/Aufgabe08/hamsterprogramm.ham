@@ -1,0 +1,12 @@
+/*object-oriented program*/void main() {
+    ElternHamster karl = new ElternHamster(0, 0, Hamster.OST, 20);
+    KindHamster[] kinder = new KindHamster[5];
+    kinder[0] = new KindHamster( 0, 0, Hamster.OST, 0);
+    kinder[1] = new KindHamster( 0, 0, Hamster.OST, 0);
+    kinder[2] = new KindHamster( 0, 0, Hamster.OST, 0);
+    kinder[3] = new KindHamster( 0, 0, Hamster.OST, 0);
+    kinder[4] = new UngehorsamerKindHamster( 0, 0, Hamster.OST, 0);
+    karl.osterKoernerVerstecken(6);
+    karl.osterKoernerSuche(kinder);
+
+}

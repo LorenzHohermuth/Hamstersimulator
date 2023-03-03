@@ -1,0 +1,15 @@
+/*object-oriented program*/void main() {
+    Hamster paul = Hamster.getStandardHamster();
+    Speicher save = new Speicher();
+    int[] nums = {1,2,3,4,5,6,7,8,9,0};
+    for(int num : nums){
+        save.hinzufuegen(num);
+    }
+    String out = "";
+    save.beginnDurchlauf();
+    while(!save.endeErreicht()) {
+        int intOut = (Integer)save.liefereNaechstenWert();
+        out += intOut + ",";
+    }
+    paul.schreib(out);
+}

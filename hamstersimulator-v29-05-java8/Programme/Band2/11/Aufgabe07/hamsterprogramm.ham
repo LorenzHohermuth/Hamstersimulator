@@ -1,0 +1,4 @@
+/*object-oriented program*/void main() {
+    HamsterSpawner hans = new HamsterSpawner(5);
+    WeinachtsmannHam paul = new WeinachtsmannHam();
+}

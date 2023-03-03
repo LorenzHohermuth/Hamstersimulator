@@ -1,0 +1,41 @@
+/*class*/class Spiele37 extends AllroundHamster{
+    Spiele37(){
+        super(0,0,1,200,GRUEN);
+    }
+    
+    Spiele37(int r, int s, int b, int k, int f) {
+        super(r, s, b, k ,f);
+    }
+
+    void laufe(){
+        int schritte = randInt();
+        if(schritte > 0 && schritte <= 5 && Territorium.getAnzahlKoerner(0, schritte) == 0){
+            laufeZuKachel(0,sammleKorn());
+            nimm();
+            laufeZuKachel(0,schritte);
+            gib();
+            laufeZuKachel(0,0);
+            gib(schritte);
+            setzeBlickrichtung(1);
+        }else{
+            schreib("du hs zwischen 1 und 6");
+        }
+    }
+
+    int sammleKorn(){
+        for(int i = 1; i <= 5; i++) {
+            if(Territorium.getAnzahlKoerner( 0, i) > 0) {
+                return i;
+            }
+        }
+        return 0;
+    }
+
+    boolean ueberschreitet(){
+        return Territorium.getAnzahlKoerner(0,0) > 37;
+    }
+
+    int randInt() {
+        return (int)((Math.random() * (5)) + 1);
+    }
+}

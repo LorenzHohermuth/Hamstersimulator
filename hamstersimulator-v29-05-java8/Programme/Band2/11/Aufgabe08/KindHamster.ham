@@ -1,0 +1,17 @@
+/*class*/class KindHamster extends AllroundHamster{
+    KindHamster(int r, int s, int b, int k){
+        super(r,s,b,k);
+    }
+
+    void einKornSuchenUndFressen(){
+        for(int r = 0; r < Territorium.getAnzahlReihen() && Territorium.getAnzahlKoerner() > 0; r++){
+            for(int s = 0; s < Territorium.getAnzahlSpalten() && Territorium.getAnzahlKoerner() > 0; s++){
+                if(Territorium.getAnzahlKoerner(r,s) > 0){
+                    laufeZuKachel(r,s);
+                    nimm();
+                    return;
+                }
+            }
+        }
+    }
+}

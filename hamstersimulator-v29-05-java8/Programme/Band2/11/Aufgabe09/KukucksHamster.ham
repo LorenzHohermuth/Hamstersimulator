@@ -1,0 +1,11 @@
+/*class*/class KukucksHamster extends KindHamster{
+    KukucksHamster(int r, int s, int b, int k){
+        super(r,s,b,k);
+    }
+
+    public void nimm(){
+        while(kornDa()){
+        	super.nimm();
+        }
+    }
+}

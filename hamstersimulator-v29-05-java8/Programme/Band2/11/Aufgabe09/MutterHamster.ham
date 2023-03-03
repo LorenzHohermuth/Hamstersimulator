@@ -1,0 +1,31 @@
+/*class*/class MutterHamster extends AllroundHamster{
+    MutterHamster(int r, int s, int b, int k){
+        super(r,s,b,k);
+    }
+
+    boolean nochKoernerImTerritorium () {
+        return Territorium.getAnzahlKoerner() > 0;
+    }
+    void sammleKoerner ( int anzahl ) {
+        for(int r = 0; r < Territorium.getAnzahlReihen() && Territorium.getAnzahlKoerner() > 0 && this.getAnzahlKoerner() <= anzahl; r++){
+            for(int s = 0; s < Territorium.getAnzahlSpalten() &&  Territorium.getAnzahlKoerner() > 0 && this.getAnzahlKoerner() <= anzahl; s++){
+                if(Territorium.getAnzahlKoerner(r,s) > 0) {
+                    laufeZuKachel(r,s);
+                    nimm();
+                }
+            }
+        }
+        laufeZuKachel(0,0);
+        gibAlle();
+    }
+    void kinderFuetterung( KindHamster[] kinder ) {
+        while( this.nochKoernerImTerritorium()) {
+            this.sammleKoerner( kinder.length );
+                for ( int k = 0; k < kinder.length ; k++) {
+                if ( kinder[k].kornDa()) {
+                    kinder[k].nimm();
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,23 @@
+/*class*/class MenschHamster extends Spiele37{
+    MenschHamster(){
+        super(0,0,1,200,BLUE);
+    }
+
+    void laufe(){
+        schreib(Integer.toString(Territorium.getAnzahlKoerner(0, 0)));
+        int schritte = liesZahl("welcheKachle");
+
+        if(schritte > 0 && schritte <= 5 && Territorium.getAnzahlKoerner(0, schritte) == 0){
+            laufeZuKachel(0,sammleKorn());
+            nimm();
+            laufeZuKachel(0,schritte);
+            gib();
+            laufeZuKachel(0,0);
+            gib(schritte);
+            setzeBlickrichtung(1);
+        }else{
+            schreib("du hs zwischen 1 und 6");
+            laufe();
+        }
+    }
+}

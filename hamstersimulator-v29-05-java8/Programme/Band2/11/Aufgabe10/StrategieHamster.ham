@@ -1,0 +1,53 @@
+/*class*/class StrategieHamster extends Spiele37{
+    StrategieHamster(){
+        super(0,0,1,200,PINK);
+    }
+
+    void laufe(){
+        int schritte = strategie();
+        if(schritte > 0 && schritte <= 5 && Territorium.getAnzahlKoerner(0, schritte) == 0){
+            laufeZuKachel(0,sammleKorn());
+            nimm();
+            laufeZuKachel(0,schritte);
+            gib();
+            laufeZuKachel(0,0);
+            gib(schritte);
+            setzeBlickrichtung(1);
+        }else{
+            schreib("du hs zwischen 1 und 6");
+        }
+    }
+
+    int strategie(){
+        int num = Territorium.getAnzahlKoerner(0,0);
+        if(sammleKorn() == 0 && num == 1) {
+            return 1;
+        }
+        if(num < 7) {
+            int steps = 7 - num;
+            if(Territorium.getAnzahlKoerner(0, steps) == 0) return steps;
+            else return 1;
+        }
+        if(num < 13) {
+            int steps = 13 - num;
+            if(Territorium.getAnzahlKoerner(0, steps) == 0) return steps;
+            else return 1;
+        }
+        if(num < 19) {
+            int steps = 19 - num;
+            if(Territorium.getAnzahlKoerner(0, steps) == 0) return steps;
+            else return 1;
+        }
+        if(num < 25) {
+            int steps = 25 - num;
+            if(Territorium.getAnzahlKoerner(0, steps) == 0) return steps;
+            else return 1;
+        }
+        if(num < 31) {
+            int steps = 31 - num;
+            if(Territorium.getAnzahlKoerner(0, steps) == 0) return steps;
+            else return 1;
+        }
+        return 1;
+    }
+}

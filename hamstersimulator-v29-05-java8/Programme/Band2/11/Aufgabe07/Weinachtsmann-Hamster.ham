@@ -1,0 +1,25 @@
+/*class*/class WeinachtsmannHam extends AllroundHamster{
+    WeinachtsmannHam(){
+        super(Hamster.getStandardHamster());
+        gescheke();
+        alleNimm();
+    }
+
+    void gescheke(){
+        Hamster[] allHam = Territorium.getHamster();
+        for(Hamster ham : allHam){
+            laufeZuKachel(ham.getReihe(), ham.getSpalte());
+            if(!maulLeer()) gib();
+            else return;
+        }
+    }
+
+    void alleNimm(){
+    	Hamster[] allHam = Territorium.getHamster();
+        for(Hamster ham : allHam){
+            if(ham.kornDa()) {
+                ham.nimm();
+            }
+        }
+    }
+}
