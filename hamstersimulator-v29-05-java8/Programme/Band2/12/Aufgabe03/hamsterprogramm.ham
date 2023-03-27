@@ -1,0 +1,9 @@
+/*object-oriented program*/void main() {
+    SpielHam OL = new SpielHam(0, 0, 2);
+    SpielHam OR = new SpielHam(0, Territorium.getAnzahlSpalten() - 1, 1);
+    SpielHam UL = new SpielHam(Territorium.getAnzahlReihen() - 1, 0, 0);
+    SpielHam UR = new SpielHam(Territorium.getAnzahlReihen() - 1 ,Territorium.getAnzahlSpalten() - 1, 3);
+    SpielHam[] list = { OL, OR, UL, UR};
+    Spiel spiel = new Spiel(list);
+    spiel.spielen();
+}

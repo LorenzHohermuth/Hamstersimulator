@@ -1,0 +1,57 @@
+/*class*/class FunktionenHamster extends AllroundHamster {
+    FunktionenHamster(Hamster hamster) {
+        super(hamster);
+    }
+
+    // zeichnet den Funktionsgraph mit Koernern ins Territorium
+    void zeichneGraph(Funktion funktion, int minX, int minY) {
+        draw(minX, minY);
+        // Definitionsbereich: 0 .. Spaltenanzahl-1
+        int x = minX;
+        for (int i = 0; i < Territorium.getAnzahlSpalten(); i++) {
+            int y = funktion.f(x); // dynamisch gebunden
+            // Wertebereich: 0 .. Reihenanzahl-1
+            if (y >= minY && y < Territorium.getAnzahlReihen() + minY
+                    && !this.maulLeer()) {
+                // r-Koordinate ermitteln
+                this.laufeZuKachel(x, y, minX, minY);
+                this.gib();
+            }
+            x++;
+        }
+    }
+
+    // frisst alle Koerner, die im Territorium liegen
+    void loeschen() {
+        for (int r = 0; r < Territorium.getAnzahlReihen(); r++) {
+            for (int s = 0; s < Territorium.getAnzahlSpalten(); s++) {
+                int koerner = Territorium.getAnzahlKoerner(r, s);
+                if (koerner > 0) {
+                    this.laufeZuKachel(r, s);
+                    this.nimm(koerner);
+                }
+            }
+        }
+    }
+
+
+    void draw(int minX, int minY){
+        for(int i = minX; i < Territorium.getAnzahlReihen() + minX; i++) {
+            laufeZuKachel(i ,0, minX, minY);
+            gib();
+        }
+        for(int i = minY; i < Territorium.getAnzahlSpalten() + minY; i++) {
+            laufeZuKachel(0, i, minX, minY);
+            if(!kornDa())gib();
+        }
+    }
+
+    //y = reihe x = spalten
+    void laufeZuKachel(int x, int y , int minX, int minY){
+        int r = Territorium.getAnzahlReihen() - y - 1;
+        r = r + minY;
+        
+        int s = x - minX;
+        super.laufeZuKachel(r, s);
+    }
+}

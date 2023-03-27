@@ -1,0 +1,83 @@
+/*object-oriented program*/import java.lang.Math;
+
+class f1 implements Funktion {
+    public int f(int x) {
+        return -1 * (int)Math.pow(x, 2) + 4 * x + 2;
+    }
+    int minX = -2;
+    int minY = -3;
+
+    public int getMinX() {
+        return minX;
+    }
+
+    public int getMinY() {
+        return minY;
+    }
+}
+
+class f2 implements Funktion {
+    public int f(int x) {
+        return -1 * (int)Math.pow(x, 2) + 4 * x + 2;
+    }
+    int minX = -4;
+    int minY = -11;
+
+    public int getMinX() {
+        return minX;
+    }
+
+    public int getMinY() {
+        return minY;
+    }
+}
+
+class f3 implements Funktion {
+    public int f(int x) {
+        return (int)Math.pow(x, 3) - 10 * (int)Math.pow(x, 2) + 31 * x -22;
+    }
+    int minX = -2;
+    int minY = -2;
+
+    public int getMinX() {
+        return minX;
+    }
+
+    public int getMinY() {
+        return minY;
+    }
+}
+
+class f4 implements Funktion {
+    public int f(int x) {
+        return (int)Math.pow(x, 3) - 10 * (int)Math.pow(x, 2) + 31 * x -22;
+    }
+    int minX = -10;
+    int minY = -20;
+
+    public int getMinX() {
+        return minX;
+    }
+
+    public int getMinY() {
+        return minY;
+    }
+}
+
+
+void main() {
+    FunktionenHamster paul = new FunktionenHamster(Hamster.getStandardHamster());
+    Funktion funk = new f1();
+    paul.loeschen();
+    paul.zeichneGraph(funk, funk.getMinX(), funk.getMinY());
+    funk = new f2();
+    paul.loeschen();
+    paul.zeichneGraph(funk, funk.getMinX(), funk.getMinY());
+    funk = new f3();
+    paul.loeschen();
+    paul.zeichneGraph(funk, funk.getMinX(), funk.getMinY());
+    funk = new f4();
+    paul.loeschen();
+    paul.zeichneGraph(funk, funk.getMinX(), funk.getMinY());
+    
+}

@@ -1,0 +1,74 @@
+/*class*/class SpielHam extends AllroundHamster implements Spieler {
+
+    SpielHam(int r, int s, int b){
+       super(r,s,b,0);
+    }
+
+    int[] cordinates = {0,0};
+
+    public boolean spielzug() {
+        if(Territorium.getAnzahlKoerner(cordinates[0], cordinates[1]) == 0) {
+            cordinates = search();
+        }
+        if(getAnzahlKoerner() == 5) {
+            return true;
+        }else {
+            laufeSchritt(cordinates);
+            return false;
+        }
+    }
+
+    int[] search(){
+        for(int i = 0; i < Territorium.getAnzahlSpalten(); i++) {
+            for(int r = getReihe() - i; r < i; r++){
+                for(int s = getSpalte() - i; s < i; s++){
+                    if(!Territorium.mauerDa(r, s)) {
+                        int k = Territorium.getAnzahlKoerner(r,s);
+                        if(k > 0) {
+                        	int[] arr = {r, s};
+                            return arr;
+                        }
+                    }
+                }
+            }
+        }
+        int[] arr = {0,0};
+        return arr;
+    }
+
+    void laufeSchritt(int[] cord){
+        int r = getReihe();
+        int s = getSpalte();
+        if(r != cord[0]) {
+            if(r > cord[0]) {
+                if(getBlickrichtung() != 0) {
+                    linksUm();
+                }else{
+                    vor();
+                }
+            }else if(r < cord[0]) {
+                if(getBlickrichtung() != 2) {
+                    linksUm();
+                }else{
+                    vor();
+                }
+            }
+        }else if(s != cord[1]) {
+            if(s > cord[1]) {
+                if(getBlickrichtung() != 3) {
+                    linksUm();
+                }else{
+                    vor();
+                }
+            }else if(s < cord[1]) {
+                if(getBlickrichtung() != 1) {
+                    linksUm();
+                }else{
+                    vor();
+                }
+            }
+        }else{
+            nimm();
+        }
+    }
+}

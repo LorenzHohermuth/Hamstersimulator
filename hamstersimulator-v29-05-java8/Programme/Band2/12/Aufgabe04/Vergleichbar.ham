@@ -1,0 +1,5 @@
+/*class*/interface Vergleichbar{
+    public abstract boolean gleich(Vergleichbar obj);
+    public abstract boolean kleiner(Vergleichbar obj);
+    public abstract boolean groesser(Vergleichbar obj);
+}
