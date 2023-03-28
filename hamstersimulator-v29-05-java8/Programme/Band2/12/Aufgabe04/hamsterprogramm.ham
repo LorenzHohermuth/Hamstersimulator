@@ -1,0 +1,17 @@
+/*object-oriented program*/void main() {
+    Hamster paul = Hamster.getStandardHamster();
+    String input = paul.liesZeichenkette("Werte eintragen geteilt durch kommas");
+    String[] inputArray = input.split(",");
+    VergleichbarString[] valueArray = new VergleichbarString[inputArray.length];
+    for(int i = 0; i < inputArray.length; i++) {
+        valueArray[i] = new VergleichbarString(inputArray[i]);
+    }
+    Sortieren sorter = new Sortieren();
+    sorter.bubbleSort(valueArray);
+
+    String output = "";
+    for(int i = 0; i < valueArray.length; i++) {
+        output += valueArray[i].getText() + "\n";
+    }
+    paul.schreib(output);
+}

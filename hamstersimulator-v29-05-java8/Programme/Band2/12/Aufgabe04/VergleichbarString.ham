@@ -1,3 +1,28 @@
-/*class*/class VergleichbarString{
+/*class*/class VergleichbarString implements Vergleichbar{
     
+    String text = "";
+
+    VergleichbarString(String text){
+        this.text = text;
+    }
+
+    public String getText(){
+        return text;
+    }
+
+    public boolean gleich(Vergleichbar obj){
+        String objText = obj.getText();
+        int gleich = text.compareTo(objText);
+        return gleich == 0;
+    }
+    public boolean kleiner(Vergleichbar obj){
+    	String objText = obj.getText();
+        int kleiner = text.compareTo(objText);
+        return kleiner < 0;
+    }
+    public boolean groesser(Vergleichbar obj){
+    	String objText = obj.getText();
+        int groesser = text.compareTo(objText);
+        return groesser > 0;
+    }
 }

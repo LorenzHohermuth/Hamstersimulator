@@ -1,0 +1,24 @@
+/*class*/class MenschGesteuerterFrissHamster extends AllroundHamster implements FrissHamster{
+
+
+
+    MenschGesteuerterFrissHamster(int r, int s, int b, int k){
+        super(r,s,b,k);
+    }
+
+
+    public int friss(int amount){
+        while(this.getAnzahlKoerner() < amount) {
+            for(int r = 0; r < Territorium.getAnzahlReihen() && this.getAnzahlKoerner() < amount; r++){
+                for(int s = 0; s < Territorium.getAnzahlSpalten() && this.getAnzahlKoerner() < amount; s++){
+                    int koerner = Territorium.getAnzahlKoerner(r, s);
+                    if(koerner > 0) {
+                        laufeZuKachel(r,s);
+                        nimm();
+                    }
+                }
+            }
+        }
+        return amount;
+    }
+}

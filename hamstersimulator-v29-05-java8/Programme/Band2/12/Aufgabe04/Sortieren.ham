@@ -1,0 +1,19 @@
+/*class*/class Sortieren{
+
+    static void bubbleSort(Vergleichbar [] objekte){
+        boolean getauscht = false;
+        do {
+            getauscht = false;
+            for ( int i = 1; i < objekte.length ; i++) {
+                if ( objekte [ i - 1].groesser( objekte [ i ])) {
+                    // dyn . gebunden
+                    Vergleichbar ablage = objekte[i - 1];
+                    objekte[i - 1] = objekte[i];
+                    objekte[i] = ablage;
+                    getauscht = true;
+                }
+            }
+        } while( getauscht );
+    }
+    
+}

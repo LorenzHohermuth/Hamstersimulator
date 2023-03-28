@@ -1,0 +1,24 @@
+/*class*/class MenschGesteuerterFrissHamster extends FrissHamster{
+
+
+
+    MenschGesteuerterFrissHamster(int r, int s, int b, int k){
+        super(r,s,b,k,0);
+    }
+
+    int friss(){
+    	int anzahl = liesZahl("Wie viele Koerner?");
+        while(this.getAnzahlKoerner() < anzahl) {
+            for(int r = 0; r < Territorium.getAnzahlReihen() && this.getAnzahlKoerner() < anzahl; r++){
+                for(int s = 0; s < Territorium.getAnzahlSpalten() && this.getAnzahlKoerner() < anzahl; s++){
+                    int koerner = Territorium.getAnzahlKoerner(r, s);
+                    if(koerner > 0) {
+                        laufeZuKachel(r,s);
+                        nimm();
+                    }
+                }
+            }
+        }
+        return 0;
+    }
+}
