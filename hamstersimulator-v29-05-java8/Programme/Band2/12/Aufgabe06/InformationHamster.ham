@@ -1,0 +1,10 @@
+/*class*/interface InformationHamster {
+    // liefert die Anzahl an Kacheln im Territorium
+    public abstract int kachelnImTerritorium ();
+    
+    // liefert die Anzahl an Kacheln mit Mauern im Territorium
+    public abstract int mauernImTerritorium ();
+    
+    // liefert die Anzahl an Koernern im Territorium
+    public abstract int koernerImTerritorium ();
+}

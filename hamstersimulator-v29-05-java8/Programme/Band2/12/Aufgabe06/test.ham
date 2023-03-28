@@ -1,0 +1,6 @@
+/*object-oriented program*/void main(){
+    AuskunftsHamster paul = new AuskunftsHamster(0,0,1,0);
+    paul.schreib(Integer.toString(paul.kachelnImTerritorium()));
+    paul.schreib(Integer.toString(paul.mauernImTerritorium()));
+    paul.schreib(Integer.toString(paul.koernerImTerritorium()));
+}

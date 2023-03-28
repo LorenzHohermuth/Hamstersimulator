@@ -1,0 +1,30 @@
+/*class*/class AuskunftsHamster extends AllroundHamster implements InformationHamster{
+    AuskunftsHamster(int r, int s, int b, int k){
+        super(r, s, b, k);
+    }
+
+    // liefert die Anzahl an Kacheln im Territorium
+    public int kachelnImTerritorium (){
+        int anzahlKacheln = Territorium.getAnzahlSpalten() * Territorium.getAnzahlReihen();
+        return anzahlKacheln;
+    }
+    
+    // liefert die Anzahl an Kacheln mit Mauern im Territorium
+    public int mauernImTerritorium (){
+        int counter = 0;
+        for(int r = 0; r < Territorium.getAnzahlReihen(); r++){
+            for(int s = 0; s < Territorium.getAnzahlSpalten(); s++){
+                if(Territorium.mauerDa(r, s)){
+                    counter++;
+                }
+            }
+        }  
+        return counter;
+    }
+    
+    // liefert die Anzahl an Koernern im Territorium
+    public int koernerImTerritorium (){
+        int anzahlKoerner = Territorium.getAnzahlKoerner();
+        return anzahlKoerner;
+    }
+}
