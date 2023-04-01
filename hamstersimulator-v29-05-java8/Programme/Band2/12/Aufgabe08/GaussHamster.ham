@@ -1,0 +1,9 @@
+/*class*/ class GaussHamster extends Hamster implements Summe {
+    GaussHamster ( int r , int s , int b , int k ) {
+        super (r , s , b , k );
+    }
+    public int berechnen ( int bis ) {
+        return bis * ( bis + 1) / 2;
+    }
+}
+    

@@ -1,0 +1,22 @@
+/*class*/class LaufHamster extends AllroundHamster{
+
+    Summe rechner;
+
+    LaufHamster(Hamster Ham, Summe rechner){
+        super(Ham);
+        this.rechner = rechner;
+    }
+
+    int messe(){
+        int distance = Territorium.getAnzahlSpalten() - getSpalte();
+        return distance;
+    }
+
+    void laufe(){
+        if (rechner.berechnen(messe()) > getAnzahlKoerner()) return; 
+        for(int i = 1; vornFrei() ; i++) {
+            vor();
+            gib(i);
+        }
+    }
+}

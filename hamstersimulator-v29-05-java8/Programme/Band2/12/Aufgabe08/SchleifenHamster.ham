@@ -1,0 +1,13 @@
+/*class*/class SchleifenHamster extends Hamster implements Summe {
+    SchleifenHamster ( int r , int s , int b , int k ) {
+        super (r , s , b , k );
+    }
+    
+    public int berechnen ( int bis ) {
+        int ergebnis = 0;
+        for ( int i = 1; i <= bis ; i ++) {
+            ergebnis = ergebnis + i ;
+        }
+        return ergebnis ;
+    }
+}

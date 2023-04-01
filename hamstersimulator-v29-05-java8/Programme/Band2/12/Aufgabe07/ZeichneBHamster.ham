@@ -1,0 +1,32 @@
+/*class*/class ZeichneBHamster extends ZeichneZifferHamster {
+    ZeichneBHamster(int r, int s, int b, int k) {
+        super(r, s, b, k);
+    }
+
+    // zeichnet die Ziffer 9 mit Koernern ins Territorium
+    void zeichne() { // ueberschriebene und implementierte
+                     // Methode
+        vorUndGib(2);
+        kehrt();
+        vor();
+        linksUm();
+        vorUndGib(2);
+        linksUm();
+        vorUndGib(1);
+        kehrt();
+        vor();
+        linksUm();
+        vorUndGib(2);
+        linksUm();
+        vorUndGib(1);
+        vor();
+        linksUm();
+        vorUndGib(1);
+        vor();
+        vorUndGib(1);
+        vor();
+        linksUm();
+        vor(3);
+        kehrt();
+    }
+}

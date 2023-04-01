@@ -1,0 +1,64 @@
+/*class*/import java.lang.*;
+
+class ZeichneBuchstabenHamster extends Hamster {
+
+    int abstand = 0; // Hilfsattribut
+
+    ZeichneBuchstabenHamster(int r, int s, int b, int k) {
+        super(r, s, b, k);
+    }
+
+    // zeichnet die uebergebene Buchstaben mit Koernern ins Territorium
+    void zeichne(String txt) {
+    
+        
+        if (txt == "")
+            return;
+        ZeichneZifferHamster[] ziffernHamster = erzeugeZifferHamster();
+        this.abstand = 0;
+        this.zeichne(txt, ziffernHamster);
+    }
+    
+    // rekursive Hilfsmethode
+    void zeichne(String txt, ZeichneZifferHamster[] ziffernHamster) {
+   		txt = txt.toUpperCase();
+        if (txt.length() > 1) {
+            String txtsub = txt.substring(0, txt.length() - 1);
+            this.zeichne(txtsub, ziffernHamster);
+        }
+        
+        String txtchar = txt.substring(txt.length() - 1, txt.length());
+
+        String[] abc = {"A","B","C","D","E","F","G","H","I","J","K","L","M","M","O","P","Q","R","S","T","U","V","W","X","Y","Z"};
+        int i;
+        for(i = 0; !txtchar.equals(abc[i]); i++) {
+        }
+        schreib(txtchar + "=" + Integer.toString(i));
+        int ziffer = i;
+        ziffernHamster[ziffer].vor(this.abstand);
+        ziffernHamster[ziffer].zeichne(); // dynamisch gebunden!
+        ziffernHamster[ziffer].kehrt();
+        ziffernHamster[ziffer].vor(this.abstand);
+        ziffernHamster[ziffer].kehrt();
+        this.abstand = this.abstand + 4;
+    }
+
+    // erzeugt Array mit konkreten Hamstern
+    ZeichneZifferHamster[] erzeugeZifferHamster() {
+        int r = this.getReihe();
+        int s = this.getSpalte();
+        ZeichneZifferHamster[] ziffernHamster = new ZeichneZifferHamster[10];
+        // Einsatz der Polymorphie!
+        ziffernHamster[0] = new ZeichneAHamster(r, s, Hamster.OST, this.getAnzahlKoerner());
+        ziffernHamster[1] = new ZeichneBHamster(r, s, Hamster.OST, this.getAnzahlKoerner());
+        ziffernHamster[2] = new ZeichneCHamster(r, s, Hamster.OST, this.getAnzahlKoerner());
+        ziffernHamster[3] = new ZeichneDHamster(r, s, Hamster.OST, this.getAnzahlKoerner());
+        ziffernHamster[4] = new ZeichneVierHamster(r, s, Hamster.OST, this.getAnzahlKoerner());
+        ziffernHamster[5] = new ZeichneFuenfHamster(r, s, Hamster.OST, this.getAnzahlKoerner());
+        ziffernHamster[6] = new ZeichneSechsHamster(r, s, Hamster.OST, this.getAnzahlKoerner());
+        ziffernHamster[7] = new ZeichneSiebenHamster(r, s, Hamster.OST, this.getAnzahlKoerner());
+        ziffernHamster[8] = new ZeichneAchtHamster(r, s, Hamster.OST, this.getAnzahlKoerner());
+        ziffernHamster[9] = new ZeichneNeunHamster(r, s, Hamster.OST, this.getAnzahlKoerner());
+        return ziffernHamster;
+    }
+}

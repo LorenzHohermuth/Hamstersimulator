@@ -1,0 +1,11 @@
+/*class*/
+import java.util.ArrayList;
+class BeobachteterHamster extends AllroundHamster implements Beobachteter{
+    ArrayList observer = new ArrayList();
+    
+
+    
+    public void hinzufuegen ( Beobachter obj ){
+        observer.add(obj);
+    }
+}

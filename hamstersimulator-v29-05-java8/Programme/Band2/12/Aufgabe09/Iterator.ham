@@ -1,0 +1,7 @@
+/*class*/interface Iterator {
+    // liefert ein Element eines Speichers
+    public abstract Object liefereNaechstesElement ();
+    // liefert genau dann true , wenn noch nicht alle Elemente des
+    // Speicherobjektes geliefert worden sind
+    public abstract boolean hatWeitereElemente ();
+}

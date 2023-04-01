@@ -1,0 +1,7 @@
+/*class*/
+interface Beobachter {
+    public abstract void benachrichtigen ( Beobachteter obj );
+}
+interface Beobachteter {
+    public abstract void hinzufuegen ( Beobachter obj );
+}

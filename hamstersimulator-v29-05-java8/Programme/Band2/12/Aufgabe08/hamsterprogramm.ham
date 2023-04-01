@@ -1,0 +1,5 @@
+/*object-oriented program*/void main(){
+    Summe rechner = new GaussHamster(0,0,1,0);
+    LaufHamster paul = new LaufHamster(Hamster.getStandardHamster(), rechner);
+    paul.laufe();
+}

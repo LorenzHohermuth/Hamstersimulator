@@ -1,0 +1,5 @@
+/*class*/
+interface Summe {
+    // berechnen der Summe aller Zahlen von 1 bis " bis "
+    public abstract int berechnen ( int bis );
+}

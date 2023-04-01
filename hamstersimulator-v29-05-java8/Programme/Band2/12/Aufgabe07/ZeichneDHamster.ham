@@ -1,0 +1,22 @@
+/*class*/class ZeichneDHamster extends ZeichneZifferHamster {
+    ZeichneDHamster(int r, int s, int b, int k) {
+        super(r, s, b, k);
+    }
+
+    void zeichne() {
+                    
+        vorUndGib(2);
+        vor();
+        rechtsUm();
+        vorUndGib(3);
+        vor();
+        rechtsUm();
+        vorUndGib(2);
+        rechtsUm();
+        vorUndGib(3);
+        vor();
+        linksUm();
+        vor();
+        kehrt();
+    }
+}

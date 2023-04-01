@@ -1,0 +1,20 @@
+/*class*/class StackIterator implements Iterator{
+
+    Object[] array;
+
+    StackIterator(Object[] array){
+        this.array = array;
+    }
+
+    int i = 0;
+    public Object liefereNaechstesElement(){
+        Object returnValue = array[i];
+        i++;
+        return returnValue;
+    }
+
+    public boolean hatWeitereElemente(){
+        boolean x = i == array.length - 1;
+        return x;  
+    }
+}
