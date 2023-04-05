@@ -1,0 +1,13 @@
+/*object-oriented program*/void main(){
+    Hamster paul = Hamster.getStandardHamster();
+    Tauschstapel stack = new Tauschstapel(4);
+    try{
+        stack.drauflegen(1);
+        stack.drauflegen(2);
+        stack.drauflegen(3);
+        stack.drauflegen(4);
+        stack.tauschen();
+    }catch(Exception exc){
+        paul.schreib("Oh no there is a Problem!");
+    }
+}

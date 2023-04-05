@@ -1,11 +1,21 @@
-/*class*/
-import java.util.ArrayList;
-class BeobachteterHamster extends AllroundHamster implements Beobachteter{
-    ArrayList observer = new ArrayList();
-    
+/*class*/class BeobachteterHamster extends AllroundHamster implements Beobachteter{
+    Beobachter observer;
 
-    
-    public void hinzufuegen ( Beobachter obj ){
-        observer.add(obj);
+    BeobachteterHamster(int r, int s, int b, int k){
+        super(r,s,b,k);
     }
+    
+    void sendInfo(){
+        ((BeobachterHamster)observer).benachrichtigen(this);
+    }
+    
+    public void hinzufuegen( Beobachter obj ){
+        observer = obj;
+    }
+    
+    public void gib(){
+        super.gib();
+        sendInfo();
+    }
+
 }

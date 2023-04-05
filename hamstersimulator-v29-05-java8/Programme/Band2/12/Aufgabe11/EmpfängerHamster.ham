@@ -1,0 +1,9 @@
+/*class*/class EmpfaengerHamster extends AllroundHamster implements NachrichtenEmpfaenger{
+    EmpfaengerHamster(int r, int s, int b, int k){
+        super(r,s,b,k);
+    }
+
+    public void empfangeNachricht ( String nachricht) {
+        schreib(nachricht);
+    }
+}

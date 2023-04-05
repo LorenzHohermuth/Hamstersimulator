@@ -1,0 +1,12 @@
+/*class*/class BeobachterHamster extends AllroundHamster implements Beobachter{
+    BeobachterHamster(int r, int s , int b, int k){
+        super(r,s,b,k);
+    }
+
+  	public void benachrichtigen ( Beobachteter obj ){
+        int r = ((BeobachteterHamster)obj).getReihe();
+        int s = ((BeobachteterHamster)obj).getSpalte();
+        laufeZuKachel(r,s);
+        nimm();
+    }
+}

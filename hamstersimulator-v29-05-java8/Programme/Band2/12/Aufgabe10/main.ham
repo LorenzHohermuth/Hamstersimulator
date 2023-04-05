@@ -1,0 +1,7 @@
+/*object-oriented program*/ void main(){
+    BeobachterHamster paul = new BeobachterHamster(0,0,1,0);
+    BeobachteterHamster friz = new BeobachteterHamster(1 ,0 ,1 , 1);
+    friz.hinzufuegen(paul);
+    friz.laufeZuKachel(3,3);
+    friz.gib();
+}

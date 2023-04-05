@@ -1,0 +1,20 @@
+/*class*/
+import java.util.ArrayList;
+class VermittlerHamster extends AllroundHamster implements NachrichtenQuelle{
+    VermittlerHamster(int r, int s, int b, int k){
+        super(r,s,b,k);
+    }
+
+    ArrayList<NachrichtenEmpfaenger> EmpfaengerListe = new ArrayList<NachrichtenEmpfaenger>();
+
+    public void anmelden ( NachrichtenEmpfaenger empf ){
+        EmpfaengerListe.add(empf);
+    }
+
+    public void sendeNachricht ( String nachricht ){
+        for(int i = 0; i < EmpfaengerListe.size(); i++) {
+            NachrichtenEmpfaenger kevin = EmpfaengerListe.get(i);
+            kevin.empfangeNachricht(nachricht);
+        }
+    }
+}

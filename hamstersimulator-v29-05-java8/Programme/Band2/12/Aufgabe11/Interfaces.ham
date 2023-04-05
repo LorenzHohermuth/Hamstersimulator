@@ -1,0 +1,13 @@
+/*class*/
+interface NachrichtenEmpfaenger {
+    // Uebergabe einer neuen Nachricht
+    public abstract void empfangeNachricht ( String nachricht );
+}
+
+interface NachrichtenQuelle {
+    // Interessierte koennen sich bei der Quelle anmelden
+    public abstract void anmelden ( NachrichtenEmpfaenger empf );
+    // neue Nachricht wird an alle angemeldeten
+    // Interessenten verschickt
+    public abstract void sendeNachricht ( String nachricht );
+}
