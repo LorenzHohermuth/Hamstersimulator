@@ -1,0 +1,42 @@
+/*object-oriented program*/
+class Exception1 extends Exception {
+}
+class Exception2 extends Exception {
+}
+class AusnahmeHamster extends Hamster {
+AusnahmeHamster ( Hamster hamster ) {
+super ( hamster );
+}
+void werfeExceptions ( int zahl ) throws Exception1 , Exception2 {
+if ( zahl == 1)
+throw new Exception1 ();
+if ( zahl == 2)
+throw new Exception2 ();
+this . gib ();
+}
+void gibWas () throws Exception2 {
+this . gib ();
+try {
+this . werfeExceptions ( this . getAnzahlKoerner ());
+this . gib ();
+} catch ( Exception1 exc ) {
+this . gib ();
+return ;
+} finally {
+this . gib ();
+}
+this . gib ();
+}
+}
+void main () {
+AusnahmeHamster paul = new AusnahmeHamster ( Hamster
+. getStandardHamster ());
+try {
+paul . gibWas ();
+paul . gib ();
+} catch ( Exception exc ) {
+while ( paul . kornDa ()) {
+paul . nimm ();
+}
+}
+}

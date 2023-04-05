@@ -1,0 +1,60 @@
+/*class*/class Sortieren {
+
+    // Sortieren mit Bubblesort-Algorithmus
+    static void bubbleSort(Vergleichbar[] objekte) {
+        boolean getauscht = false;
+        do {
+            getauscht = false;
+            try{
+                for (int i = 0; true; i++) {
+                    if (objekte[i].groesser(objekte[i + 1])) { 
+                                        // dyn. gebunden
+                        Vergleichbar ablage = objekte[i];
+                        objekte[i] = objekte[i + 1];
+                        objekte[i + 1] = ablage;
+                        getauscht = true;
+                    }
+                }
+            }catch(ArrayIndexOutOfBoundsException e){
+            }
+        } while (getauscht);
+    }
+
+    // Sortieren mit Quicksort-Algorithmus
+    static void quickSort(Vergleichbar[] objekte) {
+        Sortieren.quickSort(objekte, 0, objekte.length - 1);
+    }
+
+    // Hilfsmethode
+    static void quickSort(Vergleichbar[] objekte, int vonIndex,
+            int bisIndex) {
+        int i = vonIndex;
+        int j = bisIndex;
+        Vergleichbar mittlererWert = objekte[(vonIndex + bisIndex) / 2];
+
+        // Aufteilung
+        while (i <= j) {
+            while (objekte[i].kleiner(mittlererWert)) { 
+                                // dyn. gebunden
+                i++;
+            }
+            while (objekte[j].groesser(mittlererWert)) {
+                                // dyn. gebunden
+                j--;
+            }
+            if (i <= j) { // tauschen
+                Vergleichbar ablage = objekte[i];
+                objekte[i] = objekte[j];
+                objekte[j] = ablage;
+                i++;
+                j--;
+            }
+        }
+
+        // rekursiver Aufruf
+        if (vonIndex < j)
+            Sortieren.quickSort(objekte, vonIndex, j);
+        if (i < bisIndex)
+            Sortieren.quickSort(objekte, i, bisIndex);
+    }
+}
