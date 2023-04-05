@@ -3,5 +3,14 @@
         super(groesse);
     }
 
-    
+    void tauschen() throws StapelZuWenigElementeException{
+        try{
+            Object a = herunternehmen();
+            Object b = herunternehmen();
+            drauflegen(a);
+            drauflegen(b);
+        }catch (Exception exc){
+            throw new StapelZuWenigElementeException();
+        }
+    }
 }

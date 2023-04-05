@@ -1,0 +1,54 @@
+/*class*/class VertretungsHamster extends ExceptionHamster{
+    TryHamster paul = 
+
+//funktioniert nicht runtime exception nicht chatchbar
+
+
+    VertretungsHamster(Hamster ham){
+        super(ham);
+    }
+
+    void kehrt(){
+        linksUm();
+        linksUm();
+    }
+
+    void rechtsUm(){
+        kehrt();
+        linksUm();
+    }
+
+    boolean vornFreiExc(){
+        try{
+            vor();
+            kehrt();
+            vor();
+            return false;
+        }catch(RuntimeException e ){
+            throw e;
+        }catch(Exception e){
+            schreib("false");
+            return true;
+        }
+    }
+
+    boolean RechtsFrei(){
+        rechtsUm();
+        boolean frei = vornFreiExc();
+        linksUm();
+        return frei;
+    }
+
+    void laufe(){
+        int[] startPosition = {getReihe(), getSpalte()};
+        do{
+            if(!RechtsFrei()) {
+                vor();
+            }else if(!vornFrei()) {
+                linksUm();
+            }else{
+                rechtsUm();
+            }
+        }while(getReihe() != startPosition[0] && getSpalte() != startPosition[1]);
+    }
+}

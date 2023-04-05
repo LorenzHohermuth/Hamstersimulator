@@ -1,0 +1,30 @@
+/*class*/class ExceptionHamster extends Hamster {
+
+//funktioniert nicht runtime exception nicht chatchbar
+
+
+    ExceptionHamster(int r, int s, int b, int k) {
+        super(r, s, b, k);
+    }
+
+    ExceptionHamster(Hamster Ham, int f) {
+        super(Ham.getReihe, Ham.getSpalte(), Ham.getBlickrichtung(), Ham.getAnzahlKoerner(), f);
+    }
+
+    ExceptionHamster(Hamster Ham){
+        super(Ham);
+    }
+
+    // ueberschriebene Hamster-Testbefehle
+    final public boolean vornFrei() {
+        return true;
+    }
+
+    final public boolean kornDa() {
+        return true;
+    }
+
+    final public boolean maulLeer() {
+        return false;
+    }
+}

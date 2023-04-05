@@ -1,0 +1,8 @@
+/*object-oriented program*/
+
+//funktioniert nicht runtime exception nicht chatchbar
+
+void main(){
+    VertretungsHamster paul = new VertretungsHamster(Hamster.getStandardHamster());
+    paul.laufe();
+}

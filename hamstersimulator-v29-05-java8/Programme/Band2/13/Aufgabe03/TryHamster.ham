@@ -1,0 +1,18 @@
+/*class*/class TryHamster extends ExceptionHamster{
+
+//funktioniert nicht runtime exception nicht chatchbar
+
+
+    TryHamster(Hamster Ham){
+        super(Ham, 1);
+    }
+
+    boolean vornFrei(){
+        try{
+            vor();
+            return true;
+        }catch(RuntimeException e){
+            return false;
+        }
+    }
+}
