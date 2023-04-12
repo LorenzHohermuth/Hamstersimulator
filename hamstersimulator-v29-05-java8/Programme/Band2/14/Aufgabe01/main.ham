@@ -1,0 +1,6 @@
+/*object-oriented program*/import ea.Ausgabe;
+
+void main(){
+    Ausgabe paul = new Ausgabe(Hamster.getStandardHamster());
+    paul.ausgebenPublic("hello world");
+}

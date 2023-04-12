@@ -1,0 +1,5 @@
+WallInFrontException (0, 1)
+	at de.hamster.debugger.model.Hamster.vor(Hamster.java:194)
+	at LaufenHam.laufe(LaufenHam.java:44)
+	at main.main(main.java:3)
+	at de.hamster.debugger.model.RemoteRunner.main(RemoteRunner.java:123)

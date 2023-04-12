@@ -1,0 +1,4 @@
+/*object-oriented program*/void main(){
+    LaufenHam paul = new LaufenHam(Hamster.getStandardHamster());
+    paul.laufe();
+}

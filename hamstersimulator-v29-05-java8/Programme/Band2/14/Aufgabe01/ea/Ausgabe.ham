@@ -1,0 +1,24 @@
+/*class*/
+package ea;
+
+public class Ausgabe {
+    private Hamster hamster;
+    public Ausgabe(Hamster ham) {
+        this.hamster = ham;
+    }
+    private Ausgabe() {
+        this.hamster = Hamster.getStandardHamster();
+    }
+    private void ausgebenPrivate(String mitteilung) {
+        this.hamster.schreib(" Private Nachricht : " + mitteilung);
+    }
+    void ausgebenOhne(String mitteilung) {
+        this.hamster.schreib(" < ohne > Nachricht : " + mitteilung);
+    }
+    protected void ausgebenProtected(String mitteilung) {
+        this.hamster.schreib(" Protected Nachricht : " + mitteilung);
+    }
+    public void ausgebenPublic(String mitteilung) {
+        this.hamster.schreib(" Public Nachricht : " + mitteilung);
+    }
+}

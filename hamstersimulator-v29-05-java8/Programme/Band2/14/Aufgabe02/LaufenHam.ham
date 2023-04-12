@@ -1,0 +1,50 @@
+/*class*/import landschaft.Landschaft;
+
+class LaufenHam extends AllroundHamster{
+	Landschaft foo;
+    LaufenHam(Hamster ham){
+        super(ham);
+        foo = Landschaft.getLandschaft();
+    }
+
+    boolean freiVorn(int offset){
+        int r = getReihe();
+        int s = getSpalte();
+        int b = (getBlickrichtung() + offset) % 4;
+        boolean mauer = false;
+
+        if(b == 0) {
+            mauer = foo.mauerDa(r - 1, s);
+        }else if(b == 1) {
+            mauer = foo.mauerDa(r, s + 1);
+        }else if(b == 2) {
+            mauer = foo.mauerDa(r + 1, s);
+        }else if(b == 3) {
+            mauer = foo.mauerDa(r, s - 1);
+        }
+        return !mauer;
+    }
+
+    private boolean vornFreiNew(){
+        return freiVorn(0);
+    }
+    
+    private boolean linksFreiNew(){
+        return freiVorn(3);
+    }
+
+    void laufe(){
+        int r = getReihe();
+        int s = getSpalte();
+        do{
+            if(linksFreiNew()) {
+               linksUm();
+               vor(); 
+            }else if(vornFreiNew()) {
+                vor();
+            }else{
+                rechtsUm();
+            }
+        }while(getReihe() != r || getSpalte() != s);
+    }
+}
