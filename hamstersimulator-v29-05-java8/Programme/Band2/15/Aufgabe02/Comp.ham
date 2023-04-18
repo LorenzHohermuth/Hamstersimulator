@@ -1,0 +1,10 @@
+/*class*/class Comp<T> implements Comparator<T>{
+    public int compare(T o1, T o2){
+        if( o1 instanceof Integer && o2 instanceof Integer) {
+            int o1int = (Integer)o1;
+            int o2int = (Integer)o2;
+            return o1int - o2int;
+        }
+        return 0;
+    }
+}

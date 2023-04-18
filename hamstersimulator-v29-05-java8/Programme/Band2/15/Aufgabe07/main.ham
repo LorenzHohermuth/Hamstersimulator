@@ -1,0 +1,15 @@
+/*object-oriented program*/
+void main(){
+    Stapel<Integer> stack = new Stapel<Integer>(5);
+    stack.drauflegen(1);
+    stack.drauflegen(2);
+    stack.drauflegen(3);
+    stack.drauflegen(4);
+    stack.drauflegen(5);
+
+    Iterator iter = stack.iterator();
+    while(iter.hasNext()) {
+    	int wert = stack.next();
+        Hamster.getStandardHamster().schreib( " " + wert );
+    }
+}

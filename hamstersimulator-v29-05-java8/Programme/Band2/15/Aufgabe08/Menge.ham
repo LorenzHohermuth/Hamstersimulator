@@ -1,0 +1,122 @@
+/*class*/class Menge<T> {
+
+    Object[] menge;
+    int next;
+
+    Menge(){
+        menge = new Object[2];
+        next = 0;
+    }
+
+    public void add(T obj){
+        if(contains(obj)) {
+            return;
+        }
+        if(menge.length <= next) {
+            Object[] newMenge = new Object[menge.length * 2];
+            for(int i = 0; i < menge.length; i++) {
+                newMenge[i] = menge[i];
+            }
+            menge = newMenge;
+        }
+        menge[next] = obj;
+        next++;
+    }
+
+    // loescht alle Vorkommen von obj im Arrays
+    public void remove(T obj) {
+        for (int i = 0; i < this.next; i++) {
+            if (menge[i].equals(obj)) {
+
+                // von hinten nach vorne verschieben
+                for (int j = i; j < next - 1; j++) {
+                    menge[j] = menge[j + 1];
+                }
+                next = next - 1;
+
+                // rekursiv andere Vorkommen l�schen
+                remove(obj);
+            }
+        }
+    }
+
+    // ueberprueft, ob obj im Array enthalten ist
+    public boolean contains(T obj) {
+        for (int i = 0; i < next; i++) {
+            if (menge[i].equals(obj)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    // liefert das im Array gespeicherte Objekt am angegebenen
+    // Index
+    public T get(int index) {
+        if (index >= next) {
+            throw new ArrayIndexOutOfBoundsException(index);
+        }
+        return (T) menge[index];
+    }
+
+    // ersetzt das im Array am angegebenen Index gespeicherte
+    // Objekt durch das als Parameter uebergebene Objekt; liefert
+    // das vorher am angegebenen Index gespeicherte Objekt
+    public T set(int index, T obj) {
+        if (index >= next) {
+            throw new ArrayIndexOutOfBoundsException(index);
+        }
+        T res = get(index);
+        menge[index] = obj;
+        return res;
+    }
+
+    // liefert die aktuelle Anzahl von Objekten im Array
+    public int size() {
+        return next;
+    }
+
+    // ueberprueft, ob das Array leer ist
+    public boolean isEmpty() {
+        return size() == 0;
+    }
+
+    // loescht das Array
+    public void clear() {
+        next = 0;
+    }
+
+    public Menge<T> schnittmenge(Menge<T> menge2){
+        Menge<T> out = new Menge<T>();
+        for(int i = 0; i < menge2.size(); i++) {
+            
+            T value = menge2.get(i);
+            if(contains(value)) {
+                out.add(value);
+            }
+        }
+        return out;
+    }
+
+    public Menge<T> vereinigung(Menge<T> menge2){
+        Menge<T> out = new Menge<T>();
+        for(int i = 0; i < size(); i++) {
+            out.add(get(i));
+        }
+        for(int i = 0; i < menge2.size(); i++) {
+            out.add(menge2.get(i));
+        }
+        return out;
+    }
+
+    public Menge<T> differenz(Menge<T> menge2){
+        Menge<T> out = new Menge<T>();
+        for(int i = 0; i < menge2.size(); i++) {
+
+            if(!contains(menge2.get(i))) {
+                out.add(get(i));
+            }
+        }
+        return out;
+    }
+}

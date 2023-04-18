@@ -1,0 +1,6 @@
+/*object-oriented program*/void main(){
+    Array<Integer> list = new Array();
+    int number = 3;
+    Arrays.addAll(list, number);
+    Arrays.display(list);
+}

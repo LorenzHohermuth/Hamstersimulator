@@ -1,0 +1,48 @@
+/*object-oriented program*/void main() {
+    // Aktionsverzeichnis fuellen
+    Map<String, HamsterAktion> aktionsVerzeichnis = new Map<String, HamsterAktion>();
+    aktionsVerzeichnis.put("vor", new VorAktion());
+    aktionsVerzeichnis.put("linksUm", new LinksUmAktion());
+    aktionsVerzeichnis.put("nimm", new NimmAktion());
+    aktionsVerzeichnis.put("gib", new GibAktion());
+
+    Map<Integer, Hamster> hamsterVerzeichnis = new Map<Integer, Hamster>();
+
+    Hamster paul = Hamster.getStandardHamster();
+
+    // Erfassung der Hamster
+    boolean ende = false;
+    while (!ende) {
+        int name = paul.liesZahl("Neue nummer (oder 0 für ende): ");
+        if (name == 0) {
+            ende = true;
+        } else if (hamsterVerzeichnis.contains(name)) {
+            paul.schreib("Hamstername " + Integer.toString(name) + " ist bereits vergeben!");
+        } else {
+            Hamster hamster = new Hamster(paul);
+            hamsterVerzeichnis.put(name, hamster);
+        }
+    }
+
+    // Hamstersteuerung
+    ende = false;
+    while (!ende) {
+        int name = paul.liesZahl("nummer (oder 0 fÃ¼r ende): ");
+        if (name == 0) {
+            ende = true;
+        } else {
+            Hamster hamster = hamsterVerzeichnis.get(name);
+            if (hamster == null) {
+                paul.schreib("Einen Hamster mit dem Namen " + Integer.toString(name) + " gibt es nicht!");
+            } else {
+                String befehl = paul.liesZeichenkette("Befehl: ");
+                HamsterAktion aktion = aktionsVerzeichnis.get(befehl);
+                if (aktion == null) {
+                    paul.schreib("Hamster kennen den Befehl " + befehl + " leider nicht!");
+                } else {
+                    aktion.ausfuehren(hamster);
+                }
+            }
+        }
+    }
+}

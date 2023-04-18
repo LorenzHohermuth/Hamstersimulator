@@ -1,0 +1,48 @@
+/*class*/public class Arrays {
+
+    // ersetzt alle Elemente des Arrays durch obj
+    public static <T> void replace(Array<? super T> array, T obj) {
+        for (int i = 0; i < array.size(); i++) {
+            array.set(i, obj);
+        }
+    }
+
+    // fuegt alle angegebenen Elemente dem Array hinzu
+    public static <T> void addAll(Array<? super T> array, T... elements) {
+        for (T element : elements) {
+            array.add(element);
+        }
+    }
+
+    // fuegt alle Elemente des from - Arrays dem to - Array hinzu
+    public static <T> void addAll(Array<? super T> to, Array<? extends T> from){
+        for(int i = 0; i < from.size(); i++) {
+            to.add(from.get(i));
+        }
+    }
+
+    // liefert das kleinste Element des Arrays bez . des
+    // uebergebenen Comparators
+    public static <T> T min(Array<? extends T> array, Comparator<? super T>  comp){
+        T before = array.get(0);
+        T now;
+        for(int i = 1; i < array.size() ; i++) {
+            now = array.get(i);
+            int p = comp.compare(now , before);
+            if( p < 0) {
+                before = now;
+            }
+        }
+        return before;
+    }
+
+    public static <T> void display(Array<T> arr){
+    	if(arr.get(0) instanceof Integer){
+            for(int i = 0; i < arr.size(); i++) {
+                Hamster paul = Hamster.getStandardHamster();
+                int o = (Integer)arr.get(i);
+            	paul.schreib(Integer.toString(o));
+            }
+        }
+    }
+}

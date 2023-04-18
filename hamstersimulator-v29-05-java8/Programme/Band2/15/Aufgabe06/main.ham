@@ -1,0 +1,15 @@
+/*object-oriented program*/
+void main() {
+    Array < Integer > speicher = new Array < Integer >();
+    // ...
+    speicher.add(1);
+    speicher.add(2);
+    speicher.add(3);
+    speicher.add(4);
+    speicher.add(5);
+    Iterator < Integer > iter = speicher.iterator();
+    while( iter.hasNext()) {
+        int wert = iter.next();
+        Hamster.getStandardHamster().schreib( " " + wert );
+    }
+}   

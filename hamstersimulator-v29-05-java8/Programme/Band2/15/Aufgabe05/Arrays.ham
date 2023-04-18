@@ -1,0 +1,73 @@
+/*class*/public class Arrays {
+
+    // ersetzt alle Elemente des Arrays durch obj
+    public static <T> void replace(Array<? super T> array, T obj) {
+        for (int i = 0; i < array.size(); i++) {
+            array.set(i, obj);
+        }
+    }
+
+    // fuegt alle angegebenen Elemente dem Array hinzu
+    public static <T> void addAll(Array<? super T> array,
+            T... elements) {
+        for (T element : elements) {
+            array.add(element);
+        }
+    }
+
+    // durchmischt das Array zufaellig
+    public static <T> void shuffle ( Array <T> array ){
+        int size = array.size();
+        for(int i = 0; i < size; i++) {
+            int rand = Zufall.randomNum(i,size);
+            T hold = array.get(rand);
+            array.set(rand, array.get(i));
+            array.set(i, hold);
+        }
+    }
+
+    // tauscht die Elemente des Arrays an den angegebenen Indizes
+    public static <T> void swap ( Array <T> array , int index1 , int index2 ){
+        T hold = array.get(index2);
+        array.set(index2, array.get(index1));
+        array.set(index1, hold);
+    }
+
+    // rotiert die Elemente des Arrays um eine bestimmte Distanz
+    // nach rechts ;
+    // nach Ausfuehrung der Methode befindet sich das Element an
+    // Index i nun am Index ( i + distance ) % array . size () ,
+    public static <T> void rotate ( Array <T> array , int distance ){
+        Object[] difference = array.toArray();
+        for(int i = 0; i < array.size(); i++) {
+            difference[(i + distance) % array.size()] = array.get(i);
+        }
+        for(int i = 0; i < difference.length; i++) {
+            array.set(i, (T) difference[i]);
+        }
+    }
+
+    // dreht die Anordnung der Elemente innerhalb des Arrays um
+    public static <T> void reverse ( Array <T> array ){
+        int size = array.size();
+        for(int i = 0; i < size / 2; i++) {
+            T hold = array.get(size - i);
+            array.set(size - i, array.get(i));
+            array.set(i, hold);
+        }
+
+    }
+
+    // liefert genau dann true , wenn die beiden Arrays kein
+    // gemeinsames Element haben
+    public static <T> boolean disjoint ( Array <T> array1 ,Array <T> array2 ){
+        for(int i = 0; i < array1.size(); i++) {
+            if(array2.contains(array1.get(i))) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+
+}

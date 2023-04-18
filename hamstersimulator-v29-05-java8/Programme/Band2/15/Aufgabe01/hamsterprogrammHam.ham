@@ -1,0 +1,24 @@
+/*object-oriented program*/void main() {
+    AllroundHamster julia = new AllroundHamster(Hamster.getStandardHamster());
+    Speicher<Hamster> kacheln = new Speicher<Hamster>();
+    kacheln.hinzufuegen(new Hamster(julia.getReihe(), julia.getSpalte(), julia.getBlickrichtung(), 0));
+
+    // zunaechst laeuft Julia
+    while (!julia.maulLeer()) {
+        int reihe = Zufall.naechsteZahl(Territorium.getAnzahlReihen() - 1);
+        int spalte = Zufall.naechsteZahl(Territorium.getAnzahlSpalten() - 1);
+        julia.laufeZuKachel(reihe, spalte);
+        julia.gib();
+        kacheln.hinzufuegen(new Hamster(julia.getReihe(), julia.getSpalte(), julia.getBlickrichtung(), 0));
+    }
+
+    kacheln.beginnDurchlauf();
+    Hamster paul = kacheln.liefereNaechstenWert();
+    AllroundHamster romeo = new AllroundHamster(paul.getReihe(), paul.getSpalte(), paul.getBlickrichtung(), 0);
+
+    // Romeo laeuft Julia hinterher
+    while (!kacheln.endeErreicht()) {
+        paul = kacheln.liefereNaechstenWert();
+        romeo.laufeZuKachel(paul.getReihe(), paul.getSpalte());
+    }
+}

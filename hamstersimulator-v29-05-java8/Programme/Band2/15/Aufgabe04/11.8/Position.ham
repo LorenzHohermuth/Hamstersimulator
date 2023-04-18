@@ -1,7 +1,7 @@
-/*class*/class Position {
-    private int reihe;
+/*class*/class Position extends Object {
+    int reihe;
 
-    private int spalte;
+    int spalte;
 
     Position(int r, int s) {
         this.reihe = r;
